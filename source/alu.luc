@@ -1,6 +1,6 @@
 global Inst {
-  const ADD = 6b000000; // Not sure
-  const SUB = 6b000001; // Not sure
+  const ADD = 6b000000; // Partial, need to implement v and z
+  const SUB = 6b000001; // Partial, need to implement v and z
   const MUL = 6b000010; // Works
   const DIV = 6b000011; // Undone
   const AND = 6b011000; // Works
@@ -49,6 +49,7 @@ module alu (
         result = op1 - op2;
         out = result;
         nOut = result[7];
+        // TODO: zOut and vOut
       Inst.MUL:
         out = op1 * op2;
       Inst.AND:
