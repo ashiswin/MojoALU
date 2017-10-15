@@ -1,10 +1,13 @@
 global Inst {
   const ADD = 6b000000;
   const SUB = 6b000001;
+  const MUL = 6b000010;
+  const DIV = 6b000011;
   const AND = 6b011000;
   const OR = 6b011110;
   const XOR = 6b010110;
   const LDR = 6b011010;
+  const INV = 6b010001;
   const SHL = 6b100000;
   const SHR = 6b100001;
   const SRA = 6b100011;
@@ -46,12 +49,16 @@ module alu (
         result = op1 - op2;
         out = result;
         nOut = result[7];
+      Inst.MUL:
+        out = op1 * op2;
       Inst.AND:
-        result = op1 & op2;
+        out = op1 & op2;
       Inst.OR:
-        result = op1 | op2;
+        out = op1 | op2;
       Inst.XOR:
-        result = op1 ^ op2;
+        out = op1 ^ op2;
+      Inst.INV:
+        out = ~op1;
       //Inst.LDR:
         // TODO
       Inst.SHL:
