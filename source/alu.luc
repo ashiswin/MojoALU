@@ -66,5 +66,6 @@ module alu (
         out = op1 < op2;
       Inst.CMPLE:
         out = op1 <= op2;
+    }
   }
 }
