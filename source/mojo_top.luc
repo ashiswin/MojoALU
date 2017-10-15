@@ -24,6 +24,7 @@ module mojo_top (
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
     reset_conditioner reset_cond;
+    alu alu(.rst(rst));    
   }
   
   always {
@@ -38,5 +39,17 @@ module mojo_top (
     io_led = 3x{{8h00}};    // turn LEDs off
     io_seg = 8hff;          // turn segments off
     io_sel = 4hf;           // select no digits
+    
+    alu.alufn = io_dip[0];
+    alu.op1 = io_dip[1];
+    alu.op2 = io_dip[2];
+    alu.z = 0;
+    alu.n = 0;
+    alu.v = 0;
+    
+    io_led[0] = alu.out;
+    io_led[1][0] = alu.zOut;
+    io_led[1][1] = alu.vOut;
+    io_led[1][2] = alu.nOut;
   }
 }
