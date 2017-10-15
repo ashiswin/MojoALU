@@ -63,14 +63,14 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
 WARNING:Xst:647 - Input <z> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <v> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <n> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 8-bit subtractor for signal <op1[7]_op2[7]_sub_2_OUT> created at line 39.
+    Found 8-bit subtractor for signal <op1[7]_op2[7]_sub_2_OUT> created at line 40.
     Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 34.
-    Found 8x8-bit multiplier for signal <n0037> created at line 44.
-    Found 8-bit shifter logical left for signal <op1[7]_op2[7]_shift_left_7_OUT> created at line 59
-    Found 8-bit shifter logical right for signal <op1[7]_op2[7]_shift_right_8_OUT> created at line 62
-    Found 8-bit comparator equal for signal <op1[7]_op2[7]_equal_10_o> created at line 65
-    Found 8-bit comparator greater for signal <op1[7]_op2[7]_LessThan_11_o> created at line 68
-    Found 8-bit comparator lessequal for signal <n0011> created at line 71
+    Found 8x8-bit multiplier for signal <n0050> created at line 46.
+    Found 8-bit shifter logical left for signal <op1[7]_op2[7]_shift_left_7_OUT> created at line 61
+    Found 8-bit shifter logical right for signal <op1[7]_op2[7]_shift_right_8_OUT> created at line 64
+    Found 8-bit comparator equal for signal <op1[7]_op2[7]_equal_10_o> created at line 67
+    Found 8-bit comparator greater for signal <op1[7]_op2[7]_LessThan_11_o> created at line 70
+    Found 8-bit comparator lessequal for signal <n0023> created at line 73
     Summary:
 	inferred   1 Multiplier(s).
 	inferred   2 Adder/Subtractor(s).

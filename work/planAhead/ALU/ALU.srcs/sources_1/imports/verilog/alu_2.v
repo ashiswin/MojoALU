@@ -34,11 +34,13 @@ module alu_2 (
         result = op1 + op2;
         out = result;
         nOut = result[7+0-:1];
+        vOut = (op1[7+0-:1] & op2[7+0-:1] & ~result[7+0-:1]) | (~op1[7+0-:1] & ~op2[7+0-:1] & result[7+0-:1]);
       end
       6'h01: begin
         result = op1 - op2;
         out = result;
         nOut = result[7+0-:1];
+        vOut = (op1[7+0-:1] & op2[7+0-:1] & ~result[7+0-:1]) | (~op1[7+0-:1] & ~op2[7+0-:1] & result[7+0-:1]);
       end
       6'h02: begin
         out = op1 * op2;

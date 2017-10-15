@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-DESKTOP-JNFAU09::  Mon Oct 16 00:38:21 2017
+DESKTOP-JNFAU09::  Mon Oct 16 01:06:50 2017
 
 par -intstyle pa -w -mt on mojo_top_0.ncd mojo_top_0_routed.ncd 
 
@@ -27,21 +27,21 @@ Device Utilization Summary:
 
 Slice Logic Utilization:
   Number of Slice Registers:                     0 out of  11,440    0%
-  Number of Slice LUTs:                         81 out of   5,720    1%
-    Number used as logic:                       81 out of   5,720    1%
-      Number using O6 output only:              62
+  Number of Slice LUTs:                         83 out of   5,720    1%
+    Number used as logic:                       83 out of   5,720    1%
+      Number using O6 output only:              64
       Number using O5 output only:               0
       Number using O5 and O6:                   19
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    30 out of   1,430    2%
+  Number of occupied Slices:                    34 out of   1,430    2%
   Number of MUXCYs used:                        16 out of   2,860    1%
-  Number of LUT Flip Flop pairs used:           81
-    Number with an unused Flip Flop:            81 out of      81  100%
-    Number with an unused LUT:                   0 out of      81    0%
-    Number of fully used LUT-FF pairs:           0 out of      81    0%
+  Number of LUT Flip Flop pairs used:           83
+    Number with an unused Flip Flop:            83 out of      83  100%
+    Number with an unused LUT:                   0 out of      83    0%
+    Number of fully used LUT-FF pairs:           0 out of      83    0%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -105,13 +105,13 @@ WARNING:Par:288 - The signal cclk_IBUF has no load.  PAR will not attempt to rou
 Starting Router
 
 
-Phase  1  : 584 unrouted;      REAL time: 2 secs 
+Phase  1  : 596 unrouted;      REAL time: 2 secs 
 
-Phase  2  : 454 unrouted;      REAL time: 2 secs 
+Phase  2  : 466 unrouted;      REAL time: 3 secs 
 
-Phase  3  : 208 unrouted;      REAL time: 5 secs 
+Phase  3  : 204 unrouted;      REAL time: 4 secs 
 
-Phase  4  : 208 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
+Phase  4  : 204 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
 
 Updating file: mojo_top_0_routed.ncd with current fully routed design.
 
@@ -151,7 +151,7 @@ WARNING:Par:283 - There are 15 loadless signals in this design. This design will
 Total REAL time to PAR completion: 5 secs 
 Total CPU time to PAR completion: 5 secs 
 
-Peak Memory Usage:  282 MB
+Peak Memory Usage:  279 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.

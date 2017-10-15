@@ -71,48 +71,48 @@ Total REAL time at the beginning of Placer: 3 secs
 Total CPU  time at the beginning of Placer: 3 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:f612f49f) REAL time: 3 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:b01a881f) REAL time: 4 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:f612f49f) REAL time: 3 secs 
+Phase 2.7  Design Feasibility Check (Checksum:b01a881f) REAL time: 4 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:f612f49f) REAL time: 3 secs 
+Phase 3.31  Local Placement Optimization (Checksum:b01a881f) REAL time: 4 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:f612f49f) REAL time: 3 secs 
+(Checksum:b01a881f) REAL time: 4 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:f612f49f) REAL time: 3 secs 
+Phase 5.36  Local Placement Optimization (Checksum:b01a881f) REAL time: 4 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:f612f49f) REAL time: 3 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:b01a881f) REAL time: 4 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:f612f49f) REAL time: 3 secs 
+Phase 7.3  Local Placement Optimization (Checksum:b01a881f) REAL time: 4 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:f612f49f) REAL time: 3 secs 
+Phase 8.5  Local Placement Optimization (Checksum:b01a881f) REAL time: 4 secs 
 
 Phase 9.8  Global Placement
 ..
 ..
-Phase 9.8  Global Placement (Checksum:1d850374) REAL time: 3 secs 
+Phase 9.8  Global Placement (Checksum:ada307ca) REAL time: 4 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:1d850374) REAL time: 3 secs 
+Phase 10.5  Local Placement Optimization (Checksum:ada307ca) REAL time: 4 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:1759f214) REAL time: 3 secs 
+Phase 11.18  Placement Optimization (Checksum:8768dcaa) REAL time: 4 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:1759f214) REAL time: 3 secs 
+Phase 12.5  Local Placement Optimization (Checksum:8768dcaa) REAL time: 4 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:1759f214) REAL time: 3 secs 
+Phase 13.34  Placement Validation (Checksum:8768dcaa) REAL time: 4 secs 
 
-Total REAL time to Placer completion: 3 secs 
+Total REAL time to Placer completion: 4 secs 
 Total CPU  time to Placer completion: 3 secs 
 Running post-placement packing...
 Writing output files...
@@ -122,21 +122,21 @@ Number of errors:      0
 Number of warnings:    6
 Slice Logic Utilization:
   Number of Slice Registers:                     0 out of  11,440    0%
-  Number of Slice LUTs:                         81 out of   5,720    1%
-    Number used as logic:                       81 out of   5,720    1%
-      Number using O6 output only:              62
+  Number of Slice LUTs:                         83 out of   5,720    1%
+    Number used as logic:                       83 out of   5,720    1%
+      Number using O6 output only:              64
       Number using O5 output only:               0
       Number using O5 and O6:                   19
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    30 out of   1,430    2%
+  Number of occupied Slices:                    34 out of   1,430    2%
   Number of MUXCYs used:                        16 out of   2,860    1%
-  Number of LUT Flip Flop pairs used:           81
-    Number with an unused Flip Flop:            81 out of      81  100%
-    Number with an unused LUT:                   0 out of      81    0%
-    Number of fully used LUT-FF pairs:           0 out of      81    0%
+  Number of LUT Flip Flop pairs used:           83
+    Number with an unused Flip Flop:            83 out of      83  100%
+    Number with an unused LUT:                   0 out of      83    0%
+    Number of fully used LUT-FF pairs:           0 out of      83    0%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -173,10 +173,10 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                2.90
+Average Fanout of Non-Clock Nets:                2.95
 
-Peak Memory Usage:  297 MB
-Total REAL time to MAP completion:  3 secs 
+Peak Memory Usage:  296 MB
+Total REAL time to MAP completion:  5 secs 
 Total CPU time to MAP completion (all processors):   3 secs 
 
 Mapping completed.
@@ -209,21 +209,21 @@ Device Utilization Summary:
 
 Slice Logic Utilization:
   Number of Slice Registers:                     0 out of  11,440    0%
-  Number of Slice LUTs:                         81 out of   5,720    1%
-    Number used as logic:                       81 out of   5,720    1%
-      Number using O6 output only:              62
+  Number of Slice LUTs:                         83 out of   5,720    1%
+    Number used as logic:                       83 out of   5,720    1%
+      Number using O6 output only:              64
       Number using O5 output only:               0
       Number using O5 and O6:                   19
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    30 out of   1,430    2%
+  Number of occupied Slices:                    34 out of   1,430    2%
   Number of MUXCYs used:                        16 out of   2,860    1%
-  Number of LUT Flip Flop pairs used:           81
-    Number with an unused Flip Flop:            81 out of      81  100%
-    Number with an unused LUT:                   0 out of      81    0%
-    Number of fully used LUT-FF pairs:           0 out of      81    0%
+  Number of LUT Flip Flop pairs used:           83
+    Number with an unused Flip Flop:            83 out of      83  100%
+    Number with an unused LUT:                   0 out of      83    0%
+    Number of fully used LUT-FF pairs:           0 out of      83    0%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -287,13 +287,13 @@ WARNING:Par:288 - The signal cclk_IBUF has no load.  PAR will not attempt to rou
 Starting Router
 
 
-Phase  1  : 584 unrouted;      REAL time: 2 secs 
+Phase  1  : 596 unrouted;      REAL time: 2 secs 
 
-Phase  2  : 454 unrouted;      REAL time: 2 secs 
+Phase  2  : 466 unrouted;      REAL time: 3 secs 
 
-Phase  3  : 208 unrouted;      REAL time: 5 secs 
+Phase  3  : 204 unrouted;      REAL time: 4 secs 
 
-Phase  4  : 208 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
+Phase  4  : 204 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
 
 Updating file: mojo_top_0_routed.ncd with current fully routed design.
 
@@ -333,7 +333,7 @@ WARNING:Par:283 - There are 15 loadless signals in this design. This design will
 Total REAL time to PAR completion: 5 secs 
 Total CPU time to PAR completion: 5 secs 
 
-Peak Memory Usage:  282 MB
+Peak Memory Usage:  279 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
@@ -355,7 +355,7 @@ Loading device for application Rf_Device from file '6slx9.nph' in environment
 C:\Xilinx\14.7\ISE_DS\ISE\.
    "mojo_top_0" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -2
 
-Analysis completed Mon Oct 16 00:38:30 2017
+Analysis completed Mon Oct 16 01:06:59 2017
 --------------------------------------------------------------------------------
 
 Generating Report ...
