@@ -1,0 +1,70 @@
+global Inst {
+  const ADD = 6b000000;
+  const SUB = 6b000001;
+  const AND = 6b011000;
+  const OR = 6b011110;
+  const XOR = 6b010110;
+  const LDR = 6b011010;
+  const SHL = 6b100000;
+  const SHR = 6b100001;
+  const SRA = 6b100011;
+  const CMPEQ = 6b110011;
+  const CMPLT = 6b110101;
+  const CMPLE = 6b110111;
+}
+
+module alu (
+    input clk,  // clock
+    input rst,  // reset
+    input alufn[6],
+    input op1[8],
+    input op2[8],
+    input z,
+    input v,
+    input n,
+    output out[8],
+    output zOut,
+    output vOut,
+    output nOut
+  ) {
+  
+  sig result[8];
+  
+  always {
+    zOut = 0;
+    vOut = 0;
+    nOut = 0;
+    out = 8hxx;
+    
+    case(alufn) {
+      Inst.ADD:
+        result = op1 + op2;
+        out = result;
+        nOut = result[7];
+        // TODO: zOut and vOut
+      Inst.SUB:
+        result = op1 - op2;
+        out = result;
+        nOut = result[7];
+      Inst.AND:
+        result = op1 & op2;
+      Inst.OR:
+        result = op1 | op2;
+      Inst.XOR:
+        result = op1 ^ op2;
+      //Inst.LDR:
+        // TODO
+      Inst.SHL:
+        out = op1 << op2;
+      Inst.SHR:
+        out = op1 >> op2;
+      //Inst.SRA:
+        //TODO
+      Inst.CMPEQ:
+        out = op1 == op2;
+      Inst.CMPLT:
+        out = op1 < op2;
+      Inst.CMPLE:
+        out = op1 <= op2;
+  }
+}
