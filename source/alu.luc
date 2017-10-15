@@ -1,6 +1,6 @@
 global Inst {
-  const ADD = 6b000000; // Partial, need to implement z
-  const SUB = 6b000001; // Partial, need to implement z
+  const ADD = 6b000000; // Works
+  const SUB = 6b000001; // Works
   const MUL = 6b000010; // Works
   const DIV = 6b000011; // Undone
   const AND = 6b011000; // Works
@@ -32,6 +32,8 @@ module alu (
   ) {
   
   sig result[8];
+  sig zComp;
+  var i;
   
   always {
     zOut = 0;
@@ -45,13 +47,21 @@ module alu (
         out = result;
         nOut = result[7];
         vOut = (op1[7] & op2[7] & ~result[7]) | (~op1[7] & ~op2[7] & result[7]);
-        // TODO: zOut
+        zComp = result[0];
+        for(i = 1; i < 8; i++) {
+          zComp = ~(zComp | result[i]);
+        }
+        zOut = zComp;
       Inst.SUB:
         result = op1 - op2;
         out = result;
         nOut = result[7];
         vOut = (op1[7] & op2[7] & ~result[7]) | (~op1[7] & ~op2[7] & result[7]);
-        // TODO: zOut
+        zComp = result[0];
+        for(i = 1; i < 8; i++) {
+          zComp = ~(zComp | result[i]);
+        }
+        zOut = zComp;
       Inst.MUL:
         out = op1 * op2;
       Inst.AND:

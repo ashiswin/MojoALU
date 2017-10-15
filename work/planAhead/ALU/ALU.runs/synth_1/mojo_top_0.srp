@@ -3,7 +3,7 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> Reading design: mojo_top_0.prj
 
@@ -109,14 +109,14 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
 WARNING:Xst:647 - Input <z> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <v> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <n> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 8-bit subtractor for signal <op1[7]_op2[7]_sub_2_OUT> created at line 40.
-    Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 34.
-    Found 8x8-bit multiplier for signal <n0050> created at line 46.
-    Found 8-bit shifter logical left for signal <op1[7]_op2[7]_shift_left_7_OUT> created at line 61
-    Found 8-bit shifter logical right for signal <op1[7]_op2[7]_shift_right_8_OUT> created at line 64
-    Found 8-bit comparator equal for signal <op1[7]_op2[7]_equal_10_o> created at line 67
-    Found 8-bit comparator greater for signal <op1[7]_op2[7]_LessThan_11_o> created at line 70
-    Found 8-bit comparator lessequal for signal <n0023> created at line 73
+    Found 8-bit subtractor for signal <op1[7]_op2[7]_sub_2_OUT> created at line 49.
+    Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 38.
+    Found 8x8-bit multiplier for signal <n0078> created at line 60.
+    Found 8-bit shifter logical left for signal <op1[7]_op2[7]_shift_left_7_OUT> created at line 75
+    Found 8-bit shifter logical right for signal <op1[7]_op2[7]_shift_right_8_OUT> created at line 78
+    Found 8-bit comparator equal for signal <op1[7]_op2[7]_equal_10_o> created at line 81
+    Found 8-bit comparator greater for signal <op1[7]_op2[7]_LessThan_11_o> created at line 84
+    Found 8-bit comparator lessequal for signal <n0051> created at line 87
     Summary:
 	inferred   1 Multiplier(s).
 	inferred   2 Adder/Subtractor(s).
@@ -225,13 +225,13 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 138
+# BELS                             : 143
 #      GND                         : 2
-#      LUT2                        : 22
+#      LUT2                        : 23
 #      LUT3                        : 10
 #      LUT4                        : 8
 #      LUT5                        : 24
-#      LUT6                        : 38
+#      LUT6                        : 42
 #      MUXCY                       : 14
 #      MUXF7                       : 2
 #      VCC                         : 2
@@ -250,14 +250,14 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice LUTs:                  102  out of   5720     1%  
-    Number used as Logic:               102  out of   5720     1%  
+ Number of Slice LUTs:                  107  out of   5720     1%  
+    Number used as Logic:               107  out of   5720     1%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    102
-   Number with an unused Flip Flop:     102  out of    102   100%  
-   Number with an unused LUT:             0  out of    102     0%  
-   Number of fully used LUT-FF pairs:     0  out of    102     0%  
+ Number of LUT Flip Flop pairs used:    107
+   Number with an unused Flip Flop:     107  out of    107   100%  
+   Number with an unused LUT:             0  out of    107     0%  
+   Number of fully used LUT-FF pairs:     0  out of    107     0%  
    Number of unique control sets:         0
 
 IO Utilization: 
@@ -306,7 +306,7 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 971 / 10
+  Total number of paths / destination ports: 1177 / 11
 -------------------------------------------------------------------------
 Delay:               11.583ns (Levels of Logic = 8)
   Source:            io_dip<17> (PAD)
@@ -337,8 +337,8 @@ Cross Clock Domains Report:
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.89 secs
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.35 secs
  
 --> 
 
