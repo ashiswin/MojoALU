@@ -1,19 +1,19 @@
 global Inst {
-  const ADD = 6b000000;
-  const SUB = 6b000001;
-  const MUL = 6b000010;
-  const DIV = 6b000011;
-  const AND = 6b011000;
-  const OR = 6b011110;
-  const XOR = 6b010110;
-  const LDR = 6b011010;
-  const INV = 6b010001;
-  const SHL = 6b100000;
-  const SHR = 6b100001;
-  const SRA = 6b100011;
-  const CMPEQ = 6b110011;
-  const CMPLT = 6b110101;
-  const CMPLE = 6b110111;
+  const ADD = 6b000000; // Not sure
+  const SUB = 6b000001; // Not sure
+  const MUL = 6b000010; // Works
+  const DIV = 6b000011; // Undone
+  const AND = 6b011000; // Works
+  const OR = 6b011110; // Works
+  const XOR = 6b010110; // Works
+  const LDR = 6b011010; // Undone
+  const INV = 6b010001; // Works
+  const SHL = 6b100000; // Works
+  const SHR = 6b100001; // Works
+  const SRA = 6b100011; // Undone
+  const CMPEQ = 6b110011; // Works
+  const CMPLT = 6b110101; // Works
+  const CMPLE = 6b110111; // Works
 }
 
 module alu (
