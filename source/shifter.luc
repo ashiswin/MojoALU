@@ -1,0 +1,21 @@
+module shifter (
+    input clk,  // clock
+    input rst,  // reset
+    input alufn[6],
+    input op1[8],
+    input op2[8],
+    output out
+  ) {
+
+  always {
+    out = 8hxx;
+    case(alufn) {
+      Inst.SHL:
+        out = op1 << op2;
+      Inst.SHR:
+        out = op1 >> op2;
+      Inst.SRA:
+        out = $signed(op1) >>> op2;
+    }
+  }
+}

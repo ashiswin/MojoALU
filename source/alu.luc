@@ -1,21 +1,3 @@
-global Inst {
-  const ADD = 6b000000; // Works
-  const SUB = 6b000001; // Works
-  const MUL = 6b000010; // Works
-  const DIV = 6b000011; // Undone
-  const AND = 6b011000; // Works
-  const OR = 6b011110; // Works
-  const XOR = 6b010110; // Works
-  const LDR = 6b011010; // Undone
-  const INV = 6b010001; // Works
-  const SHL = 6b100000; // Works
-  const SHR = 6b100001; // Works
-  const SRA = 6b100011; // Works
-  const CMPEQ = 6b110011; // Works
-  const CMPLT = 6b110101; // Works
-  const CMPLE = 6b110111; // Works
-}
-
 module alu (
     input clk,  // clock
     input rst,  // reset
@@ -31,9 +13,15 @@ module alu (
     output nOut
   ) {
   
-  sig result[8];
-  sig zComp;
-  var i;
+  .clk(clk), .rst(rst), .op1(op1), .op2(op2), .alufn(alufn) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    adder adder;
+    boolean boolean;
+    shifter shifter;
+  }
+  
+  compare compare(.clk(clk), .rst(rst), .alufn(alufn), .z(z), .n(n), .v(v));
   
   always {
     zOut = 0;
@@ -41,53 +29,18 @@ module alu (
     nOut = 0;
     out = 8hxx;
     
-    case(alufn) {
-      Inst.ADD:
-        result = op1 + op2;
-        out = result;
-        nOut = result[7];
-        vOut = (op1[7] & op2[7] & ~result[7]) | (~op1[7] & ~op2[7] & result[7]);
-        zComp = result[0];
-        for(i = 1; i < 8; i++) {
-          zComp = ~(zComp | result[i]);
-        }
-        zOut = zComp;
-      Inst.SUB:
-        result = op1 - op2;
-        out = result;
-        nOut = result[7];
-        vOut = (op1[7] & op2[7] & ~result[7]) | (~op1[7] & ~op2[7] & result[7]);
-        zComp = result[0];
-        for(i = 1; i < 8; i++) {
-          zComp = ~(zComp | result[i]);
-        }
-        zOut = zComp;
-      Inst.MUL:
-        out = op1 * op2;
-      //Inst.DIV:
-        //TODO
-      Inst.AND:
-        out = op1 & op2;
-      Inst.OR:
-        out = op1 | op2;
-      Inst.XOR:
-        out = op1 ^ op2;
-      Inst.INV:
-        out = ~op1;
-      Inst.LDR:
-        out = op1;
-      Inst.SHL:
-        out = op1 << op2;
-      Inst.SHR:
-        out = op1 >> op2;
-      Inst.SRA:
-        out = $signed(op1) >>> op2;
-      Inst.CMPEQ:
-        out = op1 == op2;
-      Inst.CMPLT:
-        out = op1 < op2;
-      Inst.CMPLE:
-        out = op1 <= op2;
+    case(alufn[5:4]) {
+      b00:
+        out = adder.out;
+        zOut = adder.zOut;
+        vOut = adder.vOut;
+        nOut = adder.nOut;
+      b01:
+        out = boolean.out;
+      b10:
+        out = shifter.out;
+      b11:
+        out = compare.out;
     }
   }
 }

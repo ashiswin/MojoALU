@@ -71,11 +71,17 @@ module alu_2 (
       6'h11: begin
         out = ~op1;
       end
+      6'h1a: begin
+        out = op1;
+      end
       6'h20: begin
         out = op1 << op2;
       end
       6'h21: begin
         out = op1 >> op2;
+      end
+      6'h23: begin
+        out = $signed(op1) >>> op2;
       end
       6'h33: begin
         out = op1 == op2;

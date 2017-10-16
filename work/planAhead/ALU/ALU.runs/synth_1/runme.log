@@ -65,18 +65,19 @@ WARNING:Xst:647 - Input <v> is never used. This port will be preserved and left 
 WARNING:Xst:647 - Input <n> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 8-bit subtractor for signal <op1[7]_op2[7]_sub_2_OUT> created at line 49.
     Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 38.
-    Found 8x8-bit multiplier for signal <n0078> created at line 60.
-    Found 8-bit shifter logical left for signal <op1[7]_op2[7]_shift_left_7_OUT> created at line 75
-    Found 8-bit shifter logical right for signal <op1[7]_op2[7]_shift_right_8_OUT> created at line 78
-    Found 8-bit comparator equal for signal <op1[7]_op2[7]_equal_10_o> created at line 81
-    Found 8-bit comparator greater for signal <op1[7]_op2[7]_LessThan_11_o> created at line 84
-    Found 8-bit comparator lessequal for signal <n0051> created at line 87
+    Found 8x8-bit multiplier for signal <n0081> created at line 60.
+    Found 8-bit shifter logical left for signal <op1[7]_op2[7]_shift_left_7_OUT> created at line 78
+    Found 8-bit shifter logical right for signal <op1[7]_op2[7]_shift_right_8_OUT> created at line 81
+    Found 8-bit shifter arithmetic right for signal <op1[7]_op2[7]_shift_right_9_OUT> created at line 84
+    Found 8-bit comparator equal for signal <op1[7]_op2[7]_equal_11_o> created at line 87
+    Found 8-bit comparator greater for signal <op1[7]_op2[7]_LessThan_12_o> created at line 90
+    Found 8-bit comparator lessequal for signal <n0052> created at line 93
     Summary:
 	inferred   1 Multiplier(s).
 	inferred   2 Adder/Subtractor(s).
 	inferred   3 Comparator(s).
-	inferred   2 Multiplexer(s).
-	inferred   2 Combinational logic shifter(s).
+	inferred   3 Multiplexer(s).
+	inferred   3 Combinational logic shifter(s).
 Unit <alu_2> synthesized.
 
 =========================================================================
@@ -94,9 +95,10 @@ Macro Statistics
  8-bit comparator equal                                : 1
  8-bit comparator greater                              : 1
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 2
- 8-bit 2-to-1 multiplexer                              : 2
-# Logic shifters                                       : 2
+# Multiplexers                                         : 3
+ 8-bit 2-to-1 multiplexer                              : 3
+# Logic shifters                                       : 3
+ 8-bit shifter arithmetic right                        : 1
  8-bit shifter logical left                            : 1
  8-bit shifter logical right                           : 1
 # Tristates                                            : 6
@@ -126,9 +128,10 @@ Macro Statistics
  8-bit comparator equal                                : 1
  8-bit comparator greater                              : 1
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 2
- 8-bit 2-to-1 multiplexer                              : 2
-# Logic shifters                                       : 2
+# Multiplexers                                         : 3
+ 8-bit 2-to-1 multiplexer                              : 3
+# Logic shifters                                       : 3
+ 8-bit shifter arithmetic right                        : 1
  8-bit shifter logical left                            : 1
  8-bit shifter logical right                           : 1
 # Xors                                                 : 1
@@ -150,7 +153,7 @@ WARNING:Xst:2677 - Node <reset_cond/M_stage_q_0> of sequential type is unconnect
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 2.
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 3.
 
 Final Macro Processing ...
 
@@ -190,6 +193,6 @@ Speed Grade: -2
    Minimum period: No path found
    Minimum input arrival time before clock: No path found
    Maximum output required time after clock: No path found
-   Maximum combinational path delay: 11.583ns
+   Maximum combinational path delay: 13.304ns
 
 =========================================================================

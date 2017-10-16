@@ -12,6 +12,15 @@
 
 </msg>
 
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">spi_ss_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">avr_tx_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">rst_n_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
 <msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cclk_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
@@ -46,15 +55,6 @@
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">spi_mosi_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">spi_ss_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">avr_tx_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">rst_n_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
 <msg type="info" file="Par" num="459" delta="new" >The Clock Report is not displayed in the non timing-driven mode.

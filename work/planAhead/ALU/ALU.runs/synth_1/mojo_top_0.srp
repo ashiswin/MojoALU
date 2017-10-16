@@ -3,7 +3,7 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: mojo_top_0.prj
 
@@ -111,18 +111,19 @@ WARNING:Xst:647 - Input <v> is never used. This port will be preserved and left 
 WARNING:Xst:647 - Input <n> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 8-bit subtractor for signal <op1[7]_op2[7]_sub_2_OUT> created at line 49.
     Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 38.
-    Found 8x8-bit multiplier for signal <n0078> created at line 60.
-    Found 8-bit shifter logical left for signal <op1[7]_op2[7]_shift_left_7_OUT> created at line 75
-    Found 8-bit shifter logical right for signal <op1[7]_op2[7]_shift_right_8_OUT> created at line 78
-    Found 8-bit comparator equal for signal <op1[7]_op2[7]_equal_10_o> created at line 81
-    Found 8-bit comparator greater for signal <op1[7]_op2[7]_LessThan_11_o> created at line 84
-    Found 8-bit comparator lessequal for signal <n0051> created at line 87
+    Found 8x8-bit multiplier for signal <n0081> created at line 60.
+    Found 8-bit shifter logical left for signal <op1[7]_op2[7]_shift_left_7_OUT> created at line 78
+    Found 8-bit shifter logical right for signal <op1[7]_op2[7]_shift_right_8_OUT> created at line 81
+    Found 8-bit shifter arithmetic right for signal <op1[7]_op2[7]_shift_right_9_OUT> created at line 84
+    Found 8-bit comparator equal for signal <op1[7]_op2[7]_equal_11_o> created at line 87
+    Found 8-bit comparator greater for signal <op1[7]_op2[7]_LessThan_12_o> created at line 90
+    Found 8-bit comparator lessequal for signal <n0052> created at line 93
     Summary:
 	inferred   1 Multiplier(s).
 	inferred   2 Adder/Subtractor(s).
 	inferred   3 Comparator(s).
-	inferred   2 Multiplexer(s).
-	inferred   2 Combinational logic shifter(s).
+	inferred   3 Multiplexer(s).
+	inferred   3 Combinational logic shifter(s).
 Unit <alu_2> synthesized.
 
 =========================================================================
@@ -140,9 +141,10 @@ Macro Statistics
  8-bit comparator equal                                : 1
  8-bit comparator greater                              : 1
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 2
- 8-bit 2-to-1 multiplexer                              : 2
-# Logic shifters                                       : 2
+# Multiplexers                                         : 3
+ 8-bit 2-to-1 multiplexer                              : 3
+# Logic shifters                                       : 3
+ 8-bit shifter arithmetic right                        : 1
  8-bit shifter logical left                            : 1
  8-bit shifter logical right                           : 1
 # Tristates                                            : 6
@@ -172,9 +174,10 @@ Macro Statistics
  8-bit comparator equal                                : 1
  8-bit comparator greater                              : 1
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 2
- 8-bit 2-to-1 multiplexer                              : 2
-# Logic shifters                                       : 2
+# Multiplexers                                         : 3
+ 8-bit 2-to-1 multiplexer                              : 3
+# Logic shifters                                       : 3
+ 8-bit shifter arithmetic right                        : 1
  8-bit shifter logical left                            : 1
  8-bit shifter logical right                           : 1
 # Xors                                                 : 1
@@ -196,7 +199,7 @@ WARNING:Xst:2677 - Node <reset_cond/M_stage_q_0> of sequential type is unconnect
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 2.
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 3.
 
 Final Macro Processing ...
 
@@ -225,15 +228,15 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 143
+# BELS                             : 158
 #      GND                         : 2
-#      LUT2                        : 23
+#      LUT2                        : 27
 #      LUT3                        : 10
 #      LUT4                        : 8
-#      LUT5                        : 24
-#      LUT6                        : 42
+#      LUT5                        : 27
+#      LUT6                        : 51
 #      MUXCY                       : 14
-#      MUXF7                       : 2
+#      MUXF7                       : 1
 #      VCC                         : 2
 #      XORCY                       : 16
 # IO Buffers                       : 72
@@ -250,14 +253,14 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice LUTs:                  107  out of   5720     1%  
-    Number used as Logic:               107  out of   5720     1%  
+ Number of Slice LUTs:                  123  out of   5720     2%  
+    Number used as Logic:               123  out of   5720     2%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    107
-   Number with an unused Flip Flop:     107  out of    107   100%  
-   Number with an unused LUT:             0  out of    107     0%  
-   Number of fully used LUT-FF pairs:     0  out of    107     0%  
+ Number of LUT Flip Flop pairs used:    123
+   Number with an unused Flip Flop:     123  out of    123   100%  
+   Number with an unused LUT:             0  out of    123     0%  
+   Number of fully used LUT-FF pairs:     0  out of    123     0%  
    Number of unique control sets:         0
 
 IO Utilization: 
@@ -298,7 +301,7 @@ Speed Grade: -2
    Minimum period: No path found
    Minimum input arrival time before clock: No path found
    Maximum output required time after clock: No path found
-   Maximum combinational path delay: 11.583ns
+   Maximum combinational path delay: 13.304ns
 
 Timing Details:
 ---------------
@@ -306,28 +309,29 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 1177 / 11
+  Total number of paths / destination ports: 1459 / 11
 -------------------------------------------------------------------------
-Delay:               11.583ns (Levels of Logic = 8)
-  Source:            io_dip<17> (PAD)
+Delay:               13.304ns (Levels of Logic = 9)
+  Source:            io_dip<1> (PAD)
   Destination:       io_led<0> (PAD)
 
-  Data Path: io_dip<17> to io_led<0>
+  Data Path: io_dip<1> to io_led<0>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            27   1.328   1.866  io_dip_17_IBUF (io_dip_17_IBUF)
-     begin scope: 'alu:op2<1>'
-     LUT5:I0->O            1   0.254   0.910  out<0>9_SW0 (N4)
-     LUT5:I2->O            1   0.235   0.790  out<0>9_SW1 (N10)
-     LUT6:I4->O            1   0.250   0.910  out<0>9 (out<0>8)
-     LUT6:I3->O            1   0.235   0.958  out<0>12 (out<0>11)
-     LUT6:I2->O            1   0.254   0.681  out<0>21 (io_led_0_OBUF)
+     IBUF:I->O            23   1.328   1.358  io_dip_1_IBUF (io_dip_1_IBUF)
+     begin scope: 'alu:alufn<1>'
+     LUT3:I2->O           16   0.254   1.637  alufn[5]_GND_3_o_equal_19_o<5>11 (alufn[5]_GND_3_o_equal_19_o<5>1)
+     LUT6:I0->O            1   0.254   1.112  out<0>5 (out<0>6)
+     LUT5:I0->O            1   0.254   0.958  out<0>8_SW0_SW0 (N14)
+     LUT6:I2->O            1   0.254   0.682  out<0>8_SW0 (N8)
+     LUT6:I5->O            1   0.254   1.112  out<0>8 (out<0>9)
+     LUT5:I0->O            1   0.254   0.681  out<0>21 (out<0>)
      end scope: 'alu:out<0>'
      OBUF:I->O                 2.912          io_led_0_OBUF (io_led<0>)
     ----------------------------------------
-    Total                     11.583ns (5.468ns logic, 6.115ns route)
-                                       (47.2% logic, 52.8% route)
+    Total                     13.304ns (5.764ns logic, 7.540ns route)
+                                       (43.3% logic, 56.7% route)
 
 =========================================================================
 
@@ -337,12 +341,12 @@ Cross Clock Domains Report:
 =========================================================================
 
 
-Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 4.35 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.92 secs
  
 --> 
 
-Total memory usage is 249952 kilobytes
+Total memory usage is 250080 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   18 (   0 filtered)

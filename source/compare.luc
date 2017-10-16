@@ -1,0 +1,22 @@
+module compare (
+    input clk,  // clock
+    input rst,  // reset
+    input alufn[6],
+    input z,
+    input v,
+    input n,
+    output out
+  ) {
+
+  always {
+    out = 8h00;
+    case(alufn) {
+      Inst.CMPEQ:
+        out[0] = z;
+      Inst.CMPLT:
+        out = n ^ v;
+      Inst.CMPLE:
+        out = z | (n ^ v);
+    }
+  }
+}

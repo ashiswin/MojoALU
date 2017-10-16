@@ -1,0 +1,25 @@
+module boolean (
+    input clk,  // clock
+    input rst,  // reset
+    input op1[8],
+    input op2[8],
+    input alufn[6],
+    output out
+  ) {
+
+  always {
+    out = 8hxx;
+    case(alufn) {
+      Inst.AND:
+        out = op1 & op2;
+      Inst.OR:
+        out = op1 | op2;
+      Inst.XOR:
+        out = op1 ^ op2;
+      Inst.INV:
+        out = ~op1;
+      Inst.LDR:
+        out = op1;
+    }
+  }
+}
