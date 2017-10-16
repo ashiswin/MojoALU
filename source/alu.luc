@@ -64,6 +64,8 @@ module alu (
         zOut = zComp;
       Inst.MUL:
         out = op1 * op2;
+      //Inst.DIV:
+        //TODO
       Inst.AND:
         out = op1 & op2;
       Inst.OR:
@@ -78,8 +80,8 @@ module alu (
         out = op1 << op2;
       Inst.SHR:
         out = op1 >> op2;
-      //Inst.SRA:
-        //TODO
+      Inst.SRA:
+        out = $signed(op1) >>> op2;
       Inst.CMPEQ:
         out = op1 == op2;
       Inst.CMPLT:
