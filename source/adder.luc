@@ -44,6 +44,8 @@ module adder (
         out = op1 * op2;
       //Inst.DIV:
         //TODO
+      Inst.NEG:
+        out = -op1;
     }
   }
 }

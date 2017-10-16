@@ -3,6 +3,7 @@ global Inst {
   const SUB = 6b000001; // Works
   const MUL = 6b000010; // Works
   const DIV = 6b000011; // Undone
+  const NEG = 6b000100; // Untested
   const AND = 6b011000; // Works
   const OR = 6b011110; // Works
   const XOR = 6b010110; // Works
