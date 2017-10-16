@@ -10,7 +10,7 @@ global Inst {
   const INV = 6b010001; // Works
   const SHL = 6b100000; // Works
   const SHR = 6b100001; // Works
-  const SRA = 6b100011; // Undone
+  const SRA = 6b100011; // Works
   const CMPEQ = 6b110011; // Works
   const CMPLT = 6b110101; // Works
   const CMPLE = 6b110111; // Works
@@ -74,8 +74,8 @@ module alu (
         out = op1 ^ op2;
       Inst.INV:
         out = ~op1;
-      //Inst.LDR:
-        // TODO
+      Inst.LDR:
+        out = op1;
       Inst.SHL:
         out = op1 << op2;
       Inst.SHR:
