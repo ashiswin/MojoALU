@@ -21,11 +21,51 @@ module alu_2 (
   
   
   
-  reg [7:0] result;
+  wire [8-1:0] M_adder_out;
+  wire [1-1:0] M_adder_zOut;
+  wire [1-1:0] M_adder_vOut;
+  wire [1-1:0] M_adder_nOut;
+  adder_3 adder (
+    .clk(clk),
+    .rst(rst),
+    .op1(op1),
+    .op2(op2),
+    .alufn(alufn),
+    .out(M_adder_out),
+    .zOut(M_adder_zOut),
+    .vOut(M_adder_vOut),
+    .nOut(M_adder_nOut)
+  );
+  wire [1-1:0] M_boolean_out;
+  boolean_4 boolean (
+    .clk(clk),
+    .rst(rst),
+    .op1(op1),
+    .op2(op2),
+    .alufn(alufn),
+    .out(M_boolean_out)
+  );
   
-  reg zComp;
+  wire [1-1:0] M_shifter_out;
+  shifter_5 shifter (
+    .clk(clk),
+    .rst(rst),
+    .alufn(alufn),
+    .op1(op1),
+    .op2(op2[0+4-:5]),
+    .out(M_shifter_out)
+  );
   
-  integer i;
+  wire [8-1:0] M_compare_out;
+  compare_6 compare (
+    .clk(clk),
+    .rst(rst),
+    .alufn(alufn),
+    .z(z),
+    .n(n),
+    .v(v),
+    .out(M_compare_out)
+  );
   
   always @* begin
     zOut = 1'h0;
@@ -33,64 +73,21 @@ module alu_2 (
     nOut = 1'h0;
     out = 8'bxxxxxxxx;
     
-    case (alufn)
-      6'h00: begin
-        result = op1 + op2;
-        out = result;
-        nOut = result[7+0-:1];
-        vOut = (op1[7+0-:1] & op2[7+0-:1] & ~result[7+0-:1]) | (~op1[7+0-:1] & ~op2[7+0-:1] & result[7+0-:1]);
-        zComp = result[0+0-:1];
-        for (i = 1'h1; i < 4'h8; i = i + 1) begin
-          zComp = ~(zComp | result[(i)*1+0-:1]);
-        end
-        zOut = zComp;
+    case (alufn[4+1-:2])
+      2'h0: begin
+        out = M_adder_out;
+        zOut = M_adder_zOut;
+        vOut = M_adder_vOut;
+        nOut = M_adder_nOut;
       end
-      6'h01: begin
-        result = op1 - op2;
-        out = result;
-        nOut = result[7+0-:1];
-        vOut = (op1[7+0-:1] & op2[7+0-:1] & ~result[7+0-:1]) | (~op1[7+0-:1] & ~op2[7+0-:1] & result[7+0-:1]);
-        zComp = result[0+0-:1];
-        for (i = 1'h1; i < 4'h8; i = i + 1) begin
-          zComp = ~(zComp | result[(i)*1+0-:1]);
-        end
-        zOut = zComp;
+      2'h1: begin
+        out = M_boolean_out;
       end
-      6'h02: begin
-        out = op1 * op2;
+      2'h2: begin
+        out = M_shifter_out;
       end
-      6'h18: begin
-        out = op1 & op2;
-      end
-      6'h1e: begin
-        out = op1 | op2;
-      end
-      6'h16: begin
-        out = op1 ^ op2;
-      end
-      6'h11: begin
-        out = ~op1;
-      end
-      6'h1a: begin
-        out = op1;
-      end
-      6'h20: begin
-        out = op1 << op2;
-      end
-      6'h21: begin
-        out = op1 >> op2;
-      end
-      6'h23: begin
-        out = $signed(op1) >>> op2;
-      end
-      6'h33: begin
-        out = op1 == op2;
-      end
-      6'h35: begin
-        out = op1 < op2;
-      end
-      6'h37: begin
-        out = op1 <= op2;
+      2'h3: begin
+        out = M_compare_out;
       end
     endcase
   end

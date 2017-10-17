@@ -18,8 +18,8 @@ module alu (
     // clock. This ensures the entire FPGA comes out of reset at the same time.
     adder adder;
     boolean boolean;
-    shifter shifter;
   }
+  shifter shifter(.clk(clk), .rst(rst), .alufn(alufn), .op1(op1), .op2(op2[4:0]));
   
   compare compare(.clk(clk), .rst(rst), .alufn(alufn), .z(z), .n(n), .v(v));
   

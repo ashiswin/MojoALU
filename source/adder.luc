@@ -14,6 +14,13 @@ module adder (
   sig result[8];
   var i;
   
+  sig shift[4];
+  sig amant[4];
+  sig bmant[4];
+  sig fresult[5];
+  sig o1[8];
+  sig o2[8];
+  
   always {
     zOut = 0;
     vOut = 0;
@@ -46,6 +53,36 @@ module adder (
         //TODO
       Inst.NEG:
         out = -op1;
+      Inst.ABS:
+        out = (-op1 & 8x{op1[7]}) | (op1 & 8x{~op1[7]});
+      Inst.FADD:
+        if(op1[6:3] > op2[6:3]) {
+          o1 = op1;
+          o2 = op2;
+        }
+        else {
+          o1 = op2;
+          o2 = op1;
+        }
+        shift = o1[6:3] - o2[6:3];
+        amant[3] = 1;
+        amant[2:0] = o1[2:0];
+        
+        bmant[3] = 1;
+        bmant[2:0] = o2[2:0];
+        
+        bmant = bmant >> shift;
+        
+        fresult = amant + bmant;
+        if(fresult[4] == 1) {
+          out[6:3] = o1[6:3] + 1;
+          fresult = fresult >> 1;
+        }
+        else {
+          out[6:3] = o1[6:3];
+        }
+        
+        out[2:0] = fresult[2:0];
     }
   }
 }

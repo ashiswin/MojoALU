@@ -5,7 +5,7 @@ module compare (
     input z,
     input v,
     input n,
-    output out
+    output out[8]
   ) {
 
   always {

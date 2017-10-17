@@ -1,18 +1,29 @@
 global Inst {
+  // Adder instructions
   const ADD = 6b000000; // Works
   const SUB = 6b000001; // Works
   const MUL = 6b000010; // Works
   const DIV = 6b000011; // Undone
-  const NEG = 6b000100; // Untested
+  const NEG = 6b000100; // Works
+  const ABS = 6b000101; // Works
+  
+  // Boolean instructions
   const AND = 6b011000; // Works
   const OR = 6b011110; // Works
   const XOR = 6b010110; // Works
   const LDR = 6b011010; // Works
   const INV = 6b010001; // Works
+  
+  // Shifter instructions
   const SHL = 6b100000; // Works
   const SHR = 6b100001; // Works
   const SRA = 6b100011; // Works
+  
+  // Comparator instructions
   const CMPEQ = 6b110011; // Works
   const CMPLT = 6b110101; // Works
   const CMPLE = 6b110111; // Works
+  
+  // FPU instructions
+  const FADD = 6b001000;
 }

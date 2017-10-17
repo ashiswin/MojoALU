@@ -70,7 +70,7 @@ module mojo_top_0 (
     io_led = 24'h000000;
     io_seg = 8'hff;
     io_sel = 4'hf;
-    M_alu_alufn = io_dip[0+7-:8];
+    M_alu_alufn = io_dip[0+0+5-:6];
     M_alu_op1 = io_dip[8+7-:8];
     M_alu_op2 = io_dip[16+7-:8];
     M_alu_z = 1'h0;
