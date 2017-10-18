@@ -67,7 +67,8 @@ module testerFSM (
      
         }else if (counter.q[DELAY] == 1 && alu.out!= 8b10){ // Oh man, results are wrong!
           counter.d=0;                                //reset counter value to 0
-          state.d=state.ADDER_ERR;}                   //move to adder error state
+          state.d=state.ADDER_ERR;
+        }                   //move to adder error state
            
       state.ADDER2:
         alu.alufn = 6b1;          //selects substraction

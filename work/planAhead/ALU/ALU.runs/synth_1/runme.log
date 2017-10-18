@@ -143,9 +143,9 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
     Found 8-bit subtractor for signal <op1[7]_unary_minus_4_OUT> created at line 72.
     Found 4-bit subtractor for signal <op2[7]_op1[7]_sub_12_OUT> created at line 85.
     Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 47.
-    Found 5-bit adder for signal <n0095> created at line 91.
+    Found 5-bit adder for signal <n0083> created at line 91.
     Found 4-bit adder for signal <op2[7]_GND_5_o_add_15_OUT> created at line 93.
-    Found 8x8-bit multiplier for signal <n0076> created at line 69.
+    Found 8x8-bit multiplier for signal <n0064> created at line 69.
     Found 4-bit shifter logical right for signal <PWR_5_o_op2[7]_shift_right_12_OUT> created at line 90
     Found 4-bit comparator greater for signal <op2[6]_op1[6]_LessThan_9_o> created at line 78
     Summary:
@@ -389,7 +389,7 @@ Speed Grade: -2
 
    Minimum period: 10.980ns (Maximum Frequency: 91.075MHz)
    Minimum input arrival time before clock: 14.079ns
-   Maximum output required time after clock: 14.709ns
+   Maximum output required time after clock: 14.765ns
    Maximum combinational path delay: 15.676ns
 
 =========================================================================

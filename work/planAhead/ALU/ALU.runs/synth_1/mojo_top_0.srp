@@ -191,9 +191,9 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
     Found 8-bit subtractor for signal <op1[7]_unary_minus_4_OUT> created at line 72.
     Found 4-bit subtractor for signal <op2[7]_op1[7]_sub_12_OUT> created at line 85.
     Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 47.
-    Found 5-bit adder for signal <n0095> created at line 91.
+    Found 5-bit adder for signal <n0083> created at line 91.
     Found 4-bit adder for signal <op2[7]_GND_5_o_add_15_OUT> created at line 93.
-    Found 8x8-bit multiplier for signal <n0076> created at line 69.
+    Found 8x8-bit multiplier for signal <n0064> created at line 69.
     Found 4-bit shifter logical right for signal <PWR_5_o_op2[7]_shift_right_12_OUT> created at line 90
     Found 4-bit comparator greater for signal <op2[6]_op1[6]_LessThan_9_o> created at line 78
     Summary:
@@ -423,17 +423,17 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 477
+# BELS                             : 473
 #      GND                         : 6
 #      INV                         : 3
 #      LUT1                        : 44
 #      LUT2                        : 15
 #      LUT3                        : 28
-#      LUT4                        : 66
-#      LUT5                        : 40
-#      LUT6                        : 127
+#      LUT4                        : 64
+#      LUT5                        : 37
+#      LUT6                        : 129
 #      MUXCY                       : 60
-#      MUXF7                       : 20
+#      MUXF7                       : 19
 #      VCC                         : 4
 #      XORCY                       : 64
 # FlipFlops/Latches                : 58
@@ -457,14 +457,14 @@ Selected Device : 6slx9tqg144-2
 
 Slice Logic Utilization: 
  Number of Slice Registers:              58  out of  11440     0%  
- Number of Slice LUTs:                  323  out of   5720     5%  
-    Number used as Logic:               323  out of   5720     5%  
+ Number of Slice LUTs:                  320  out of   5720     5%  
+    Number used as Logic:               320  out of   5720     5%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    334
-   Number with an unused Flip Flop:     276  out of    334    82%  
-   Number with an unused LUT:            11  out of    334     3%  
-   Number of fully used LUT-FF pairs:    47  out of    334    14%  
+ Number of LUT Flip Flop pairs used:    331
+   Number with an unused Flip Flop:     273  out of    331    82%  
+   Number with an unused LUT:            11  out of    331     3%  
+   Number of fully used LUT-FF pairs:    47  out of    331    14%  
    Number of unique control sets:         4
 
 IO Utilization: 
@@ -509,7 +509,7 @@ Speed Grade: -2
 
    Minimum period: 10.980ns (Maximum Frequency: 91.075MHz)
    Minimum input arrival time before clock: 14.079ns
-   Maximum output required time after clock: 14.709ns
+   Maximum output required time after clock: 14.765ns
    Maximum combinational path delay: 15.676ns
 
 Timing Details:
@@ -519,7 +519,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
   Clock period: 10.980ns (frequency: 91.075MHz)
-  Total number of paths / destination ports: 35731 / 138
+  Total number of paths / destination ports: 35713 / 138
 -------------------------------------------------------------------------
 Delay:               10.980ns (Levels of Logic = 8)
   Source:            test/M_state_q_FSM_FFd2_2 (FF)
@@ -535,8 +535,8 @@ Delay:               10.980ns (Levels of Logic = 8)
      LUT3:I1->O           11   0.250   1.038  M_alu_op1<8>1 (M_alu_op1<0>)
      begin scope: 'test/alu:op1<0>'
      begin scope: 'test/alu/adder:op1<0>'
-     DSP48A1:B0->M7        1   3.894   0.682  Mmult_n0076 (n0076<7>)
-     end scope: 'test/alu/adder:n0076<7>'
+     DSP48A1:B0->M7        1   3.894   0.682  Mmult_n0064 (n0064<7>)
+     end scope: 'test/alu/adder:n0064<7>'
      LUT6:I5->O            2   0.254   0.834  Mmux_out8 (out<7>)
      end scope: 'test/alu:out<7>'
      LUT6:I4->O            2   0.250   0.726  M_alu_out[7]_GND_3_o_equal_14_o<7>1_SW1 (N18)
@@ -549,7 +549,7 @@ Delay:               10.980ns (Levels of Logic = 8)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 59929 / 13
+  Total number of paths / destination ports: 59947 / 13
 -------------------------------------------------------------------------
 Offset:              14.079ns (Levels of Logic = 15)
   Source:            io_dip<20> (PAD)
@@ -567,10 +567,10 @@ Offset:              14.079ns (Levels of Logic = 15)
      LUT6:I1->O            4   0.254   0.912  op2[6]_op1[6]_LessThan_9_o12_SW0 (N30)
      LUT5:I3->O            1   0.250   1.112  Msub_op2[7]_op1[7]_sub_12_OUT_cy<1>1_SW1 (N122)
      LUT6:I1->O            3   0.254   1.221  Msub_op2[7]_op1[7]_sub_12_OUT_cy<1>1 (Msub_op2[7]_op1[7]_sub_12_OUT_cy<1>)
-     LUT6:I0->O            5   0.254   0.840  out1 (_n0109)
-     MUXF7:S->O            3   0.185   1.196  Madd_n0095_cy<1>11_SW2 (N41)
-     LUT6:I1->O            7   0.254   0.910  Madd_n0095_cy<3>11 (Madd_n0095_cy<3>)
-     end scope: 'test/alu/adder:Madd_n0095_cy<3>'
+     LUT6:I0->O            5   0.254   0.840  out1 (_n0099)
+     MUXF7:S->O            3   0.185   1.196  Madd_n0083_cy<1>11_SW2 (N41)
+     LUT6:I1->O            7   0.254   0.910  Madd_n0083_cy<3>11 (Madd_n0083_cy<3>)
+     end scope: 'test/alu/adder:Madd_n0083_cy<3>'
      LUT6:I5->O            1   0.254   0.000  Mmux_out54_SW0_G (N131)
      MUXF7:I1->O           1   0.175   0.682  Mmux_out54_SW0 (N49)
      LUT6:I5->O            3   0.254   1.042  Mmux_out55 (out<4>)
@@ -584,9 +584,9 @@ Offset:              14.079ns (Levels of Logic = 15)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 22018 / 23
+  Total number of paths / destination ports: 22000 / 23
 -------------------------------------------------------------------------
-Offset:              14.709ns (Levels of Logic = 9)
+Offset:              14.765ns (Levels of Logic = 9)
   Source:            test/M_state_q_FSM_FFd2 (FF)
   Destination:       io_seg<7> (PAD)
   Source Clock:      clk rising
@@ -595,8 +595,8 @@ Offset:              14.709ns (Levels of Logic = 9)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q            103   0.525   2.218  M_state_q_FSM_FFd2 (M_state_q_FSM_FFd2)
-     LUT2:I1->O           16   0.254   1.410  M_state_q[3]_GND_3_o_equal_21_o1 (M_state_q[3]_GND_3_o_equal_21_o)
+     FDR:C->Q            104   0.525   2.221  M_state_q_FSM_FFd2 (M_state_q_FSM_FFd2)
+     LUT2:I1->O           18   0.254   1.463  M_state_q[3]_GND_3_o_equal_21_o1 (M_state_q[3]_GND_3_o_equal_21_o)
      end scope: 'test:M_state_q[3]_GND_3_o_equal_21_o'
      LUT6:I3->O            3   0.235   0.766  Sh13422 (Sh1342)
      LUT6:I5->O            7   0.254   0.910  Sh1344 (Sh1344)
@@ -606,12 +606,12 @@ Offset:              14.709ns (Levels of Logic = 9)
      LUT5:I0->O            2   0.254   0.725  io_seg<7>3 (io_seg_7_OBUF)
      OBUF:I->O                 2.912          io_seg_7_OBUF (io_seg<7>)
     ----------------------------------------
-    Total                     14.709ns (5.196ns logic, 9.513ns route)
-                                       (35.3% logic, 64.7% route)
+    Total                     14.765ns (5.196ns logic, 9.569ns route)
+                                       (35.2% logic, 64.8% route)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 6933 / 11
+  Total number of paths / destination ports: 6930 / 11
 -------------------------------------------------------------------------
 Delay:               15.676ns (Levels of Logic = 13)
   Source:            io_dip<20> (PAD)
@@ -628,10 +628,10 @@ Delay:               15.676ns (Levels of Logic = 13)
      LUT6:I1->O            4   0.254   0.912  op2[6]_op1[6]_LessThan_9_o12_SW0 (N30)
      LUT5:I3->O            1   0.250   1.112  Msub_op2[7]_op1[7]_sub_12_OUT_cy<1>1_SW1 (N122)
      LUT6:I1->O            3   0.254   1.221  Msub_op2[7]_op1[7]_sub_12_OUT_cy<1>1 (Msub_op2[7]_op1[7]_sub_12_OUT_cy<1>)
-     LUT6:I0->O            5   0.254   0.840  out1 (_n0109)
-     MUXF7:S->O            3   0.185   1.196  Madd_n0095_cy<1>11_SW2 (N41)
-     LUT6:I1->O            7   0.254   1.186  Madd_n0095_cy<3>11 (Madd_n0095_cy<3>)
-     end scope: 'test/alu/adder:Madd_n0095_cy<3>'
+     LUT6:I0->O            5   0.254   0.840  out1 (_n0099)
+     MUXF7:S->O            3   0.185   1.196  Madd_n0083_cy<1>11_SW2 (N41)
+     LUT6:I1->O            7   0.254   1.186  Madd_n0083_cy<3>11 (Madd_n0083_cy<3>)
+     end scope: 'test/alu/adder:Madd_n0083_cy<3>'
      LUT5:I1->O            1   0.254   0.910  Mmux_out112 (Mmux_out111)
      LUT5:I2->O            1   0.235   0.681  Mmux_out113 (out<0>)
      end scope: 'test/alu:out<0>'
@@ -657,13 +657,13 @@ clk            |   10.980|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.09 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.64 secs
  
 --> 
 
 
-Total memory usage is 396312 kilobytes
+Total memory usage is 396276 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   30 (   0 filtered)
