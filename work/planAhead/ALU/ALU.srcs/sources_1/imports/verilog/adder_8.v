@@ -48,7 +48,7 @@ module adder_8 (
     zOut = 1'h0;
     vOut = 1'h0;
     nOut = 1'h0;
-    out = 8'bxxxxxxxx;
+    out = 8'h00;
     
     case (alufn)
       6'h00: begin
@@ -81,6 +81,15 @@ module adder_8 (
       end
       6'h05: begin
         out = (-op1 & {4'h8{op1[7+0-:1]}}) | (op1 & {4'h8{~op1[7+0-:1]}});
+      end
+      6'h0c: begin
+        out[7+0-:1] = op1[7+0-:1];
+        out[3+3-:4] = op2[0+3-:4] + 3'h7;
+        if (op1[7+0-:1] == 1'h0) begin
+          out[0+2-:3] = op1 << (2'h3 - op2);
+        end else begin
+          out[0+2-:3] = (-op1) << (2'h3 - op2);
+        end
       end
       6'h08: begin
         if (op1[3+3-:4] > op2[3+3-:4]) begin
@@ -126,6 +135,22 @@ module adder_8 (
         end else begin
           fmulres = fmulres << (3'h4 - fmulshift);
         end
+        out[0+2-:3] = fmulres[0+2-:3];
+      end
+      6'h09: begin
+        out[7+0-:1] = op1[7+0-:1];
+        fmulres = (-op1 & {4'h8{op1[7+0-:1]}}) | (op1 & {4'h8{~op1[7+0-:1]}});
+        fmulshift[0+0-:1] = (~fmulres[7+0-:1] & fmulres[6+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & fmulres[4+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & ~fmulres[3+0-:1] & fmulres[2+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & ~fmulres[3+0-:1] & ~fmulres[1+0-:1] & fmulres[0+0-:1]);
+        fmulshift[1+0-:1] = (~fmulres[7+0-:1] & fmulres[5+0-:1]) | (~fmulres[7+0-:1] & fmulres[6+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[4+0-:1] & ~fmulres[3+0-:1] & fmulres[1+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[4+0-:1] & ~fmulres[3+0-:1] & fmulres[2+0-:1]);
+        fmulshift[2+0-:1] = (~fmulres[7+0-:1] & fmulres[3+0-:1]) | (~fmulres[7+0-:1] & fmulres[4+0-:1]) | (~fmulres[7+0-:1] & fmulres[5+0-:1]) | (~fmulres[7+0-:1] & fmulres[6+0-:1]);
+        fmulshift[3+0-:1] = fmulres[7+0-:1];
+        if (fmulshift > 3'h4) begin
+          fmulres = fmulres >> (fmulshift - 3'h4);
+        end else begin
+          fmulres = fmulres << (3'h4 - fmulshift);
+        end
+        fmulexp = fmulshift - 1'h1;
+        out[3+3-:4] = fmulexp + 3'h7;
         out[0+2-:3] = fmulres[0+2-:3];
       end
     endcase

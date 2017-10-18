@@ -28,7 +28,8 @@ module adder (
     zOut = 0;
     vOut = 0;
     nOut = 0;
-    out = 8hxx;
+    out = 8h00;
+    
     case(alufn) {
       Inst.ADD:
         result = op1 + op2;
@@ -58,6 +59,15 @@ module adder (
         out = -op1;
       Inst.ABS:
         out = (-op1 & 8x{op1[7]}) | (op1 & 8x{~op1[7]});
+      Inst.FCONV: // op2 is the scientific notation exponent
+        out[7] = op1[7];
+        out[6:3] = op2[3:0] + 7;
+        if(op1[7] == 0) {
+          out[2:0] = op1 << (3 - op2);
+        }
+        else {
+          out[2:0] = (-op1) << (3 - op2);
+        }
       Inst.FADD:
         if(op1[6:3] > op2[6:3]) {
           o1 = op1;
@@ -115,6 +125,26 @@ module adder (
         else {
           fmulres = fmulres << (4 - fmulshift);
         }
+        out[2:0] = fmulres[2:0];
+      Inst.ITOF:
+        out[7] = op1[7];
+        
+        fmulres = (-op1 & 8x{op1[7]}) | (op1 & 8x{~op1[7]});
+        
+        fmulshift[0] = (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[5] & fmulres[4]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & fmulres[2]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & ~fmulres[1] & fmulres[0]);
+        fmulshift[1] = (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[1]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[2]);
+        fmulshift[2] = (~fmulres[7] & fmulres[3]) | (~fmulres[7] & fmulres[4]) | (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]);
+        fmulshift[3] = fmulres[7];
+        
+        if(fmulshift > 4) {
+          fmulres = fmulres >> (fmulshift - 4);
+        }
+        else {
+          fmulres = fmulres << (4 - fmulshift);
+        }
+        
+        fmulexp = fmulshift - 1;
+        out[6:3] = fmulexp + 7;
         out[2:0] = fmulres[2:0];
     }
   }
