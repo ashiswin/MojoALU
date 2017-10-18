@@ -59,15 +59,6 @@ module adder (
         out = -op1;
       Inst.ABS:
         out = (-op1 & 8x{op1[7]}) | (op1 & 8x{~op1[7]});
-      Inst.FCONV: // op2 is the scientific notation exponent
-        out[7] = op1[7];
-        out[6:3] = op2[3:0] + 7;
-        if(op1[7] == 0) {
-          out[2:0] = op1 << (3 - op2);
-        }
-        else {
-          out[2:0] = (-op1) << (3 - op2);
-        }
       Inst.FADD:
         if(op1[6:3] > op2[6:3]) {
           o1 = op1;
@@ -129,7 +120,12 @@ module adder (
       Inst.ITOF:
         out[7] = op1[7];
         
-        fmulres = (-op1 & 8x{op1[7]}) | (op1 & 8x{~op1[7]});
+        if(op1[7] == 1) {
+          fmulres = -op1;
+        }
+        else {
+          fmulres = op1;
+        }
         
         fmulshift[0] = (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[5] & fmulres[4]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & fmulres[2]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & ~fmulres[1] & fmulres[0]);
         fmulshift[1] = (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[1]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[2]);
@@ -146,6 +142,24 @@ module adder (
         fmulexp = fmulshift - 1;
         out[6:3] = fmulexp + 7;
         out[2:0] = fmulres[2:0];
+      Inst.FTOI:
+        fmulexp = op1[6:3] - 7;
+        amant[3] = 1;
+        amant[2:0] = op1[2:0];
+        
+        if(fmulexp > 0) {
+          if(fmulexp > 3) {
+            fmulres = amant << fmulexp - 3;
+          }
+          else {
+            fmulres = amant >> 3 - fmulexp;
+          }
+        }
+        if(op1[7] == 1) {
+          fmulres = -fmulres;
+        }
+        
+        out = fmulres;
     }
   }
 }

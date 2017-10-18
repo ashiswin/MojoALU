@@ -91,8 +91,6 @@ Elaborating module <testerFSM_2>.
 Elaborating module <alu_4>.
 
 Elaborating module <adder_8>.
-WARNING:HDLCompiler:413 - "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/adder_8.v" Line 89: Result of 8-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/adder_8.v" Line 91: Result of 8-bit expression is truncated to fit in 3-bit target.
 
 Elaborating module <boolean_9>.
 
@@ -181,38 +179,51 @@ Synthesizing Unit <adder_8>.
     Related source file is "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/adder_8.v".
     Found 8-bit subtractor for signal <op1[7]_op2[7]_sub_2_OUT> created at line 66.
     Found 8-bit subtractor for signal <op1[7]_unary_minus_4_OUT> created at line 80.
-    Found 8-bit subtractor for signal <GND_5_o_op2[7]_sub_14_OUT> created at line 91.
-    Found 4-bit subtractor for signal <op2[7]_op1[7]_sub_19_OUT> created at line 102.
-    Found 4-bit subtractor for signal <PWR_5_o_GND_5_o_sub_34_OUT> created at line 134.
-    Found 4-bit subtractor for signal <GND_5_o_PWR_5_o_sub_36_OUT> created at line 136.
-    Found 4-bit subtractor for signal <op1[7]_GND_5_o_sub_44_OUT> created at line 148.
-    Found 4-bit subtractor for signal <GND_5_o_op1[7]_sub_46_OUT> created at line 150.
+    Found 4-bit subtractor for signal <op2[7]_op1[7]_sub_12_OUT> created at line 93.
+    Found 4-bit subtractor for signal <PWR_5_o_GND_5_o_sub_27_OUT> created at line 125.
+    Found 4-bit subtractor for signal <GND_5_o_PWR_5_o_sub_29_OUT> created at line 127.
+    Found 4-bit subtractor for signal <op1[7]_GND_5_o_sub_36_OUT> created at line 143.
+    Found 4-bit subtractor for signal <GND_5_o_op1[7]_sub_38_OUT> created at line 145.
+    Found 4-bit subtractor for signal <op1[6]_GND_5_o_sub_43_OUT> created at line 152.
+    Found 4-bit subtractor for signal <op1[6]_GND_5_o_sub_46_OUT> created at line 157.
+    Found 4-bit subtractor for signal <GND_5_o_op1[6]_sub_48_OUT> created at line 159.
+    Found 8-bit subtractor for signal <fmulres[7]_unary_minus_53_OUT> created at line 163.
     Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 55.
-    Found 4-bit adder for signal <op2[3]_GND_5_o_add_8_OUT> created at line 87.
-    Found 5-bit adder for signal <n0195> created at line 108.
-    Found 4-bit adder for signal <op2[7]_GND_5_o_add_22_OUT> created at line 110.
-    Found 4-bit adder for signal <_n0248> created at line 132.
-    Found 4-bit adder for signal <_n0249> created at line 132.
-    Found 4-bit adder for signal <op1[6]_GND_5_o_add_31_OUT> created at line 132.
-    Found 4-bit adder for signal <op1[7]_GND_5_o_add_49_OUT> created at line 153.
-    Found 8x8-bit multiplier for signal <n0153> created at line 77.
-    Found 8-bit shifter logical left for signal <n0158> created at line 89
-    Found 8-bit shifter logical left for signal <n0160> created at line 91
-    Found 4-bit shifter logical right for signal <PWR_5_o_op2[7]_shift_right_19_OUT> created at line 107
-    Found 4x4-bit multiplier for signal <PWR_5_o_PWR_5_o_MuLt_27_OUT> created at line 124.
-    Found 8-bit shifter logical right for signal <PWR_5_o_PWR_5_o_shift_right_34_OUT> created at line 134
-    Found 8-bit shifter logical left for signal <PWR_5_o_GND_5_o_shift_left_36_OUT> created at line 136
-    Found 8-bit shifter logical right for signal <op1[7]_op1[7]_shift_right_44_OUT> created at line 148
-    Found 8-bit shifter logical left for signal <op1[7]_GND_5_o_shift_left_46_OUT> created at line 150
-    Found 8-bit 14-to-1 multiplexer for signal <_n0269> created at line 11.
-    Found 4-bit comparator greater for signal <op2[6]_op1[6]_LessThan_16_o> created at line 95
-    Found 4-bit comparator greater for signal <GND_5_o_PWR_5_o_LessThan_33_o> created at line 133
-    Found 4-bit comparator greater for signal <GND_5_o_op1[7]_LessThan_43_o> created at line 147
+    Found 5-bit adder for signal <n0232> created at line 99.
+    Found 4-bit adder for signal <op2[7]_GND_5_o_add_15_OUT> created at line 101.
+    Found 4-bit adder for signal <op1[7]_GND_5_o_add_41_OUT> created at line 148.
+    Found 4-bit adder for signal <_n0307> created at line 123.
+    Found 4-bit adder for signal <_n0308> created at line 123.
+    Found 4-bit adder for signal <op1[6]_GND_5_o_add_24_OUT> created at line 123.
+    Found 8x8-bit multiplier for signal <n0184> created at line 77.
+    Found 4-bit shifter logical right for signal <PWR_5_o_op2[7]_shift_right_12_OUT> created at line 98
+    Found 4x4-bit multiplier for signal <PWR_5_o_PWR_5_o_MuLt_20_OUT> created at line 115.
+    Found 8-bit shifter logical right for signal <PWR_5_o_PWR_5_o_shift_right_27_OUT> created at line 125
+    Found 8-bit shifter logical left for signal <PWR_5_o_GND_5_o_shift_left_29_OUT> created at line 127
+    Found 8-bit shifter logical right for signal <op1[7]_op1[7]_shift_right_36_OUT> created at line 143
+    Found 8-bit shifter logical left for signal <op1[7]_GND_5_o_shift_left_38_OUT> created at line 145
+    Found 8-bit shifter logical left for signal <GND_5_o_op1[6]_shift_left_46_OUT> created at line 157
+    Found 8-bit shifter logical right for signal <GND_5_o_GND_5_o_shift_right_48_OUT> created at line 159
+    Found 8-bit 12-to-1 multiplexer for signal <_n0367> created at line 11.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 4-bit comparator greater for signal <op2[6]_op1[6]_LessThan_9_o> created at line 86
+    Found 4-bit comparator greater for signal <GND_5_o_PWR_5_o_LessThan_26_o> created at line 124
+    Found 4-bit comparator greater for signal <GND_5_o_op1[7]_LessThan_35_o> created at line 142
+    Found 4-bit comparator greater for signal <GND_5_o_op1[6]_LessThan_44_o> created at line 155
+    Found 4-bit comparator greater for signal <GND_5_o_op1[6]_LessThan_45_o> created at line 156
     Summary:
 	inferred   2 Multiplier(s).
-	inferred  16 Adder/Subtractor(s).
-	inferred   3 Comparator(s).
-	inferred  18 Multiplexer(s).
+	inferred  18 Adder/Subtractor(s).
+	inferred   8 Latch(s).
+	inferred   5 Comparator(s).
+	inferred  45 Multiplexer(s).
 	inferred   7 Combinational logic shifter(s).
 Unit <adder_8> synthesized.
 
@@ -239,7 +250,7 @@ Unit <compare_11> synthesized.
 
 Synthesizing Unit <multi_seven_seg_3>.
     Related source file is "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/multi_seven_seg_3.v".
-    Found 5-bit adder for signal <M_ctr_value[1]_GND_30_o_add_1_OUT> created at line 48.
+    Found 5-bit adder for signal <M_ctr_value[1]_GND_37_o_add_1_OUT> created at line 48.
     Found 2x3-bit multiplier for signal <n0020> created at line 48.
     Found 55-bit shifter logical right for signal <n0012> created at line 48
     Summary:
@@ -251,7 +262,7 @@ Unit <multi_seven_seg_3> synthesized.
 Synthesizing Unit <counter_5>.
     Related source file is "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/counter_5.v".
     Found 18-bit register for signal <M_ctr_q>.
-    Found 18-bit adder for signal <M_ctr_q[17]_GND_31_o_add_0_OUT> created at line 35.
+    Found 18-bit adder for signal <M_ctr_q[17]_GND_38_o_add_0_OUT> created at line 35.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  18 D-type flip-flop(s).
@@ -278,11 +289,11 @@ Macro Statistics
  3x2-bit multiplier                                    : 1
  4x4-bit multiplier                                    : 1
  8x8-bit multiplier                                    : 1
-# Adders/Subtractors                                   : 19
+# Adders/Subtractors                                   : 21
  18-bit adder                                          : 1
  30-bit adder                                          : 1
- 4-bit adder                                           : 6
- 4-bit subtractor                                      : 5
+ 4-bit adder                                           : 5
+ 4-bit subtractor                                      : 8
  5-bit adder                                           : 2
  8-bit adder                                           : 1
  8-bit subtractor                                      : 3
@@ -290,23 +301,25 @@ Macro Statistics
  18-bit register                                       : 1
  30-bit register                                       : 1
  4-bit register                                        : 1
-# Comparators                                          : 3
- 4-bit comparator greater                              : 3
-# Multiplexers                                         : 32
- 1-bit 2-to-1 multiplexer                              : 6
+# Latches                                              : 8
+ 1-bit latch                                           : 8
+# Comparators                                          : 5
+ 4-bit comparator greater                              : 5
+# Multiplexers                                         : 59
+ 1-bit 2-to-1 multiplexer                              : 29
  18-bit 2-to-1 multiplexer                             : 1
  30-bit 2-to-1 multiplexer                             : 6
  4-bit 2-to-1 multiplexer                              : 1
  5-bit 2-to-1 multiplexer                              : 1
- 8-bit 14-to-1 multiplexer                             : 1
- 8-bit 2-to-1 multiplexer                              : 15
+ 8-bit 12-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 19
  8-bit 4-to-1 multiplexer                              : 1
 # Logic shifters                                       : 11
  4-bit shifter logical right                           : 1
  55-bit shifter logical right                          : 1
  8-bit shifter arithmetic right                        : 1
- 8-bit shifter logical left                            : 5
- 8-bit shifter logical right                           : 3
+ 8-bit shifter logical left                            : 4
+ 8-bit shifter logical right                           : 4
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
 # FSMs                                                 : 1
@@ -326,7 +339,7 @@ The following registers are absorbed into counter <M_ctr_q>: 1 register on signa
 Unit <counter_5> synthesized (advanced).
 
 Synthesizing (advanced) Unit <multi_seven_seg_3>.
-	Multiplier <Mmult_n0020> in block <multi_seven_seg_3> and adder/subtractor <Madd_M_ctr_value[1]_GND_30_o_add_1_OUT> in block <multi_seven_seg_3> are combined into a MAC<Maddsub_n0020>.
+	Multiplier <Mmult_n0020> in block <multi_seven_seg_3> and adder/subtractor <Madd_M_ctr_value[1]_GND_37_o_add_1_OUT> in block <multi_seven_seg_3> are combined into a MAC<Maddsub_n0020>.
 Unit <multi_seven_seg_3> synthesized (advanced).
 
 =========================================================================
@@ -338,10 +351,10 @@ Macro Statistics
 # Multipliers                                          : 2
  4x4-bit multiplier                                    : 1
  8x8-bit multiplier                                    : 1
-# Adders/Subtractors                                   : 17
+# Adders/Subtractors                                   : 19
  30-bit adder                                          : 1
- 4-bit adder                                           : 6
- 4-bit subtractor                                      : 5
+ 4-bit adder                                           : 5
+ 4-bit subtractor                                      : 8
  5-bit adder                                           : 1
  8-bit adder                                           : 1
  8-bit subtractor                                      : 3
@@ -349,22 +362,22 @@ Macro Statistics
  18-bit up counter                                     : 1
 # Registers                                            : 34
  Flip-Flops                                            : 34
-# Comparators                                          : 3
- 4-bit comparator greater                              : 3
-# Multiplexers                                         : 31
- 1-bit 2-to-1 multiplexer                              : 6
+# Comparators                                          : 5
+ 4-bit comparator greater                              : 5
+# Multiplexers                                         : 58
+ 1-bit 2-to-1 multiplexer                              : 29
  30-bit 2-to-1 multiplexer                             : 6
  4-bit 2-to-1 multiplexer                              : 1
  5-bit 2-to-1 multiplexer                              : 1
- 8-bit 14-to-1 multiplexer                             : 1
- 8-bit 2-to-1 multiplexer                              : 15
+ 8-bit 12-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 19
  8-bit 4-to-1 multiplexer                              : 1
 # Logic shifters                                       : 11
  4-bit shifter logical right                           : 1
  55-bit shifter logical right                          : 1
  8-bit shifter arithmetic right                        : 1
- 8-bit shifter logical left                            : 5
- 8-bit shifter logical right                           : 3
+ 8-bit shifter logical left                            : 4
+ 8-bit shifter logical right                           : 4
 # FSMs                                                 : 1
 # Xors                                                 : 2
  1-bit xor2                                            : 1
@@ -397,8 +410,8 @@ Optimizing unit <alu_4> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 8.
-FlipFlop test/M_state_q_FSM_FFd1 has been replicated 3 time(s)
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 9.
+FlipFlop test/M_state_q_FSM_FFd1 has been replicated 5 time(s)
 FlipFlop test/M_state_q_FSM_FFd2 has been replicated 2 time(s)
 
 Final Macro Processing ...
@@ -411,8 +424,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 56
- Flip-Flops                                            : 56
+# Registers                                            : 58
+ Flip-Flops                                            : 58
 
 =========================================================================
 
@@ -435,23 +448,24 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 623
-#      GND                         : 7
+# BELS                             : 692
+#      GND                         : 6
 #      INV                         : 3
 #      LUT1                        : 44
-#      LUT2                        : 18
+#      LUT2                        : 19
 #      LUT3                        : 37
-#      LUT4                        : 71
-#      LUT5                        : 83
-#      LUT6                        : 202
+#      LUT4                        : 76
+#      LUT5                        : 104
+#      LUT6                        : 238
 #      MUXCY                       : 66
-#      MUXF7                       : 17
-#      VCC                         : 4
+#      MUXF7                       : 23
+#      VCC                         : 5
 #      XORCY                       : 71
-# FlipFlops/Latches                : 56
-#      FDR                         : 25
+# FlipFlops/Latches                : 66
+#      FDR                         : 27
 #      FDRE                        : 27
 #      FDS                         : 4
+#      LD                          : 8
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 74
@@ -468,16 +482,16 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              56  out of  11440     0%  
- Number of Slice LUTs:                  458  out of   5720     8%  
-    Number used as Logic:               458  out of   5720     8%  
+ Number of Slice Registers:              66  out of  11440     0%  
+ Number of Slice LUTs:                  521  out of   5720     9%  
+    Number used as Logic:               521  out of   5720     9%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    467
-   Number with an unused Flip Flop:     411  out of    467    88%  
-   Number with an unused LUT:             9  out of    467     1%  
-   Number of fully used LUT-FF pairs:    47  out of    467    10%  
-   Number of unique control sets:         4
+ Number of LUT Flip Flop pairs used:    532
+   Number with an unused Flip Flop:     466  out of    532    87%  
+   Number with an unused LUT:            11  out of    532     2%  
+   Number of fully used LUT-FF pairs:    55  out of    532    10%  
+   Number of unique control sets:         5
 
 IO Utilization: 
  Number of IOs:                          87
@@ -505,11 +519,16 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)  | Load  |
------------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 56    |
------------------------------------+------------------------+-------+
+--------------------------------------------------------------------------------------------------+----------------------------------+-------+
+Clock Signal                                                                                      | Clock buffer(FF name)            | Load  |
+--------------------------------------------------------------------------------------------------+----------------------------------+-------+
+clk                                                                                               | BUFGP                            | 58    |
+test/alu/adder/alufn[5]_GND_20_o_Select_92_o(test/alu/adder/Mmux_alufn[5]_GND_20_o_Select_92_o1:O)| NONE(*)(test/alu/adder/fmulres_7)| 8     |
+--------------------------------------------------------------------------------------------------+----------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -519,10 +538,10 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 12.405ns (Maximum Frequency: 80.613MHz)
-   Minimum input arrival time before clock: 14.648ns
-   Maximum output required time after clock: 14.556ns
-   Maximum combinational path delay: 16.132ns
+   Minimum period: 12.443ns (Maximum Frequency: 80.366MHz)
+   Minimum input arrival time before clock: 14.618ns
+   Maximum output required time after clock: 14.569ns
+   Maximum combinational path delay: 16.335ns
 
 Timing Details:
 ---------------
@@ -530,10 +549,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 12.405ns (frequency: 80.613MHz)
-  Total number of paths / destination ports: 91231 / 134
+  Clock period: 12.443ns (frequency: 80.366MHz)
+  Total number of paths / destination ports: 134712 / 138
 -------------------------------------------------------------------------
-Delay:               12.405ns (Levels of Logic = 14)
+Delay:               12.443ns (Levels of Logic = 13)
   Source:            test/M_state_q_FSM_FFd2_1 (FF)
   Destination:       test/M_state_q_FSM_FFd2 (FF)
   Source Clock:      clk rising
@@ -543,33 +562,58 @@ Delay:               12.405ns (Levels of Logic = 14)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             17   0.525   1.317  M_state_q_FSM_FFd2_1 (M_state_q_FSM_FFd2_1)
-     LUT3:I1->O           13   0.250   1.528  _n0200<18>1 (M_alu_op2<2>)
-     begin scope: 'test/alu:op2<2>'
-     begin scope: 'test/alu/adder:op2<2>'
-     LUT6:I1->O            1   0.254   0.000  Mmult_PWR_5_o_PWR_5_o_MuLt_27_OUT_Madd2_lut<3> (Mmult_PWR_5_o_PWR_5_o_MuLt_27_OUT_Madd2_lut<3>)
-     MUXCY:S->O            1   0.215   0.000  Mmult_PWR_5_o_PWR_5_o_MuLt_27_OUT_Madd2_cy<3> (Mmult_PWR_5_o_PWR_5_o_MuLt_27_OUT_Madd2_cy<3>)
-     XORCY:CI->O          10   0.206   1.284  Mmult_PWR_5_o_PWR_5_o_MuLt_27_OUT_Madd2_xor<4> (PWR_5_o_PWR_5_o_MuLt_27_OUT<4>)
-     LUT6:I2->O            6   0.254   0.876  PWR_5_o_PWR_5_o_OR_32_o (GND_5_o_PWR_5_o_sub_36_OUT<0>1)
-     LUT5:I4->O            3   0.254   0.994  Madd_op1[6]_GND_5_o_add_31_OUT1 (Madd_op1[6]_GND_5_o_add_31_OUT)
-     end scope: 'test/alu/adder:Madd_op1[6]_GND_5_o_add_31_OUT'
-     LUT6:I3->O            2   0.235   0.726  Mmux_out517_SW0 (N69)
-     LUT6:I5->O            1   0.254   0.790  Mmux_out511_SW0 (N156)
-     LUT6:I4->O            3   0.250   0.766  Mmux_out517 (out<4>)
-     end scope: 'test/alu:out<4>'
-     LUT6:I5->O            1   0.254   0.000  M_alu_out[7]_GND_3_o_equal_14_o<7>1_SW1_F (N176)
-     MUXF7:I0->O           1   0.163   0.682  M_alu_out[7]_GND_3_o_equal_14_o<7>1_SW1 (N25)
+     FDR:C->Q             13   0.525   1.098  M_state_q_FSM_FFd2_1 (M_state_q_FSM_FFd2_1)
+     begin scope: 'test/alu:M_state_q_FSM_FFd2_1'
+     begin scope: 'test/alu/adder:M_state_q_FSM_FFd2_1'
+     LUT4:I3->O            7   0.254   0.910  Msub_op1[7]_unary_minus_4_OUT_cy<1>11 (Msub_op1[7]_unary_minus_4_OUT_cy<1>)
+     LUT6:I5->O            6   0.254   0.876  Msub_op1[7]_unary_minus_4_OUT_cy<4>11 (Msub_op1[7]_unary_minus_4_OUT_cy<4>)
+     LUT6:I5->O           15   0.254   1.155  Madd_op1[7]_GND_5_o_add_41_OUT_lut<3>1 (Sh91)
+     LUT6:I5->O           16   0.254   1.290  op1[7]_op1[7]_OR_37_o (GND_5_o_op1[7]_sub_38_OUT<0>1)
+     end scope: 'test/alu/adder:GND_5_o_op1[7]_sub_38_OUT<0>1'
+     LUT6:I4->O            3   0.250   0.874  Sh701 (Sh70)
+     LUT6:I4->O            2   0.250   0.725  Mmux_out36 (Mmux_out35)
+     MUXF7:S->O            2   0.185   0.834  Mmux_out37_SW1 (N108)
+     LUT6:I4->O            3   0.250   0.766  Mmux_out39 (out<2>)
+     end scope: 'test/alu:out<2>'
+     LUT6:I5->O            1   0.254   0.000  M_alu_out[7]_GND_3_o_equal_14_o<7>1_SW2_G (N235)
+     MUXF7:I1->O           1   0.175   0.682  M_alu_out[7]_GND_3_o_equal_14_o<7>1_SW2 (N176)
      LUT6:I5->O            3   0.254   0.000  M_state_q_FSM_FFd2-In1 (M_state_q_FSM_FFd2-In)
      FDR:D                     0.074          M_state_q_FSM_FFd2
     ----------------------------------------
-    Total                     12.405ns (3.442ns logic, 8.963ns route)
-                                       (27.7% logic, 72.3% route)
+    Total                     12.443ns (3.233ns logic, 9.210ns route)
+                                       (26.0% logic, 74.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'test/alu/adder/alufn[5]_GND_20_o_Select_92_o'
+  Clock period: 6.465ns (frequency: 154.679MHz)
+  Total number of paths / destination ports: 36 / 8
+-------------------------------------------------------------------------
+Delay:               6.465ns (Levels of Logic = 5)
+  Source:            test/alu/adder/fmulres_1 (LATCH)
+  Destination:       test/alu/adder/fmulres_7 (LATCH)
+  Source Clock:      test/alu/adder/alufn[5]_GND_20_o_Select_92_o falling
+  Destination Clock: test/alu/adder/alufn[5]_GND_20_o_Select_92_o falling
+
+  Data Path: test/alu/adder/fmulres_1 to test/alu/adder/fmulres_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               3   0.581   0.874  fmulres_1 (fmulres_1)
+     LUT2:I0->O            1   0.250   1.137  GND_5_o_op1[6]_LessThan_45_o73_SW0 (N160)
+     LUT6:I0->O            6   0.254   0.876  Msub_fmulres[7]_unary_minus_53_OUT_cy<1>11 (Msub_fmulres[7]_unary_minus_53_OUT_cy<1>)
+     LUT5:I4->O            4   0.254   1.032  Msub_fmulres[7]_unary_minus_53_OUT_cy<5>11 (Msub_fmulres[7]_unary_minus_53_OUT_cy<5>)
+     LUT6:I3->O            1   0.235   0.682  Mmux__n032711 (Mmux__n03271)
+     LUT4:I3->O            1   0.254   0.000  Mmux__n032717 (_n0327)
+     LD:D                      0.036          fmulres_7
+    ----------------------------------------
+    Total                      6.465ns (1.864ns logic, 4.601ns route)
+                                       (28.8% logic, 71.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 114089 / 11
+  Total number of paths / destination ports: 223402 / 13
 -------------------------------------------------------------------------
-Offset:              14.648ns (Levels of Logic = 16)
+Offset:              14.618ns (Levels of Logic = 15)
   Source:            io_dip<12> (PAD)
   Destination:       test/M_state_q_FSM_FFd2 (FF)
   Destination Clock: clk rising
@@ -578,92 +622,147 @@ Offset:              14.648ns (Levels of Logic = 16)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            16   1.328   1.612  io_dip_12_IBUF (io_dip_12_IBUF)
+     IBUF:I->O            32   1.328   1.796  io_dip_12_IBUF (io_dip_12_IBUF)
      begin scope: 'test:io_dip<12>'
      begin scope: 'test/alu:io_dip_12_IBUF'
      begin scope: 'test/alu/adder:io_dip_12_IBUF'
-     LUT5:I0->O            2   0.254   1.156  Mmux_n016151_SW0 (N110)
-     LUT5:I0->O            8   0.254   0.944  Mmux_n016151 (Mmux_out512)
-     LUT3:I2->O            6   0.254   1.104  Msub_op2[7]_op1[7]_sub_19_OUT_lut<1>3 (Msub_op2[7]_op1[7]_sub_19_OUT_lut<1>)
-     LUT6:I3->O            3   0.235   0.874  Madd_n0195_lut<0>2 (Madd_n0195_lut<0>2)
-     LUT6:I4->O            1   0.250   0.682  Madd_n0195_cy<3>11_SW0 (N32)
-     LUT6:I5->O            6   0.254   0.984  Madd_n0195_cy<3>11 (Madd_n0195_cy<3>)
-     end scope: 'test/alu/adder:Madd_n0195_cy<3>'
-     LUT6:I4->O            2   0.250   0.726  Mmux_out517_SW0 (N69)
-     LUT6:I5->O            1   0.254   0.790  Mmux_out511_SW0 (N156)
-     LUT6:I4->O            3   0.250   0.766  Mmux_out517 (out<4>)
-     end scope: 'test/alu:out<4>'
-     LUT6:I5->O            1   0.254   0.000  M_alu_out[7]_GND_3_o_equal_14_o<7>1_SW1_F (N176)
-     MUXF7:I0->O           1   0.163   0.682  M_alu_out[7]_GND_3_o_equal_14_o<7>1_SW1 (N25)
+     LUT6:I2->O            1   0.254   0.910  op2[6]_op1[6]_LessThan_9_o12_SW0 (N113)
+     LUT5:I2->O           15   0.235   1.263  op2[6]_op1[6]_LessThan_9_o12 (op2[6]_op1[6]_LessThan_9_o)
+     LUT5:I3->O            1   0.250   0.910  Msub_op2[7]_op1[7]_sub_12_OUT_cy<1>1_SW1 (N145)
+     LUT6:I3->O            3   0.235   0.766  out1 (_n0504)
+     LUT6:I5->O            3   0.254   0.994  Madd_n0232_lut<1>1 (Madd_n0232_lut<1>)
+     LUT6:I3->O            6   0.235   0.876  Madd_n0232_cy<2>11 (Madd_n0232_cy<2>)
+     LUT4:I3->O            4   0.254   0.804  Madd_n0232_cy<3>11 (Madd_n0232_cy<3>)
+     end scope: 'test/alu/adder:Madd_n0232_cy<3>'
+     LUT6:I5->O            1   0.254   0.790  Mmux_out26 (Mmux_out25)
+     LUT6:I4->O            3   0.250   0.765  Mmux_out28 (out<1>)
+     end scope: 'test/alu:out<1>'
+     MUXF7:S->O            1   0.185   0.682  M_alu_out[7]_GND_3_o_equal_14_o<7>1_SW2 (N176)
      LUT6:I5->O            3   0.254   0.000  M_state_q_FSM_FFd2-In1 (M_state_q_FSM_FFd2-In)
      FDR:D                     0.074          M_state_q_FSM_FFd2
     ----------------------------------------
-    Total                     14.648ns (4.328ns logic, 10.320ns route)
-                                       (29.5% logic, 70.5% route)
+    Total                     14.618ns (4.062ns logic, 10.556ns route)
+                                       (27.8% logic, 72.2% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 31347 / 23
+Timing constraint: Default OFFSET IN BEFORE for Clock 'test/alu/adder/alufn[5]_GND_20_o_Select_92_o'
+  Total number of paths / destination ports: 32506 / 8
 -------------------------------------------------------------------------
-Offset:              14.556ns (Levels of Logic = 12)
-  Source:            seg/ctr/M_ctr_q_16 (FF)
-  Destination:       io_seg<7> (PAD)
-  Source Clock:      clk rising
+Offset:              13.089ns (Levels of Logic = 13)
+  Source:            io_dip<8> (PAD)
+  Destination:       test/alu/adder/fmulres_3 (LATCH)
+  Destination Clock: test/alu/adder/alufn[5]_GND_20_o_Select_92_o falling
 
-  Data Path: seg/ctr/M_ctr_q_16 to io_seg<7>
+  Data Path: io_dip<8> to test/alu/adder/fmulres_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             23   0.525   1.358  M_ctr_q_16 (M_ctr_q_16)
-     end scope: 'seg/ctr:value<0>'
-     LUT2:I1->O            1   0.254   0.000  Maddsub_n0020_Madd1_lut<1> (Maddsub_n0020_Madd1_lut<1>)
-     MUXCY:S->O            1   0.215   0.000  Maddsub_n0020_Madd1_cy<1> (Maddsub_n0020_Madd1_cy<1>)
-     MUXCY:CI->O           1   0.023   0.000  Maddsub_n0020_Madd1_cy<2> (Maddsub_n0020_Madd1_cy<2>)
-     MUXCY:CI->O          15   0.235   1.383  Maddsub_n0020_Madd1_cy<3> (Maddsub_n0020_Madd1_cy<3>)
-     end scope: 'seg:Maddsub_n0020_Madd1_cy<3>'
-     LUT4:I1->O            1   0.235   0.958  Sh1331_SW0 (N2)
-     LUT6:I2->O            6   0.254   0.876  Sh1331 (Sh1331)
+     IBUF:I->O            31   1.328   1.779  io_dip_8_IBUF (io_dip_8_IBUF)
+     begin scope: 'test:io_dip<8>'
+     begin scope: 'test/alu:io_dip_8_IBUF'
+     begin scope: 'test/alu/adder:io_dip_8_IBUF'
+     LUT4:I0->O            1   0.254   0.910  Mmult_PWR_5_o_PWR_5_o_MuLt_20_OUT_Madd2_lut<2>_SW0 (N86)
+     LUT5:I2->O            1   0.235   0.000  Mmult_PWR_5_o_PWR_5_o_MuLt_20_OUT_Madd2_lut<2> (Mmult_PWR_5_o_PWR_5_o_MuLt_20_OUT_Madd2_lut<2>)
+     XORCY:LI->O           7   0.149   0.910  Mmult_PWR_5_o_PWR_5_o_MuLt_20_OUT_Madd2_xor<2> (PWR_5_o_PWR_5_o_MuLt_20_OUT<2>)
+     LUT6:I5->O            1   0.254   1.112  PWR_5_o_PWR_5_o_OR_28_o_SW0 (N24)
+     LUT6:I1->O           17   0.254   1.437  PWR_5_o_PWR_5_o_OR_28_o (GND_5_o_PWR_5_o_sub_29_OUT<0>1)
+     LUT4:I1->O            5   0.235   1.271  GND_5_o_PWR_5_o_LessThan_26_o1 (GND_5_o_PWR_5_o_LessThan_26_o)
+     LUT5:I0->O            1   0.254   0.000  _n0300124_G (N249)
+     MUXF7:I1->O           6   0.175   1.306  _n0300124 (_n030012)
+     LUT6:I1->O            1   0.254   0.682  Mmux__n0327133 (Mmux__n0327132)
+     LUT6:I5->O            1   0.254   0.000  Mmux__n0327135 (_n0407)
+     LD:D                      0.036          fmulres_3
+    ----------------------------------------
+    Total                     13.089ns (3.682ns logic, 9.407ns route)
+                                       (28.1% logic, 71.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 31420 / 23
+-------------------------------------------------------------------------
+Offset:              14.569ns (Levels of Logic = 9)
+  Source:            test/M_state_q_FSM_FFd2 (FF)
+  Destination:       io_seg<7> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: test/M_state_q_FSM_FFd2 to io_seg<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q            154   0.525   2.475  M_state_q_FSM_FFd2 (M_state_q_FSM_FFd2)
+     LUT2:I0->O            1   0.250   0.910  text<16>1 (text<16>)
+     end scope: 'test:text<16>'
+     LUT6:I3->O            4   0.235   0.804  Sh133131 (Sh13313)
+     LUT6:I5->O            6   0.254   0.876  Sh1331 (Sh1331)
      LUT6:I5->O           18   0.254   1.665  Sh132 (Sh132)
      LUT5:I0->O            2   0.254   0.726  io_seg<0>131 (io_seg<0>13)
      LUT5:I4->O            3   0.254   1.196  io_seg<7>21 (io_seg<7>2)
      LUT5:I0->O            2   0.254   0.725  io_seg<7>3 (io_seg_7_OBUF)
      OBUF:I->O                 2.912          io_seg_7_OBUF (io_seg<7>)
     ----------------------------------------
-    Total                     14.556ns (5.669ns logic, 8.887ns route)
-                                       (38.9% logic, 61.1% route)
+    Total                     14.569ns (5.192ns logic, 9.377ns route)
+                                       (35.6% logic, 64.4% route)
 
 =========================================================================
-Timing constraint: Default path analysis
-  Total number of paths / destination ports: 17129 / 11
+Timing constraint: Default OFFSET OUT AFTER for Clock 'test/alu/adder/alufn[5]_GND_20_o_Select_92_o'
+  Total number of paths / destination ports: 73 / 8
 -------------------------------------------------------------------------
-Delay:               16.132ns (Levels of Logic = 14)
-  Source:            io_dip<12> (PAD)
-  Destination:       io_led<4> (PAD)
+Offset:              11.263ns (Levels of Logic = 9)
+  Source:            test/alu/adder/fmulres_1 (LATCH)
+  Destination:       io_led<2> (PAD)
+  Source Clock:      test/alu/adder/alufn[5]_GND_20_o_Select_92_o falling
 
-  Data Path: io_dip<12> to io_led<4>
+  Data Path: test/alu/adder/fmulres_1 to io_led<2>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            16   1.328   1.612  io_dip_12_IBUF (io_dip_12_IBUF)
+     LD:G->Q               3   0.581   0.874  fmulres_1 (fmulres_1)
+     LUT2:I0->O            1   0.250   1.137  GND_5_o_op1[6]_LessThan_45_o73_SW0 (N160)
+     LUT6:I0->O            6   0.254   0.876  Msub_fmulres[7]_unary_minus_53_OUT_cy<1>11 (Msub_fmulres[7]_unary_minus_53_OUT_cy<1>)
+     LUT5:I4->O            1   0.254   1.112  Mmux_op1[7]_op1[7]_mux_39_OUT3_SW2 (N47)
+     end scope: 'test/alu/adder:N47'
+     LUT6:I1->O            2   0.254   0.725  Mmux_out36 (Mmux_out35)
+     MUXF7:S->O            2   0.185   0.834  Mmux_out37_SW1 (N108)
+     LUT6:I4->O            3   0.250   0.765  Mmux_out39 (out<2>)
+     end scope: 'test/alu:out<2>'
+     end scope: 'test:out<2>'
+     OBUF:I->O                 2.912          io_led_2_OBUF (io_led<2>)
+    ----------------------------------------
+    Total                     11.263ns (4.940ns logic, 6.323ns route)
+                                       (43.9% logic, 56.1% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 22264 / 11
+-------------------------------------------------------------------------
+Delay:               16.335ns (Levels of Logic = 14)
+  Source:            io_dip<12> (PAD)
+  Destination:       io_led<6> (PAD)
+
+  Data Path: io_dip<12> to io_led<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            32   1.328   1.796  io_dip_12_IBUF (io_dip_12_IBUF)
      begin scope: 'test:io_dip<12>'
      begin scope: 'test/alu:io_dip_12_IBUF'
      begin scope: 'test/alu/adder:io_dip_12_IBUF'
-     LUT5:I0->O            2   0.254   1.156  Mmux_n016151_SW0 (N110)
-     LUT5:I0->O            8   0.254   0.944  Mmux_n016151 (Mmux_out512)
-     LUT3:I2->O            6   0.254   1.104  Msub_op2[7]_op1[7]_sub_19_OUT_lut<1>3 (Msub_op2[7]_op1[7]_sub_19_OUT_lut<1>)
-     LUT6:I3->O            3   0.235   0.874  Madd_n0195_lut<0>2 (Madd_n0195_lut<0>2)
-     LUT6:I4->O            1   0.250   0.682  Madd_n0195_cy<3>11_SW0 (N32)
-     LUT6:I5->O            6   0.254   0.984  Madd_n0195_cy<3>11 (Madd_n0195_cy<3>)
-     end scope: 'test/alu/adder:Madd_n0195_cy<3>'
-     LUT6:I4->O            2   0.250   0.726  Mmux_out517_SW0 (N69)
-     LUT6:I5->O            1   0.254   0.790  Mmux_out511_SW0 (N156)
-     LUT6:I4->O            3   0.250   0.765  Mmux_out517 (out<4>)
-     end scope: 'test/alu:out<4>'
-     end scope: 'test:out<4>'
-     OBUF:I->O                 2.912          io_led_4_OBUF (io_led<4>)
+     LUT6:I2->O            1   0.254   0.910  op2[6]_op1[6]_LessThan_9_o12_SW0 (N113)
+     LUT5:I2->O           15   0.235   1.263  op2[6]_op1[6]_LessThan_9_o12 (op2[6]_op1[6]_LessThan_9_o)
+     LUT5:I3->O            1   0.250   0.910  Msub_op2[7]_op1[7]_sub_12_OUT_cy<1>1_SW1 (N145)
+     LUT6:I3->O            3   0.235   0.766  out1 (_n0504)
+     LUT6:I5->O            3   0.254   0.994  Madd_n0232_lut<1>1 (Madd_n0232_lut<1>)
+     LUT6:I3->O            6   0.235   0.876  Madd_n0232_cy<2>11 (Madd_n0232_cy<2>)
+     LUT4:I3->O            4   0.254   0.804  Madd_n0232_cy<3>11 (Madd_n0232_cy<3>)
+     end scope: 'test/alu/adder:Madd_n0232_cy<3>'
+     LUT6:I5->O            1   0.254   0.790  Mmux_out26 (Mmux_out25)
+     LUT6:I4->O            3   0.250   0.765  Mmux_out28 (out<1>)
+     end scope: 'test/alu:out<1>'
+     end scope: 'test:out<1>'
+     OBUF:I->O                 2.912          io_led_1_OBUF (io_led<1>)
     ----------------------------------------
-    Total                     16.132ns (6.495ns logic, 9.637ns route)
-                                       (40.3% logic, 59.7% route)
+    Total                     16.335ns (6.461ns logic, 9.874ns route)
+                                       (39.6% logic, 60.4% route)
 
 =========================================================================
 
@@ -671,24 +770,34 @@ Cross Clock Domains Report:
 --------------------------
 
 Clock to Setup on destination clock clk
----------------+---------+---------+---------+---------+
-               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
----------------+---------+---------+---------+---------+
-clk            |   12.405|         |         |         |
----------------+---------+---------+---------+---------+
+--------------------------------------------+---------+---------+---------+---------+
+                                            | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                                |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------------------------+---------+---------+---------+---------+
+clk                                         |   12.443|         |         |         |
+test/alu/adder/alufn[5]_GND_20_o_Select_92_o|         |    9.791|         |         |
+--------------------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock test/alu/adder/alufn[5]_GND_20_o_Select_92_o
+--------------------------------------------+---------+---------+---------+---------+
+                                            | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                                |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------------------------+---------+---------+---------+---------+
+clk                                         |         |         |   11.033|         |
+test/alu/adder/alufn[5]_GND_20_o_Select_92_o|         |         |    6.465|         |
+--------------------------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 11.22 secs
+Total CPU time to Xst completion: 12.15 secs
  
 --> 
 
-Total memory usage is 253408 kilobytes
+Total memory usage is 253088 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   18 (   0 filtered)
-Number of infos    :    1 (   0 filtered)
+Number of warnings :   24 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
 

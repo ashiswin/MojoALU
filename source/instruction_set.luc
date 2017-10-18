@@ -28,4 +28,5 @@ global Inst {
   const FADD  = 6b001000; // Unsigned works
   const FMUL  = 6b001010; // Works
   const ITOF  = 6b001001; // Works
+  const FTOI  = 6b001011;
 }

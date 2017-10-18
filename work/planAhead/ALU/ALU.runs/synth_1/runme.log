@@ -45,8 +45,6 @@ Elaborating module <testerFSM_2>.
 Elaborating module <alu_4>.
 
 Elaborating module <adder_8>.
-WARNING:HDLCompiler:413 - "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/adder_8.v" Line 89: Result of 8-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/adder_8.v" Line 91: Result of 8-bit expression is truncated to fit in 3-bit target.
 
 Elaborating module <boolean_9>.
 
@@ -135,38 +133,51 @@ Synthesizing Unit <adder_8>.
     Related source file is "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/adder_8.v".
     Found 8-bit subtractor for signal <op1[7]_op2[7]_sub_2_OUT> created at line 66.
     Found 8-bit subtractor for signal <op1[7]_unary_minus_4_OUT> created at line 80.
-    Found 8-bit subtractor for signal <GND_5_o_op2[7]_sub_14_OUT> created at line 91.
-    Found 4-bit subtractor for signal <op2[7]_op1[7]_sub_19_OUT> created at line 102.
-    Found 4-bit subtractor for signal <PWR_5_o_GND_5_o_sub_34_OUT> created at line 134.
-    Found 4-bit subtractor for signal <GND_5_o_PWR_5_o_sub_36_OUT> created at line 136.
-    Found 4-bit subtractor for signal <op1[7]_GND_5_o_sub_44_OUT> created at line 148.
-    Found 4-bit subtractor for signal <GND_5_o_op1[7]_sub_46_OUT> created at line 150.
+    Found 4-bit subtractor for signal <op2[7]_op1[7]_sub_12_OUT> created at line 93.
+    Found 4-bit subtractor for signal <PWR_5_o_GND_5_o_sub_27_OUT> created at line 125.
+    Found 4-bit subtractor for signal <GND_5_o_PWR_5_o_sub_29_OUT> created at line 127.
+    Found 4-bit subtractor for signal <op1[7]_GND_5_o_sub_36_OUT> created at line 143.
+    Found 4-bit subtractor for signal <GND_5_o_op1[7]_sub_38_OUT> created at line 145.
+    Found 4-bit subtractor for signal <op1[6]_GND_5_o_sub_43_OUT> created at line 152.
+    Found 4-bit subtractor for signal <op1[6]_GND_5_o_sub_46_OUT> created at line 157.
+    Found 4-bit subtractor for signal <GND_5_o_op1[6]_sub_48_OUT> created at line 159.
+    Found 8-bit subtractor for signal <fmulres[7]_unary_minus_53_OUT> created at line 163.
     Found 8-bit adder for signal <op1[7]_op2[7]_add_0_OUT> created at line 55.
-    Found 4-bit adder for signal <op2[3]_GND_5_o_add_8_OUT> created at line 87.
-    Found 5-bit adder for signal <n0195> created at line 108.
-    Found 4-bit adder for signal <op2[7]_GND_5_o_add_22_OUT> created at line 110.
-    Found 4-bit adder for signal <_n0248> created at line 132.
-    Found 4-bit adder for signal <_n0249> created at line 132.
-    Found 4-bit adder for signal <op1[6]_GND_5_o_add_31_OUT> created at line 132.
-    Found 4-bit adder for signal <op1[7]_GND_5_o_add_49_OUT> created at line 153.
-    Found 8x8-bit multiplier for signal <n0153> created at line 77.
-    Found 8-bit shifter logical left for signal <n0158> created at line 89
-    Found 8-bit shifter logical left for signal <n0160> created at line 91
-    Found 4-bit shifter logical right for signal <PWR_5_o_op2[7]_shift_right_19_OUT> created at line 107
-    Found 4x4-bit multiplier for signal <PWR_5_o_PWR_5_o_MuLt_27_OUT> created at line 124.
-    Found 8-bit shifter logical right for signal <PWR_5_o_PWR_5_o_shift_right_34_OUT> created at line 134
-    Found 8-bit shifter logical left for signal <PWR_5_o_GND_5_o_shift_left_36_OUT> created at line 136
-    Found 8-bit shifter logical right for signal <op1[7]_op1[7]_shift_right_44_OUT> created at line 148
-    Found 8-bit shifter logical left for signal <op1[7]_GND_5_o_shift_left_46_OUT> created at line 150
-    Found 8-bit 14-to-1 multiplexer for signal <_n0269> created at line 11.
-    Found 4-bit comparator greater for signal <op2[6]_op1[6]_LessThan_16_o> created at line 95
-    Found 4-bit comparator greater for signal <GND_5_o_PWR_5_o_LessThan_33_o> created at line 133
-    Found 4-bit comparator greater for signal <GND_5_o_op1[7]_LessThan_43_o> created at line 147
+    Found 5-bit adder for signal <n0232> created at line 99.
+    Found 4-bit adder for signal <op2[7]_GND_5_o_add_15_OUT> created at line 101.
+    Found 4-bit adder for signal <op1[7]_GND_5_o_add_41_OUT> created at line 148.
+    Found 4-bit adder for signal <_n0307> created at line 123.
+    Found 4-bit adder for signal <_n0308> created at line 123.
+    Found 4-bit adder for signal <op1[6]_GND_5_o_add_24_OUT> created at line 123.
+    Found 8x8-bit multiplier for signal <n0184> created at line 77.
+    Found 4-bit shifter logical right for signal <PWR_5_o_op2[7]_shift_right_12_OUT> created at line 98
+    Found 4x4-bit multiplier for signal <PWR_5_o_PWR_5_o_MuLt_20_OUT> created at line 115.
+    Found 8-bit shifter logical right for signal <PWR_5_o_PWR_5_o_shift_right_27_OUT> created at line 125
+    Found 8-bit shifter logical left for signal <PWR_5_o_GND_5_o_shift_left_29_OUT> created at line 127
+    Found 8-bit shifter logical right for signal <op1[7]_op1[7]_shift_right_36_OUT> created at line 143
+    Found 8-bit shifter logical left for signal <op1[7]_GND_5_o_shift_left_38_OUT> created at line 145
+    Found 8-bit shifter logical left for signal <GND_5_o_op1[6]_shift_left_46_OUT> created at line 157
+    Found 8-bit shifter logical right for signal <GND_5_o_GND_5_o_shift_right_48_OUT> created at line 159
+    Found 8-bit 12-to-1 multiplexer for signal <_n0367> created at line 11.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <fmulres<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 4-bit comparator greater for signal <op2[6]_op1[6]_LessThan_9_o> created at line 86
+    Found 4-bit comparator greater for signal <GND_5_o_PWR_5_o_LessThan_26_o> created at line 124
+    Found 4-bit comparator greater for signal <GND_5_o_op1[7]_LessThan_35_o> created at line 142
+    Found 4-bit comparator greater for signal <GND_5_o_op1[6]_LessThan_44_o> created at line 155
+    Found 4-bit comparator greater for signal <GND_5_o_op1[6]_LessThan_45_o> created at line 156
     Summary:
 	inferred   2 Multiplier(s).
-	inferred  16 Adder/Subtractor(s).
-	inferred   3 Comparator(s).
-	inferred  18 Multiplexer(s).
+	inferred  18 Adder/Subtractor(s).
+	inferred   8 Latch(s).
+	inferred   5 Comparator(s).
+	inferred  45 Multiplexer(s).
 	inferred   7 Combinational logic shifter(s).
 Unit <adder_8> synthesized.
 
@@ -193,7 +204,7 @@ Unit <compare_11> synthesized.
 
 Synthesizing Unit <multi_seven_seg_3>.
     Related source file is "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/multi_seven_seg_3.v".
-    Found 5-bit adder for signal <M_ctr_value[1]_GND_30_o_add_1_OUT> created at line 48.
+    Found 5-bit adder for signal <M_ctr_value[1]_GND_37_o_add_1_OUT> created at line 48.
     Found 2x3-bit multiplier for signal <n0020> created at line 48.
     Found 55-bit shifter logical right for signal <n0012> created at line 48
     Summary:
@@ -205,7 +216,7 @@ Unit <multi_seven_seg_3> synthesized.
 Synthesizing Unit <counter_5>.
     Related source file is "C:/Users/ashis/Documents/mojo/ALU/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/counter_5.v".
     Found 18-bit register for signal <M_ctr_q>.
-    Found 18-bit adder for signal <M_ctr_q[17]_GND_31_o_add_0_OUT> created at line 35.
+    Found 18-bit adder for signal <M_ctr_q[17]_GND_38_o_add_0_OUT> created at line 35.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  18 D-type flip-flop(s).
@@ -232,11 +243,11 @@ Macro Statistics
  3x2-bit multiplier                                    : 1
  4x4-bit multiplier                                    : 1
  8x8-bit multiplier                                    : 1
-# Adders/Subtractors                                   : 19
+# Adders/Subtractors                                   : 21
  18-bit adder                                          : 1
  30-bit adder                                          : 1
- 4-bit adder                                           : 6
- 4-bit subtractor                                      : 5
+ 4-bit adder                                           : 5
+ 4-bit subtractor                                      : 8
  5-bit adder                                           : 2
  8-bit adder                                           : 1
  8-bit subtractor                                      : 3
@@ -244,23 +255,25 @@ Macro Statistics
  18-bit register                                       : 1
  30-bit register                                       : 1
  4-bit register                                        : 1
-# Comparators                                          : 3
- 4-bit comparator greater                              : 3
-# Multiplexers                                         : 32
- 1-bit 2-to-1 multiplexer                              : 6
+# Latches                                              : 8
+ 1-bit latch                                           : 8
+# Comparators                                          : 5
+ 4-bit comparator greater                              : 5
+# Multiplexers                                         : 59
+ 1-bit 2-to-1 multiplexer                              : 29
  18-bit 2-to-1 multiplexer                             : 1
  30-bit 2-to-1 multiplexer                             : 6
  4-bit 2-to-1 multiplexer                              : 1
  5-bit 2-to-1 multiplexer                              : 1
- 8-bit 14-to-1 multiplexer                             : 1
- 8-bit 2-to-1 multiplexer                              : 15
+ 8-bit 12-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 19
  8-bit 4-to-1 multiplexer                              : 1
 # Logic shifters                                       : 11
  4-bit shifter logical right                           : 1
  55-bit shifter logical right                          : 1
  8-bit shifter arithmetic right                        : 1
- 8-bit shifter logical left                            : 5
- 8-bit shifter logical right                           : 3
+ 8-bit shifter logical left                            : 4
+ 8-bit shifter logical right                           : 4
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
 # FSMs                                                 : 1
@@ -280,7 +293,7 @@ The following registers are absorbed into counter <M_ctr_q>: 1 register on signa
 Unit <counter_5> synthesized (advanced).
 
 Synthesizing (advanced) Unit <multi_seven_seg_3>.
-	Multiplier <Mmult_n0020> in block <multi_seven_seg_3> and adder/subtractor <Madd_M_ctr_value[1]_GND_30_o_add_1_OUT> in block <multi_seven_seg_3> are combined into a MAC<Maddsub_n0020>.
+	Multiplier <Mmult_n0020> in block <multi_seven_seg_3> and adder/subtractor <Madd_M_ctr_value[1]_GND_37_o_add_1_OUT> in block <multi_seven_seg_3> are combined into a MAC<Maddsub_n0020>.
 Unit <multi_seven_seg_3> synthesized (advanced).
 
 =========================================================================
@@ -292,10 +305,10 @@ Macro Statistics
 # Multipliers                                          : 2
  4x4-bit multiplier                                    : 1
  8x8-bit multiplier                                    : 1
-# Adders/Subtractors                                   : 17
+# Adders/Subtractors                                   : 19
  30-bit adder                                          : 1
- 4-bit adder                                           : 6
- 4-bit subtractor                                      : 5
+ 4-bit adder                                           : 5
+ 4-bit subtractor                                      : 8
  5-bit adder                                           : 1
  8-bit adder                                           : 1
  8-bit subtractor                                      : 3
@@ -303,22 +316,22 @@ Macro Statistics
  18-bit up counter                                     : 1
 # Registers                                            : 34
  Flip-Flops                                            : 34
-# Comparators                                          : 3
- 4-bit comparator greater                              : 3
-# Multiplexers                                         : 31
- 1-bit 2-to-1 multiplexer                              : 6
+# Comparators                                          : 5
+ 4-bit comparator greater                              : 5
+# Multiplexers                                         : 58
+ 1-bit 2-to-1 multiplexer                              : 29
  30-bit 2-to-1 multiplexer                             : 6
  4-bit 2-to-1 multiplexer                              : 1
  5-bit 2-to-1 multiplexer                              : 1
- 8-bit 14-to-1 multiplexer                             : 1
- 8-bit 2-to-1 multiplexer                              : 15
+ 8-bit 12-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 19
  8-bit 4-to-1 multiplexer                              : 1
 # Logic shifters                                       : 11
  4-bit shifter logical right                           : 1
  55-bit shifter logical right                          : 1
  8-bit shifter arithmetic right                        : 1
- 8-bit shifter logical left                            : 5
- 8-bit shifter logical right                           : 3
+ 8-bit shifter logical left                            : 4
+ 8-bit shifter logical right                           : 4
 # FSMs                                                 : 1
 # Xors                                                 : 2
  1-bit xor2                                            : 1
@@ -351,8 +364,8 @@ Optimizing unit <alu_4> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 8.
-FlipFlop test/M_state_q_FSM_FFd1 has been replicated 3 time(s)
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 9.
+FlipFlop test/M_state_q_FSM_FFd1 has been replicated 5 time(s)
 FlipFlop test/M_state_q_FSM_FFd2 has been replicated 2 time(s)
 
 Final Macro Processing ...
@@ -365,8 +378,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 56
- Flip-Flops                                            : 56
+# Registers                                            : 58
+ Flip-Flops                                            : 58
 
 =========================================================================
 
@@ -387,11 +400,16 @@ Partition Implementation Status
 
 Clock Information:
 ------------------
------------------------------------+------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)  | Load  |
------------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 56    |
------------------------------------+------------------------+-------+
+--------------------------------------------------------------------------------------------------+----------------------------------+-------+
+Clock Signal                                                                                      | Clock buffer(FF name)            | Load  |
+--------------------------------------------------------------------------------------------------+----------------------------------+-------+
+clk                                                                                               | BUFGP                            | 58    |
+test/alu/adder/alufn[5]_GND_20_o_Select_92_o(test/alu/adder/Mmux_alufn[5]_GND_20_o_Select_92_o1:O)| NONE(*)(test/alu/adder/fmulres_7)| 8     |
+--------------------------------------------------------------------------------------------------+----------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -401,9 +419,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 12.405ns (Maximum Frequency: 80.613MHz)
-   Minimum input arrival time before clock: 14.648ns
-   Maximum output required time after clock: 14.556ns
-   Maximum combinational path delay: 16.132ns
+   Minimum period: 12.443ns (Maximum Frequency: 80.366MHz)
+   Minimum input arrival time before clock: 14.618ns
+   Maximum output required time after clock: 14.569ns
+   Maximum combinational path delay: 16.335ns
 
 =========================================================================

@@ -82,15 +82,6 @@ module adder_8 (
       6'h05: begin
         out = (-op1 & {4'h8{op1[7+0-:1]}}) | (op1 & {4'h8{~op1[7+0-:1]}});
       end
-      6'h0c: begin
-        out[7+0-:1] = op1[7+0-:1];
-        out[3+3-:4] = op2[0+3-:4] + 3'h7;
-        if (op1[7+0-:1] == 1'h0) begin
-          out[0+2-:3] = op1 << (2'h3 - op2);
-        end else begin
-          out[0+2-:3] = (-op1) << (2'h3 - op2);
-        end
-      end
       6'h08: begin
         if (op1[3+3-:4] > op2[3+3-:4]) begin
           o1 = op1;
@@ -139,7 +130,11 @@ module adder_8 (
       end
       6'h09: begin
         out[7+0-:1] = op1[7+0-:1];
-        fmulres = (-op1 & {4'h8{op1[7+0-:1]}}) | (op1 & {4'h8{~op1[7+0-:1]}});
+        if (op1[7+0-:1] == 1'h1) begin
+          fmulres = -op1;
+        end else begin
+          fmulres = op1;
+        end
         fmulshift[0+0-:1] = (~fmulres[7+0-:1] & fmulres[6+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & fmulres[4+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & ~fmulres[3+0-:1] & fmulres[2+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & ~fmulres[3+0-:1] & ~fmulres[1+0-:1] & fmulres[0+0-:1]);
         fmulshift[1+0-:1] = (~fmulres[7+0-:1] & fmulres[5+0-:1]) | (~fmulres[7+0-:1] & fmulres[6+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[4+0-:1] & ~fmulres[3+0-:1] & fmulres[1+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[4+0-:1] & ~fmulres[3+0-:1] & fmulres[2+0-:1]);
         fmulshift[2+0-:1] = (~fmulres[7+0-:1] & fmulres[3+0-:1]) | (~fmulres[7+0-:1] & fmulres[4+0-:1]) | (~fmulres[7+0-:1] & fmulres[5+0-:1]) | (~fmulres[7+0-:1] & fmulres[6+0-:1]);
@@ -152,6 +147,22 @@ module adder_8 (
         fmulexp = fmulshift - 1'h1;
         out[3+3-:4] = fmulexp + 3'h7;
         out[0+2-:3] = fmulres[0+2-:3];
+      end
+      6'h0b: begin
+        fmulexp = op1[3+3-:4] - 3'h7;
+        amant[3+0-:1] = 1'h1;
+        amant[0+2-:3] = op1[0+2-:3];
+        if (fmulexp > 1'h0) begin
+          if (fmulexp > 2'h3) begin
+            fmulres = amant << fmulexp - 2'h3;
+          end else begin
+            fmulres = amant >> 2'h3 - fmulexp;
+          end
+        end
+        if (op1[7+0-:1] == 1'h1) begin
+          fmulres = -fmulres;
+        end
+        out = fmulres;
       end
     endcase
   end
