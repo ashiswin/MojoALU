@@ -5,12 +5,10 @@
 */
 
 module boolean_9 (
-    input clk,
-    input rst,
     input [7:0] op1,
     input [7:0] op2,
     input [5:0] alufn,
-    output reg out
+    output reg [7:0] out
   );
   
   

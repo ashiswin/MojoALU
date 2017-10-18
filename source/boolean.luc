@@ -1,10 +1,8 @@
 module boolean (
-    input clk,  // clock
-    input rst,  // reset
     input op1[8],
     input op2[8],
     input alufn[6],
-    output out
+    output out[8]
   ) {
 
   always {

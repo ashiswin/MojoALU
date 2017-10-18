@@ -25,5 +25,6 @@ global Inst {
   const CMPLE = 6b110111; // Works
   
   // FPU instructions
-  const FADD = 6b001000;
+  const FADD = 6b001000; // Unsigned works
+  const FMUL = 6b001010;
 }

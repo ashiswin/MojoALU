@@ -1,6 +1,4 @@
 module compare (
-    input clk,  // clock
-    input rst,  // reset
     input alufn[6],
     input z,
     input v,

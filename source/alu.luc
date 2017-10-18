@@ -1,6 +1,4 @@
 module alu (
-    input clk,  // clock
-    input rst,  // reset
     input alufn[6],
     input op1[8],
     input op2[8],
@@ -13,15 +11,15 @@ module alu (
     output nOut
   ) {
   
-  .clk(clk), .rst(rst), .op1(op1), .op2(op2), .alufn(alufn) {
+  .op1(op1), .op2(op2), .alufn(alufn) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
     adder adder;
     boolean boolean;
   }
-  shifter shifter(.clk(clk), .rst(rst), .alufn(alufn), .op1(op1), .op2(op2[4:0]));
+  shifter shifter(.alufn(alufn), .op1(op1), .op2(op2[4:0]));
   
-  compare compare(.clk(clk), .rst(rst), .alufn(alufn), .z(z), .n(n), .v(v));
+  compare compare(.alufn(alufn), .z(z), .n(n), .v(v));
   
   always {
     zOut = 0;

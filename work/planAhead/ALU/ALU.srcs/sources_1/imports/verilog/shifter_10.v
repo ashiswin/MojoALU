@@ -5,8 +5,6 @@
 */
 
 module shifter_10 (
-    input clk,
-    input rst,
     input [5:0] alufn,
     input [7:0] op1,
     input [4:0] op2,

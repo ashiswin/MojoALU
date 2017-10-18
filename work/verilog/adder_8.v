@@ -5,8 +5,6 @@
 */
 
 module adder_8 (
-    input clk,
-    input rst,
     input [5:0] alufn,
     input [7:0] op1,
     input [7:0] op2,
@@ -30,11 +28,21 @@ module adder_8 (
   
   reg [3:0] bmant;
   
+  reg [3:0] aexp;
+  
+  reg [3:0] bexp;
+  
   reg [4:0] fresult;
   
   reg [7:0] o1;
   
   reg [7:0] o2;
+  
+  reg [7:0] fmulres;
+  
+  reg [3:0] fmulexp;
+  
+  reg [3:0] fmulshift;
   
   always @* begin
     zOut = 1'h0;
@@ -96,6 +104,29 @@ module adder_8 (
           out[3+3-:4] = o1[3+3-:4];
         end
         out[0+2-:3] = fresult[0+2-:3];
+      end
+      6'h0a: begin
+        amant[3+0-:1] = 1'h1;
+        bmant[3+0-:1] = 1'h1;
+        amant[0+2-:3] = op1[0+2-:3];
+        bmant[0+2-:3] = op2[0+2-:3];
+        aexp = op1[3+3-:4] - 4'ha;
+        bexp = op2[3+3-:4] - 4'ha;
+        fmulres = amant * bmant;
+        fmulexp = aexp + bexp;
+        fmulshift[0+0-:1] = (~fmulres[7+0-:1] & fmulres[6+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & fmulres[4+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & ~fmulres[3+0-:1] & fmulres[2+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[5+0-:1] & ~fmulres[3+0-:1] & ~fmulres[1+0-:1] & fmulres[0+0-:1]);
+        fmulshift[1+0-:1] = (~fmulres[7+0-:1] & fmulres[5+0-:1]) | (~fmulres[7+0-:1] & fmulres[6+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[4+0-:1] & ~fmulres[3+0-:1] & fmulres[1+0-:1]) | (~fmulres[7+0-:1] & ~fmulres[4+0-:1] & ~fmulres[3+0-:1] & fmulres[2+0-:1]);
+        fmulshift[2+0-:1] = (~fmulres[7+0-:1] & fmulres[3+0-:1]) | (~fmulres[7+0-:1] & fmulres[4+0-:1]) | (~fmulres[7+0-:1] & fmulres[5+0-:1]) | (~fmulres[7+0-:1] & fmulres[6+0-:1]);
+        fmulshift[3+0-:1] = fmulres[7+0-:1];
+        fmulexp = fmulexp + fmulshift - 1'h1;
+        out[7+0-:1] = op1[7+0-:1] ^ op2[7+0-:1];
+        out[3+3-:4] = fmulexp + 3'h7;
+        if (fmulshift > 3'h4) begin
+          fmulres = fmulres >> (fmulshift - 3'h4);
+        end else begin
+          fmulres = fmulres << (3'h4 - fmulshift);
+        end
+        out[0+2-:3] = fmulres[0+2-:3];
       end
     endcase
   end

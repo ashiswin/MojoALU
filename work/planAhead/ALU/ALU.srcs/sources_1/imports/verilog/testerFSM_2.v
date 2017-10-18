@@ -33,6 +33,8 @@ module testerFSM_2 (
   localparam SHF_ERR_state = 4'd12;
   
   reg [3:0] M_state_d, M_state_q = MANUAL_state;
+  reg [29:0] M_counter_d, M_counter_q = 1'h0;
+  
   wire [8-1:0] M_alu_out;
   wire [1-1:0] M_alu_zOut;
   wire [1-1:0] M_alu_vOut;
@@ -44,8 +46,6 @@ module testerFSM_2 (
   reg [1-1:0] M_alu_v;
   reg [1-1:0] M_alu_n;
   alu_4 alu (
-    .clk(clk),
-    .rst(rst),
     .alufn(M_alu_alufn),
     .op1(M_alu_op1),
     .op2(M_alu_op2),
@@ -57,7 +57,6 @@ module testerFSM_2 (
     .vOut(M_alu_vOut),
     .nOut(M_alu_nOut)
   );
-  reg [29:0] M_counter_d, M_counter_q = 1'h0;
   
   localparam DELAY = 5'h1a;
   

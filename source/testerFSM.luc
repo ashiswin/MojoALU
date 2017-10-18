@@ -17,11 +17,10 @@ module testerFSM (
     fsm state(#INIT(MANUAL)) = {MANUAL, ADDER1, ADDER2, ADDER_ERR,
                                         BOOL1, BOOL2, BOOL_ERR,
                                         COMP1, COMP2, COMP_ERR,
-                                        SHF1, SHF2, SHF_ERR};
-    alu alu;  
+                                        SHF1, SHF2, SHF_ERR};  
     dff counter[30];    // counter for FSM steps
   }
-    
+  alu alu;
   
   const DELAY = 26;// sets a delay to give time for calculations to complete. Lower number = less delay
   

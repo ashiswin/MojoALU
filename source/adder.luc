@@ -1,6 +1,4 @@
 module adder (
-    input clk,  // clock
-    input rst,  // reset
     input alufn[6],
     input op1[8],
     input op2[8],
@@ -17,9 +15,14 @@ module adder (
   sig shift[4];
   sig amant[4];
   sig bmant[4];
+  sig aexp[4];
+  sig bexp[4];
   sig fresult[5];
   sig o1[8];
   sig o2[8];
+  sig fmulres[8];
+  sig fmulexp[4];
+  sig fmulshift[4];
   
   always {
     zOut = 0;
@@ -83,6 +86,36 @@ module adder (
         }
         
         out[2:0] = fresult[2:0];
+      Inst.FMUL:
+        amant[3] = 1;
+        bmant[3] = 1;
+        
+        amant[2:0] = op1[2:0];
+        bmant[2:0] = op2[2:0];
+        
+        aexp = op1[6:3] - 10;
+        bexp = op2[6:3] - 10;
+        
+        fmulres = amant * bmant;
+        
+        fmulexp = aexp + bexp;
+        
+        fmulshift[0] = (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[5] & fmulres[4]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & fmulres[2]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & ~fmulres[1] & fmulres[0]);
+        fmulshift[1] = (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[1]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[2]);
+        fmulshift[2] = (~fmulres[7] & fmulres[3]) | (~fmulres[7] & fmulres[4]) | (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]);
+        fmulshift[3] = fmulres[7];
+        
+        fmulexp = fmulexp + fmulshift - 1;
+        
+        out[7] = op1[7] ^ op2[7];
+        out[6:3] = fmulexp + 7;
+        if(fmulshift > 4) {
+          fmulres = fmulres >> (fmulshift - 4);
+        }
+        else {
+          fmulres = fmulres << (4 - fmulshift);
+        }
+        out[2:0] = fmulres[2:0];
     }
   }
 }

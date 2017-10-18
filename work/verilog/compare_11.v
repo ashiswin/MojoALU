@@ -5,8 +5,6 @@
 */
 
 module compare_11 (
-    input clk,
-    input rst,
     input [5:0] alufn,
     input z,
     input v,

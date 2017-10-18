@@ -5,8 +5,6 @@
 */
 
 module alu_4 (
-    input clk,
-    input rst,
     input [5:0] alufn,
     input [7:0] op1,
     input [7:0] op2,
@@ -26,8 +24,6 @@ module alu_4 (
   wire [1-1:0] M_adder_vOut;
   wire [1-1:0] M_adder_nOut;
   adder_8 adder (
-    .clk(clk),
-    .rst(rst),
     .op1(op1),
     .op2(op2),
     .alufn(alufn),
@@ -36,10 +32,8 @@ module alu_4 (
     .vOut(M_adder_vOut),
     .nOut(M_adder_nOut)
   );
-  wire [1-1:0] M_boolean_out;
+  wire [8-1:0] M_boolean_out;
   boolean_9 boolean (
-    .clk(clk),
-    .rst(rst),
     .op1(op1),
     .op2(op2),
     .alufn(alufn),
@@ -48,8 +42,6 @@ module alu_4 (
   
   wire [1-1:0] M_shifter_out;
   shifter_10 shifter (
-    .clk(clk),
-    .rst(rst),
     .alufn(alufn),
     .op1(op1),
     .op2(op2[0+4-:5]),
@@ -58,8 +50,6 @@ module alu_4 (
   
   wire [8-1:0] M_compare_out;
   compare_11 compare (
-    .clk(clk),
-    .rst(rst),
     .alufn(alufn),
     .z(z),
     .n(n),

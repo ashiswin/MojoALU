@@ -1,6 +1,4 @@
 module shifter (
-    input clk,  // clock
-    input rst,  // reset
     input alufn[6],
     input op1[8],
     input op2[5],
