@@ -1,0 +1,94 @@
+module testerFSM (
+    input clk,  // clock
+    input rst,  // reset
+    input io_button [5],    // 5 buttons on IO Shield
+    input io_dip [3][8],     // DIP switches on IO Shield
+    
+    output out[8], //output
+    output zOut,
+    output vOut,
+    output nOut,
+    output text[4][7]
+    
+  ) {
+  
+  .clk(clk), .rst(rst) {
+      
+    fsm state(#INIT(MANUAL)) = {MANUAL, ADDER1, ADDER2, ADDER_ERR,
+                                        BOOL1, BOOL2, BOOL_ERR,
+                                        COMP1, COMP2, COMP_ERR,
+                                        SHF1, SHF2, SHF_ERR};
+    alu alu;  
+    dff counter[30];    // counter for FSM steps
+  }
+    
+  
+  const DELAY = 26;// sets a delay to give time for calculations to complete. Lower number = less delay
+  
+  always {
+     
+    out = alu.out;
+    zOut = alu.zOut;
+    vOut = alu.vOut;
+    nOut = alu.nOut;
+    alu.z = 0;
+    alu.n = 0;
+    alu.v = 0;
+    alu.alufn = 6b0;
+    alu.op1 = 8b0;
+    alu.op2 = 8b0;
+    
+    text = {"r","a","u","r"};
+   
+    case(state.q) {
+      
+      state.MANUAL:
+        alu.alufn = io_dip[0][5:0];
+        alu.op1 = io_dip[1];
+        alu.op2 = io_dip[2];
+        
+        text = {7h0, 7h0, 7h0, 7h0};
+        
+        counter.d = 0;    //clock counter is reset to 0 in manual mode
+        if (io_button[1] == 1){     //pressing "CENTER" button starts auto testing
+          state.d = state.ADDER1; 
+        }
+  
+      state.ADDER1:
+        alu.alufn = 6b0;              //selects addition operation of alu
+        alu.op1 = 8b1;                //input op1 = 1
+        alu.op2 = 8b1;                //input a = 1
+        text = {"a","d","d",7b1};     //displays "add" to show testing of ADDER
+        counter.d = counter.q+1;      //continually increases clock counter until delay time is over
+        
+        if (counter.q[DELAY]==1&&alu.out==8b10){ //wait for counter to hit specified value, then check if output is correct
+          counter.d = 0;                         //reset counter value to 0
+          state.d = state.ADDER2;            //welp! Next test
+     
+        }else if (counter.q[DELAY] == 1 && alu.out!= 8b10){ // Oh man, results are wrong!
+          counter.d=0;                                //reset counter value to 0
+          state.d=state.ADDER_ERR;}                   //move to adder error state
+           
+      state.ADDER2:
+        alu.alufn = 6b1;          //selects substraction
+        alu.op1 = 8b1;
+        alu.op2 = 8b1;
+        text = {"a","d","d",7b10};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b0){
+          counter.d = 0;
+          state.d = state.MANUAL;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b0){
+          counter.d = 0;
+          state.d = state.ADDER_ERR;
+        }
+        
+      state.ADDER_ERR:
+        alu.alufn = 6b0;
+        alu.op1 = 8b0;
+        alu.op2 = 8b0;
+        text = {"e","a","d","d"};
+    }
+  }
+}

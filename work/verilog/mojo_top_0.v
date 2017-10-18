@@ -35,29 +35,33 @@ module mojo_top_0 (
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
-  wire [8-1:0] M_alu_out;
-  wire [1-1:0] M_alu_zOut;
-  wire [1-1:0] M_alu_vOut;
-  wire [1-1:0] M_alu_nOut;
-  reg [6-1:0] M_alu_alufn;
-  reg [8-1:0] M_alu_op1;
-  reg [8-1:0] M_alu_op2;
-  reg [1-1:0] M_alu_z;
-  reg [1-1:0] M_alu_v;
-  reg [1-1:0] M_alu_n;
-  alu_2 alu (
+  wire [8-1:0] M_test_out;
+  wire [1-1:0] M_test_zOut;
+  wire [1-1:0] M_test_vOut;
+  wire [1-1:0] M_test_nOut;
+  wire [28-1:0] M_test_text;
+  reg [5-1:0] M_test_io_button;
+  reg [24-1:0] M_test_io_dip;
+  testerFSM_2 test (
     .clk(clk),
     .rst(rst),
-    .alufn(M_alu_alufn),
-    .op1(M_alu_op1),
-    .op2(M_alu_op2),
-    .z(M_alu_z),
-    .v(M_alu_v),
-    .n(M_alu_n),
-    .out(M_alu_out),
-    .zOut(M_alu_zOut),
-    .vOut(M_alu_vOut),
-    .nOut(M_alu_nOut)
+    .io_button(M_test_io_button),
+    .io_dip(M_test_io_dip),
+    .out(M_test_out),
+    .zOut(M_test_zOut),
+    .vOut(M_test_vOut),
+    .nOut(M_test_nOut),
+    .text(M_test_text)
+  );
+  wire [8-1:0] M_seg_seg;
+  wire [4-1:0] M_seg_sel;
+  reg [28-1:0] M_seg_values;
+  multi_seven_seg_3 seg (
+    .clk(clk),
+    .rst(rst),
+    .values(M_seg_values),
+    .seg(M_seg_seg),
+    .sel(M_seg_sel)
   );
   
   always @* begin
@@ -70,15 +74,14 @@ module mojo_top_0 (
     io_led = 24'h000000;
     io_seg = 8'hff;
     io_sel = 4'hf;
-    M_alu_alufn = io_dip[0+0+5-:6];
-    M_alu_op1 = io_dip[8+7-:8];
-    M_alu_op2 = io_dip[16+7-:8];
-    M_alu_z = 1'h0;
-    M_alu_n = 1'h0;
-    M_alu_v = 1'h0;
-    io_led[0+7-:8] = M_alu_out;
-    io_led[8+0+0-:1] = M_alu_zOut;
-    io_led[8+1+0-:1] = M_alu_vOut;
-    io_led[8+2+0-:1] = M_alu_nOut;
+    M_test_io_dip = io_dip;
+    M_test_io_button = io_button;
+    io_led[0+7-:8] = M_test_out;
+    io_led[8+0+0-:1] = M_test_zOut;
+    io_led[8+1+0-:1] = M_test_vOut;
+    io_led[8+2+0-:1] = M_test_nOut;
+    M_seg_values = M_test_text;
+    io_seg = ~M_seg_seg;
+    io_sel = ~M_seg_sel;
   end
 endmodule
