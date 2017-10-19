@@ -6,7 +6,9 @@ module shifter (
   ) {
 
   always {
-    out = 8hxx;
+    out = 8hxx; // Don't care about the default output
+    
+    // Pretty straightforward selector :D
     case(alufn) {
       Inst.SHL:
         out = op1 << op2;
