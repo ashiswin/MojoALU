@@ -44,6 +44,9 @@ module seven_seg_6 (
       4'h9: begin
         segs = 8'h67;
       end
+      7'h7a: begin
+        segs = 8'h40;
+      end
       7'h61: begin
         segs = 8'hf7;
       end
@@ -65,6 +68,12 @@ module seven_seg_6 (
       7'h68: begin
         segs = 8'hf4;
       end
+      7'h6e: begin
+        segs = 8'hd4;
+      end
+      7'h6c: begin
+        segs = 8'h38;
+      end
       7'h6f: begin
         segs = 8'hbf;
       end
@@ -82,6 +91,9 @@ module seven_seg_6 (
       end
       7'h75: begin
         segs = 8'hbe;
+      end
+      7'h78: begin
+        segs = 8'hf6;
       end
       default: begin
         segs = 8'h00;

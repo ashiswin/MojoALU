@@ -44,6 +44,51 @@
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">io_dip&lt;7:6&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">011010</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">011000</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">011011</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">011001</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101010</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">100111</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">100100</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">010111</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101101</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101011</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101100</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101110</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101111</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">110000</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">110010</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
+</msg>
+
 <msg type="warning" file="Xst" num="737" delta="new" >Found <arg fmt="%d" index="1">1</arg>-bit latch for signal &lt;<arg fmt="%s" index="2">fmulres&lt;7&gt;</arg>&gt;. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 </msg>
 

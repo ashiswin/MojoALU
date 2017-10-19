@@ -49,12 +49,13 @@ module adder (
         }
         zOut = ~zComp;
       Inst.SUB:
-        result = op1 - op2; // Store result temporarily for extra opreations
+        o2 = -op2;
+        result = op1 + o2; // Store result temporarily for extra opreations
         out = result;
         
         // Calculate individual bit outputs
         nOut = result[7];
-        vOut = (op1[7] & op2[7] & ~result[7]) | (~op1[7] & ~op2[7] & result[7]);
+        vOut = (op1[7] & o2[7] & ~result[7]) | (~op1[7] & ~o2[7] & result[7]);
         zComp = result[0];
         for(i = 1; i < 8; i++) { // Use a for loop cos i'm lazy
           zComp = (zComp | result[i]);

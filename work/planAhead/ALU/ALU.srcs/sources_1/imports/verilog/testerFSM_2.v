@@ -18,21 +18,59 @@ module testerFSM_2 (
   
   
   
-  localparam MANUAL_state = 4'd0;
-  localparam ADDER1_state = 4'd1;
-  localparam ADDER2_state = 4'd2;
-  localparam ADDER_ERR_state = 4'd3;
-  localparam BOOL1_state = 4'd4;
-  localparam BOOL2_state = 4'd5;
-  localparam BOOL_ERR_state = 4'd6;
-  localparam COMP1_state = 4'd7;
-  localparam COMP2_state = 4'd8;
-  localparam COMP_ERR_state = 4'd9;
-  localparam SHF1_state = 4'd10;
-  localparam SHF2_state = 4'd11;
-  localparam SHF_ERR_state = 4'd12;
+  localparam MANUAL_state = 6'd0;
+  localparam ADDER1_state = 6'd1;
+  localparam ADDER2_state = 6'd2;
+  localparam ADDER3_state = 6'd3;
+  localparam ADDER4_state = 6'd4;
+  localparam SUB1_state = 6'd5;
+  localparam SUB2_state = 6'd6;
+  localparam SUB3_state = 6'd7;
+  localparam SUB4_state = 6'd8;
+  localparam ADDER_ERR_state = 6'd9;
+  localparam SUB_ERR_state = 6'd10;
+  localparam AND1_state = 6'd11;
+  localparam AND2_state = 6'd12;
+  localparam AND3_state = 6'd13;
+  localparam AND_ERR_state = 6'd14;
+  localparam OR_state = 6'd15;
+  localparam OR2_state = 6'd16;
+  localparam OR_ERR_state = 6'd17;
+  localparam XOR_state = 6'd18;
+  localparam XOR2_state = 6'd19;
+  localparam XOR_ERR_state = 6'd20;
+  localparam INV_state = 6'd21;
+  localparam INV_ERR_state = 6'd22;
+  localparam CMPEQ_state = 6'd23;
+  localparam CMPLT_state = 6'd24;
+  localparam CMPLE_state = 6'd25;
+  localparam EQ_ERR_state = 6'd26;
+  localparam LT_ERR_state = 6'd27;
+  localparam LE_ERR_state = 6'd28;
+  localparam LDR_state = 6'd29;
+  localparam LDR_ERR_state = 6'd30;
+  localparam SHL_state = 6'd31;
+  localparam SHR_state = 6'd32;
+  localparam SRA_state = 6'd33;
+  localparam SHL2_state = 6'd34;
+  localparam SHR2_state = 6'd35;
+  localparam SRA2_state = 6'd36;
+  localparam SHL_ERR_state = 6'd37;
+  localparam SHR_ERR_state = 6'd38;
+  localparam SRA_ERR_state = 6'd39;
+  localparam DIV_state = 6'd40;
+  localparam DIV_ERR_state = 6'd41;
+  localparam MUL_state = 6'd42;
+  localparam MUL2_state = 6'd43;
+  localparam MUL3_state = 6'd44;
+  localparam MUL_ERR_state = 6'd45;
+  localparam NEG_state = 6'd46;
+  localparam NEG_ERR_state = 6'd47;
+  localparam ABS_state = 6'd48;
+  localparam ABS2_state = 6'd49;
+  localparam ABS_ERR_state = 6'd50;
   
-  reg [3:0] M_state_d, M_state_q = MANUAL_state;
+  reg [5:0] M_state_d, M_state_q = MANUAL_state;
   reg [29:0] M_counter_d, M_counter_q = 1'h0;
   
   wire [8-1:0] M_alu_out;
@@ -104,16 +142,48 @@ module testerFSM_2 (
         end
       end
       ADDER2_state: begin
-        M_alu_alufn = 6'h01;
-        M_alu_op1 = 8'h01;
+        M_alu_alufn = 6'h00;
+        M_alu_op1 = 8'h80;
         M_alu_op2 = 8'h01;
         text = 28'hc393202;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h81 && M_alu_nOut == 8'h01) begin
           M_counter_d = 1'h0;
-          M_state_d = MANUAL_state;
+          M_state_d = ADDER3_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[26+0-:1] == 1'h1 && (M_alu_out != 8'h81 || M_alu_nOut != 8'h01)) begin
+            M_counter_d = 1'h0;
+            M_state_d = ADDER_ERR_state;
+          end
+        end
+      end
+      ADDER3_state: begin
+        M_alu_alufn = 6'h00;
+        M_alu_op1 = 8'hff;
+        M_alu_op2 = 8'h01;
+        text = 28'hc393203;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00 && M_alu_zOut == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = ADDER4_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && (M_alu_out != 8'h00 || M_alu_zOut != 8'h01)) begin
+            M_counter_d = 1'h0;
+            M_state_d = ADDER_ERR_state;
+          end
+        end
+      end
+      ADDER4_state: begin
+        M_alu_alufn = 6'h00;
+        M_alu_op1 = 8'h7f;
+        M_alu_op2 = 8'h01;
+        text = 28'hc393204;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h80 && M_alu_vOut == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = SUB1_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1) begin
             M_counter_d = 1'h0;
             M_state_d = ADDER_ERR_state;
           end
@@ -124,6 +194,535 @@ module testerFSM_2 (
         M_alu_op1 = 8'h00;
         M_alu_op2 = 8'h00;
         text = 28'hcb87264;
+      end
+      SUB1_state: begin
+        M_alu_alufn = 6'h01;
+        M_alu_op1 = 8'h02;
+        M_alu_op2 = 8'h01;
+        text = 28'he7d7101;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = SUB2_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = SUB_ERR_state;
+          end
+        end
+      end
+      SUB2_state: begin
+        M_alu_alufn = 6'h01;
+        M_alu_op1 = 8'h81;
+        M_alu_op2 = 8'h01;
+        text = 28'he7d7102;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h80 && M_alu_nOut == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = SUB3_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && (M_alu_out != 8'h80 || M_alu_nOut != 8'h01)) begin
+            M_counter_d = 1'h0;
+            M_state_d = SUB_ERR_state;
+          end
+        end
+      end
+      SUB3_state: begin
+        M_alu_alufn = 6'h01;
+        M_alu_op1 = 8'h01;
+        M_alu_op2 = 8'h01;
+        text = 28'he7d7103;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00 && M_alu_zOut == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = SUB4_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && (M_alu_out != 8'h00 || M_alu_zOut != 8'h01)) begin
+            M_counter_d = 1'h0;
+            M_state_d = ADDER_ERR_state;
+          end
+        end
+      end
+      SUB4_state: begin
+        M_alu_alufn = 6'h01;
+        M_alu_op1 = 8'h80;
+        M_alu_op2 = 8'h01;
+        text = 28'he7d7104;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h7f && M_alu_vOut == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = AND1_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1) begin
+            M_counter_d = 1'h0;
+            M_state_d = SUB_ERR_state;
+          end
+        end
+      end
+      SUB_ERR_state: begin
+        M_alu_alufn = 6'h01;
+        M_alu_op1 = 8'h00;
+        M_alu_op2 = 8'h00;
+        text = 28'hcbcfae2;
+      end
+      AND1_state: begin
+        M_alu_alufn = 6'h18;
+        M_alu_op1 = 8'h01;
+        M_alu_op2 = 8'h01;
+        text = 28'hc3bb201;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = AND2_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = AND_ERR_state;
+          end
+        end
+      end
+      AND2_state: begin
+        M_alu_alufn = 6'h18;
+        M_alu_op1 = 8'h00;
+        M_alu_op2 = 8'h00;
+        text = 28'hc3bb202;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+          M_counter_d = 1'h0;
+          M_state_d = AND3_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+            M_counter_d = 1'h0;
+            M_state_d = AND_ERR_state;
+          end
+        end
+      end
+      AND3_state: begin
+        M_alu_alufn = 6'h18;
+        M_alu_op1 = 8'h01;
+        M_alu_op2 = 8'h00;
+        text = 28'hc3bb203;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+          M_counter_d = 1'h0;
+          M_state_d = OR_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = AND_ERR_state;
+          end
+        end
+      end
+      AND_ERR_state: begin
+        M_alu_alufn = 6'h18;
+        M_alu_op1 = 8'h01;
+        M_alu_op2 = 8'h01;
+        text = 28'hcb87764;
+      end
+      OR_state: begin
+        M_alu_alufn = 6'h1e;
+        M_alu_op1 = 8'h00;
+        M_alu_op2 = 8'h01;
+        text = 28'hdfcaf81;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = OR2_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = OR_ERR_state;
+          end
+        end
+      end
+      OR2_state: begin
+        M_alu_alufn = 6'h1e;
+        M_alu_op1 = 8'h00;
+        M_alu_op2 = 8'h00;
+        text = 28'hdfcaf82;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+          M_counter_d = 1'h0;
+          M_state_d = XOR_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+            M_counter_d = 1'h0;
+            M_state_d = OR_ERR_state;
+          end
+        end
+      end
+      OR_ERR_state: begin
+        M_alu_alufn = 6'h1e;
+        M_alu_op1 = 8'h01;
+        M_alu_op2 = 8'h01;
+        text = 28'hcbbf95f;
+      end
+      XOR_state: begin
+        M_alu_alufn = 6'h16;
+        M_alu_op1 = 8'h00;
+        M_alu_op2 = 8'h01;
+        text = 28'hf1bf97a;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = XOR2_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = XOR_ERR_state;
+          end
+        end
+      end
+      XOR2_state: begin
+        M_alu_alufn = 6'h16;
+        M_alu_op1 = 8'h01;
+        M_alu_op2 = 8'h01;
+        text = 28'hf1bf902;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+          M_counter_d = 1'h0;
+          M_state_d = INV_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+            M_counter_d = 1'h0;
+            M_state_d = XOR_ERR_state;
+          end
+        end
+      end
+      XOR_ERR_state: begin
+        M_alu_alufn = 6'h16;
+        M_alu_op1 = 8'h01;
+        M_alu_op2 = 8'h01;
+        text = 28'hcbe37f2;
+      end
+      INV_state: begin
+        M_alu_alufn = 6'h11;
+        M_alu_op1 = 8'h00;
+        text = 28'h03bbafa;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
+          M_counter_d = 1'h0;
+          M_state_d = LDR_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1) begin
+            M_counter_d = 1'h0;
+            M_state_d = INV_ERR_state;
+          end
+        end
+      end
+      INV_ERR_state: begin
+        M_alu_alufn = 6'h11;
+        M_alu_op1 = 8'h01;
+        text = 28'hca07775;
+      end
+      LDR_state: begin
+        M_alu_alufn = 6'h1a;
+        M_alu_op1 = 8'h02;
+        text = 28'hd99397a;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
+          M_counter_d = 1'h0;
+          M_state_d = SHL_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h02) begin
+            M_counter_d = 1'h0;
+            M_state_d = LDR_ERR_state;
+          end
+        end
+      end
+      LDR_ERR_state: begin
+        M_alu_alufn = 6'h11;
+        M_alu_op1 = 8'h02;
+        text = 28'hcbb3272;
+      end
+      SHL_state: begin
+        M_alu_alufn = 6'h20;
+        M_alu_op1 = 8'h03;
+        M_alu_op2 = 8'h01;
+        text = 28'he7a367a;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h06) begin
+          M_counter_d = 1'h0;
+          M_state_d = SHL2_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h06) begin
+            M_counter_d = 1'h0;
+            M_state_d = SHL_ERR_state;
+          end
+        end
+      end
+      SHL2_state: begin
+        M_alu_alufn = 6'h20;
+        M_alu_op1 = 8'hff;
+        M_alu_op2 = 8'h01;
+        text = 28'he7a3602;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hfe) begin
+          M_counter_d = 1'h0;
+          M_state_d = SHR_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'hfe) begin
+            M_counter_d = 1'h0;
+            M_state_d = SHL_ERR_state;
+          end
+        end
+      end
+      SHL_ERR_state: begin
+        M_alu_alufn = 6'h20;
+        M_alu_op1 = 8'h03;
+        M_alu_op2 = 8'h01;
+        text = 28'hcbcf46c;
+      end
+      SHR_state: begin
+        M_alu_alufn = 6'h21;
+        M_alu_op1 = 8'h03;
+        M_alu_op2 = 8'h01;
+        text = 28'he7a397a;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = SHR2_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = SHR_ERR_state;
+          end
+        end
+      end
+      SHR2_state: begin
+        M_alu_alufn = 6'h23;
+        M_alu_op1 = 8'hc0;
+        M_alu_op2 = 8'h01;
+        text = 28'he7a3902;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h60) begin
+          M_counter_d = 1'h0;
+          M_state_d = SHR_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h60) begin
+            M_counter_d = 1'h0;
+            M_state_d = SHR_ERR_state;
+          end
+        end
+      end
+      SHR_ERR_state: begin
+        M_alu_alufn = 6'h21;
+        M_alu_op1 = 8'h03;
+        M_alu_op2 = 8'h01;
+        text = 28'hcbcf472;
+      end
+      SRA_state: begin
+        M_alu_alufn = 6'h23;
+        M_alu_op1 = 8'h05;
+        M_alu_op2 = 8'h01;
+        text = 28'he7cb0fa;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
+          M_counter_d = 1'h0;
+          M_state_d = SRA2_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h02) begin
+            M_counter_d = 1'h0;
+            M_state_d = SRA_ERR_state;
+          end
+        end
+      end
+      SRA2_state: begin
+        M_alu_alufn = 6'h23;
+        M_alu_op1 = 8'ha0;
+        M_alu_op2 = 8'h01;
+        text = 28'he7cb082;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hd0) begin
+          M_counter_d = 1'h0;
+          M_state_d = CMPEQ_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'hd0) begin
+            M_counter_d = 1'h0;
+            M_state_d = SRA_ERR_state;
+          end
+        end
+      end
+      SRA_ERR_state: begin
+        M_alu_alufn = 6'h23;
+        M_alu_op1 = 8'h05;
+        M_alu_op2 = 8'h01;
+        text = 28'hcbcf961;
+      end
+      CMPEQ_state: begin
+        M_alu_alufn = 6'h33;
+        M_alu_z = 8'h00;
+        text = 28'hc7c32ef;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+          M_counter_d = 1'h0;
+          M_state_d = CMPLT_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+            M_counter_d = 1'h0;
+            M_state_d = EQ_ERR_state;
+          end
+        end
+      end
+      EQ_ERR_state: begin
+        M_alu_alufn = 6'h33;
+        M_alu_z = 8'h00;
+        text = 28'hcb8f86f;
+      end
+      CMPLT_state: begin
+        M_alu_alufn = 6'h35;
+        M_alu_n = 8'h00;
+        M_alu_v = 8'h01;
+        text = 28'hc7c3674;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = CMPLE_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = LT_ERR_state;
+          end
+        end
+      end
+      LT_ERR_state: begin
+        M_alu_alufn = 6'h35;
+        M_alu_n = 8'h00;
+        M_alu_v = 8'h01;
+        text = 28'hcb8f874;
+      end
+      CMPLE_state: begin
+        M_alu_alufn = 6'h37;
+        M_alu_z = 8'h00;
+        M_alu_n = 8'h00;
+        M_alu_v = 8'h01;
+        text = 28'hc7c3674;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+          M_counter_d = 1'h0;
+          M_state_d = MUL_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+            M_counter_d = 1'h0;
+            M_state_d = LT_ERR_state;
+          end
+        end
+      end
+      LE_ERR_state: begin
+        M_alu_alufn = 6'h37;
+        M_alu_z = 8'h00;
+        M_alu_n = 8'h00;
+        M_alu_v = 8'h01;
+        text = 28'hcb8f865;
+      end
+      MUL_state: begin
+        M_alu_alufn = 6'h02;
+        M_alu_op1 = 8'h02;
+        M_alu_op2 = 8'h02;
+        text = 28'hddd767a;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h04) begin
+          M_counter_d = 1'h0;
+          M_state_d = MUL2_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h04) begin
+            M_counter_d = 1'h0;
+            M_state_d = MUL_ERR_state;
+          end
+        end
+      end
+      MUL2_state: begin
+        M_alu_alufn = 6'h02;
+        M_alu_op1 = 8'h00;
+        M_alu_op2 = 8'h02;
+        text = 28'hddd7602;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+          M_counter_d = 1'h0;
+          M_state_d = MUL3_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+            M_counter_d = 1'h0;
+            M_state_d = MUL_ERR_state;
+          end
+        end
+      end
+      MUL3_state: begin
+        M_alu_alufn = 6'h02;
+        M_alu_op1 = 8'hff;
+        M_alu_op2 = 8'hff;
+        text = 28'hddd7603;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = NEG_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = MUL_ERR_state;
+          end
+        end
+      end
+      MUL_ERR_state: begin
+        M_alu_alufn = 6'h02;
+        M_alu_op1 = 8'h02;
+        M_alu_op2 = 8'h02;
+        text = 28'hcbbbaec;
+      end
+      NEG_state: begin
+        M_alu_alufn = 6'h04;
+        M_alu_op1 = 8'h01;
+        text = 28'hdd9437a;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
+          M_counter_d = 1'h0;
+          M_state_d = ABS_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+            M_counter_d = 1'h0;
+            M_state_d = NEG_ERR_state;
+          end
+        end
+      end
+      NEG_ERR_state: begin
+        M_alu_alufn = 6'h04;
+        M_alu_op1 = 8'h01;
+        text = 28'hcbbb286;
+      end
+      ABS_state: begin
+        M_alu_alufn = 6'h05;
+        M_alu_op1 = 8'hff;
+        text = 28'hc38b9fa;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = MANUAL_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+            M_counter_d = 1'h0;
+            M_state_d = ABS_ERR_state;
+          end
+        end
+      end
+      ABS2_state: begin
+        M_alu_alufn = 6'h05;
+        M_alu_op1 = 8'h7f;
+        text = 28'hc38b982;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h81) begin
+          M_counter_d = 1'h0;
+          M_state_d = MANUAL_state;
+        end else begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h81) begin
+            M_counter_d = 1'h0;
+            M_state_d = ABS_ERR_state;
+          end
+        end
+      end
+      ABS_ERR_state: begin
+        M_alu_alufn = 6'h05;
+        M_alu_op1 = 8'hff;
+        text = 28'hcb87173;
       end
     endcase
   end

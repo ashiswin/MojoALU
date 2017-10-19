@@ -63,10 +63,11 @@ module adder_8 (
         zOut = ~zComp;
       end
       6'h01: begin
-        result = op1 - op2;
+        o2 = -op2;
+        result = op1 + o2;
         out = result;
         nOut = result[7+0-:1];
-        vOut = (op1[7+0-:1] & op2[7+0-:1] & ~result[7+0-:1]) | (~op1[7+0-:1] & ~op2[7+0-:1] & result[7+0-:1]);
+        vOut = (op1[7+0-:1] & o2[7+0-:1] & ~result[7+0-:1]) | (~op1[7+0-:1] & ~o2[7+0-:1] & result[7+0-:1]);
         zComp = result[0+0-:1];
         for (i = 1'h1; i < 4'h8; i = i + 1) begin
           zComp = (zComp | result[(i)*1+0-:1]);

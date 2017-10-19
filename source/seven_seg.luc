@@ -24,14 +24,15 @@ module seven_seg (
       "e": segs = 8b11111001;
       "f": segs = 8b11110001;
       "h": segs = 8b11110100;
-      "n": segs = 8b11101101;
-      "l": segs = 8b00011101;
+      "n": segs = 8b11010100;
+      "l": segs = 8b00111000;
       "o": segs = 8b10111111;
       "p": segs = 8b11110011;
       "r": segs = 8b11010000;
       "s": segs = 8b01101101;
       "t": segs = 8b01000110;
       "u": segs = 8b10111110;
+      "x": segs = 8b11110110;
         
       default: segs = 8b000000000;
     }
