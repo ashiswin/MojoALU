@@ -11,22 +11,22 @@ module alu (
     output nOut
   ) {
   
+  // Initialize all submodules with the appropriate inputs
   .op1(op1), .op2(op2), .alufn(alufn) {
-    // The reset conditioner is used to synchronize the reset signal to the FPGA
-    // clock. This ensures the entire FPGA comes out of reset at the same time.
     adder adder;
     boolean boolean;
   }
   shifter shifter(.alufn(alufn), .op1(op1), .op2(op2[4:0]));
-  
   compare compare(.alufn(alufn), .z(z), .n(n), .v(v));
   
   always {
+    // Set default outputs
     zOut = 0;
     vOut = 0;
     nOut = 0;
     out = 8hxx;
     
+    // Select appropriate submodule based on first 2 bits in alufn
     case(alufn[5:4]) {
       b00:
         out = adder.out;
