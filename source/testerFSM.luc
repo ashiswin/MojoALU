@@ -15,11 +15,11 @@ module testerFSM (
   .clk(clk), .rst(rst) {
       
     fsm state(#INIT(MANUAL)) = {MANUAL, ADDER1, ADDER2, ADDER3,ADDER4, SUB1, SUB2, SUB3,SUB4, ADDER_ERR, SUB_ERR,
+                                        AND1,AND2,AND3,AND_ERR,OR,OR2,OR_ERR,XOR,XOR2,XOR_ERR,INV,INV_ERR,
                                         CMPEQ, CMPLT, CMPLE, EQ_ERR, LT_ERR, LE_ERR,
                                         LDR,LDR_ERR,
-                                        SHL, SHR, SRA, SHL_ERR,SHR_ERR, SRA_ERR,
-                                        DIV,DIV_ERR,MUL,MUL_ERR,NEG,NEG_ERR,ABS,ABS_ERR,
-                                        OR,OR_ERR,XOR,XOR_ERR,INV,INV_ERR,AND,AND_ERR
+                                        SHL, SHR, SRA, SHL2, SHR2, SRA2, SHL_ERR,SHR_ERR, SRA_ERR,
+                                        DIV,DIV_ERR,MUL,MUL2,MUL3,MUL_ERR,NEG,NEG_ERR,ABS,ABS2,ABS_ERR
                                         };  
     dff counter[30];    // counter for FSM steps
   }
@@ -111,7 +111,7 @@ module testerFSM (
         counter.d = counter.q+1;
 
                 
-        if (counter.q[DELAY]==1 && alu.out == 8b11111111 && alu.vOut ==8b1){  //overflow
+        if (counter.q[DELAY]==1 && alu.out == 8b11111111 && alu.vOut ==8b1){  //v==1, overflow
           counter.d = 0;
           state.d = state.ADDER4;
         }else if (counter.q[DELAY] == 1 && (alu.out != 8b11111111 || alu.vOut !=8b1)){
@@ -181,7 +181,7 @@ module testerFSM (
         counter.d = counter.q+1;
 
                 
-        if (counter.q[DELAY]==1 && alu.out == 8b1111111 && alu.vOut ==8b1){  //overflow
+        if (counter.q[DELAY]==1 && alu.out == 8b1111111 && alu.vOut ==8b1){  //v==1, overflow
           counter.d = 0;
           state.d = state.SUB4;
         }else if (counter.q[DELAY] == 1 && (alu.out != 8b11111111 || alu.vOut !=8b1)){
@@ -196,11 +196,40 @@ module testerFSM (
         text = {"e","s","u","b"};
         
         
-      state.AND:
+      state.AND1:
+        alu.alufn = Inst.AND;        
+        alu.op1 = 8b1;                         
+        alu.op2 = 8b1;
+        text = {"a","n","d",7b1};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b1){
+          counter.d = 0;
+          state.d = state.AND2;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b1){
+          counter.d = 0;
+          state.d = state.AND_ERR;
+        }
+      state.AND2:
+        alu.alufn = Inst.AND;        
+        alu.op1 = 8b0;
+        alu.op2 = 8b0;
+        text = {"a","n","d",7b10};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b0){
+          counter.d = 0;
+          state.d = state.AND3;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b0){
+          counter.d = 0;
+          state.d = state.AND_ERR;
+        }
+        
+      state.AND3:
         alu.alufn = Inst.AND;        
         alu.op1 = 8b1;
         alu.op2 = 8b0;
-        text = {"a","n","d","z"};
+        text = {"a","n","d",7b11};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b0){
@@ -227,8 +256,23 @@ module testerFSM (
         
         if (counter.q[DELAY]==1 && alu.out == 8b1){
           counter.d = 0;
-          state.d = state.XOR;
+          state.d = state.OR2;
         }else if (counter.q[DELAY] == 1 && alu.out != 8b1){
+          counter.d = 0;
+          state.d = state.OR_ERR;
+        }
+        
+       state.OR2:
+        alu.alufn = Inst.OR;         
+        alu.op1 = 8b0;
+        alu.op2 = 8b0;
+        text = {"s","u","b",7b10};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b0){
+          counter.d = 0;
+          state.d = state.XOR;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b0){
           counter.d = 0;
           state.d = state.OR_ERR;
         }
@@ -249,8 +293,23 @@ module testerFSM (
         
         if (counter.q[DELAY]==1 && alu.out == 8b1){
           counter.d = 0;
-          state.d = state.INV;
+          state.d = state.XOR2;
         }else if (counter.q[DELAY] == 1 && alu.out != 8b1){
+          counter.d = 0;
+          state.d = state.XOR_ERR;
+        }
+        
+      state.XOR2:
+        alu.alufn = Inst.XOR;         
+        alu.op1 = 8b1;
+        alu.op2 = 8b1;
+        text = {"h","o","r",7b10};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b0){
+          counter.d = 0;
+          state.d = state.INV;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b0){
           counter.d = 0;
           state.d = state.XOR_ERR;
         }
@@ -303,37 +362,67 @@ module testerFSM (
         
       state.SHL:
         alu.alufn = Inst.SHL;        
-        alu.op1 = 8b11;
+        alu.op1 = 8b11;                                       // positve number
         alu.op2 = 8b1;
         text = {"s","h","l","z"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b110){
           counter.d = 0;
-          state.d = state.SHR;
+          state.d = state.SHL2;
         }else if (counter.q[DELAY] == 1 && alu.out != 8b110){
+          counter.d = 0;
+          state.d = state.SHL_ERR;
+        }
+        
+      state.SHL2:                               
+        alu.alufn = Inst.SHL;        
+        alu.op1 = 8b11111111;                                 // negative number
+        alu.op2 = 8b1;
+        text = {"s","h","l",7b10};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b11111110){
+          counter.d = 0;
+          state.d = state.SHR;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b11111110){
           counter.d = 0;
           state.d = state.SHL_ERR;
         }
         
       state.SHL_ERR:
         alu.alufn = Inst.SHL;
-        alu.op1 = 8b11;
+        alu.op1 = 8b11;                                       
         alu.op2 = 8b1;
         text = {"e","s","h","l"};
         
         
       state.SHR:
         alu.alufn = Inst.SHR;        
-        alu.op1 = 8b11;
+        alu.op1 = 8b11;                                       // positve number
         alu.op2 = 8b1;
         text = {"s","h","r","z"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b1){
           counter.d = 0;
-          state.d = state.SHR;
+          state.d = state.SHR2;
         }else if (counter.q[DELAY] == 1 && alu.out != 8b1){
+          counter.d = 0;
+          state.d = state.SHR_ERR;
+        }
+        
+      state.SHR2:
+        alu.alufn = Inst.SRA;        
+        alu.op1 = 8b11000000;                                 // negative number
+        alu.op2 = 8b1;
+        text = {"s","h","r",7b10};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b1100000){
+          counter.d = 0;
+          state.d = state.SHR;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b1100000){
           counter.d = 0;
           state.d = state.SHR_ERR;
         }
@@ -347,15 +436,30 @@ module testerFSM (
         
       state.SRA:
         alu.alufn = Inst.SRA;        
-        alu.op1 = 8b101;
+        alu.op1 = 8b101;                                       // positve number
         alu.op2 = 8b1;
         text = {"s","r","a","z"};
         counter.d = counter.q+1;
         
-        if (counter.q[DELAY]==1 && alu.out == 8b110){
+        if (counter.q[DELAY]==1 && alu.out == 8b10){
+          counter.d = 0;
+          state.d = state.SRA2;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b10){
+          counter.d = 0;
+          state.d = state.SRA_ERR;
+        }
+        
+      state.SRA2:
+        alu.alufn = Inst.SRA;        
+        alu.op1 = 8b10100000;                                 // negative number
+        alu.op2 = 8b1;
+        text = {"s","r","a",7b10};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b11010000){
           counter.d = 0;
           state.d = state.CMPEQ;
-        }else if (counter.q[DELAY] == 1 && alu.out != 8b110){
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b11010000){
           counter.d = 0;
           state.d = state.SRA_ERR;
         }
@@ -429,6 +533,7 @@ module testerFSM (
         alu.v = 8b1;
         text = {"e","c","p","e"};
         
+        
       state.MUL:
         alu.alufn = Inst.MUL;  
         alu.op1= 8b10;      
@@ -438,11 +543,40 @@ module testerFSM (
         
         if (counter.q[DELAY]==1 && alu.out == 8b100){
           counter.d = 0;
-          state.d = state.NEG;
+          state.d = state.MUL2;
         }else if (counter.q[DELAY] == 1 && alu.out != 8b100){
           counter.d = 0;
           state.d = state.MUL_ERR;
         }
+      state.MUL2:
+        alu.alufn = Inst.MUL;  
+        alu.op1= 8b0;      
+        alu.op2 = 8b10;
+        text = {"n","u","l",7b10};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b0){
+          counter.d = 0;
+          state.d = state.MUL3;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b0){
+          counter.d = 0;
+          state.d = state.MUL_ERR;
+        }
+      state.MUL3:
+        alu.alufn = Inst.MUL;  
+        alu.op1= 8b11111111;      
+        alu.op2 = 8b11111111;
+        text = {"n","u","l",7b11};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b1){
+          counter.d = 0;
+          state.d = state.NEG;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b1){
+          counter.d = 0;
+          state.d = state.MUL_ERR;
+        }
+        
         
       state.MUL_ERR:
         alu.alufn = Inst.MUL;
@@ -485,13 +619,23 @@ module testerFSM (
           counter.d = 0;
           state.d = state.ABS_ERR;
         }
+       state.ABS2:
+        alu.alufn = Inst.ABS;  
+        alu.op1 = 8b1111111;      
+        text = {"a","b","s",7b10};
+        counter.d = counter.q+1;
         
-      state.NEG_ERR:
-        alu.alufn = Inst.NEG;
+        if (counter.q[DELAY]==1 && alu.out == 8b10000001){
+          counter.d = 0;
+          state.d = state.MANUAL;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b10000001){
+          counter.d = 0;
+          state.d = state.ABS_ERR;
+        }
+      state.ABS_ERR:
+        alu.alufn = Inst.ABS;
         alu.op1 = 8b11111111;
         text = {"e","a","b","s"};   
-        
-        
         
     }
   }
