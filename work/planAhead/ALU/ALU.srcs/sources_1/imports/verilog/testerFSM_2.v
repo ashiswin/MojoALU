@@ -149,7 +149,7 @@ module testerFSM_2 (
       end
       ADDER2_state: begin
         M_alu_alufn = 6'h00;
-        M_alu_op1 = 8'h80;
+        M_alu_op1 = 8'h80 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'hc393202;
         M_counter_d = M_counter_q + 1'h1;
@@ -165,7 +165,7 @@ module testerFSM_2 (
       end
       ADDER3_state: begin
         M_alu_alufn = 6'h00;
-        M_alu_op1 = 8'hff;
+        M_alu_op1 = 8'hff + entropy;
         M_alu_op2 = 8'h01;
         text = 28'hc393203;
         M_counter_d = M_counter_q + 1'h1;
@@ -181,7 +181,7 @@ module testerFSM_2 (
       end
       ADDER4_state: begin
         M_alu_alufn = 6'h00;
-        M_alu_op1 = 8'h7f;
+        M_alu_op1 = 8'h7f + entropy;
         M_alu_op2 = 8'h01;
         text = 28'hc393204;
         M_counter_d = M_counter_q + 1'h1;
@@ -203,7 +203,7 @@ module testerFSM_2 (
       end
       SUB1_state: begin
         M_alu_alufn = 6'h01;
-        M_alu_op1 = 8'h02;
+        M_alu_op1 = 8'h02 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7d7101;
         M_counter_d = M_counter_q + 1'h1;
@@ -219,7 +219,7 @@ module testerFSM_2 (
       end
       SUB2_state: begin
         M_alu_alufn = 6'h01;
-        M_alu_op1 = 8'h81;
+        M_alu_op1 = 8'h81 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7d7102;
         M_counter_d = M_counter_q + 1'h1;
@@ -235,7 +235,7 @@ module testerFSM_2 (
       end
       SUB3_state: begin
         M_alu_alufn = 6'h01;
-        M_alu_op1 = 8'h01;
+        M_alu_op1 = 8'h01 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7d7103;
         M_counter_d = M_counter_q + 1'h1;
@@ -251,7 +251,7 @@ module testerFSM_2 (
       end
       SUB4_state: begin
         M_alu_alufn = 6'h01;
-        M_alu_op1 = 8'h80;
+        M_alu_op1 = 8'h80 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7d7104;
         M_counter_d = M_counter_q + 1'h1;
@@ -273,7 +273,7 @@ module testerFSM_2 (
       end
       AND1_state: begin
         M_alu_alufn = 6'h18;
-        M_alu_op1 = 8'h01;
+        M_alu_op1 = 8'h01 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'hc3bb201;
         M_counter_d = M_counter_q + 1'h1;
@@ -289,7 +289,7 @@ module testerFSM_2 (
       end
       AND2_state: begin
         M_alu_alufn = 6'h18;
-        M_alu_op1 = 8'h00;
+        M_alu_op1 = 8'h00 + entropy;
         M_alu_op2 = 8'h00;
         text = 28'hc3bb202;
         M_counter_d = M_counter_q + 1'h1;
@@ -305,7 +305,7 @@ module testerFSM_2 (
       end
       AND3_state: begin
         M_alu_alufn = 6'h18;
-        M_alu_op1 = 8'h01;
+        M_alu_op1 = 8'h01 + entropy;
         M_alu_op2 = 8'h00;
         text = 28'hc3bb203;
         M_counter_d = M_counter_q + 1'h1;
@@ -327,7 +327,7 @@ module testerFSM_2 (
       end
       OR_state: begin
         M_alu_alufn = 6'h1e;
-        M_alu_op1 = 8'h00;
+        M_alu_op1 = 8'h00 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'hdfcaf81;
         M_counter_d = M_counter_q + 1'h1;
@@ -343,7 +343,7 @@ module testerFSM_2 (
       end
       OR2_state: begin
         M_alu_alufn = 6'h1e;
-        M_alu_op1 = 8'h00;
+        M_alu_op1 = 8'h00 + entropy;
         M_alu_op2 = 8'h00;
         text = 28'hdfcaf82;
         M_counter_d = M_counter_q + 1'h1;
@@ -365,7 +365,7 @@ module testerFSM_2 (
       end
       XOR_state: begin
         M_alu_alufn = 6'h16;
-        M_alu_op1 = 8'h00;
+        M_alu_op1 = 8'h00 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'hf1bf97a;
         M_counter_d = M_counter_q + 1'h1;
@@ -381,7 +381,7 @@ module testerFSM_2 (
       end
       XOR2_state: begin
         M_alu_alufn = 6'h16;
-        M_alu_op1 = 8'h01;
+        M_alu_op1 = 8'h01 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'hf1bf902;
         M_counter_d = M_counter_q + 1'h1;
@@ -403,8 +403,8 @@ module testerFSM_2 (
       end
       INV_state: begin
         M_alu_alufn = 6'h11;
-        M_alu_op1 = 8'h00;
-        text = 28'h03bbafa;
+        M_alu_op1 = 8'h00 + entropy;
+        text = 28'h03bbadf;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
           M_counter_d = 1'h0;
@@ -423,7 +423,7 @@ module testerFSM_2 (
       end
       LDR_state: begin
         M_alu_alufn = 6'h1a;
-        M_alu_op1 = 8'h02;
+        M_alu_op1 = 8'h02 + entropy;
         text = 28'hd99397a;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
@@ -443,9 +443,9 @@ module testerFSM_2 (
       end
       SHL_state: begin
         M_alu_alufn = 6'h20;
-        M_alu_op1 = 8'h03;
+        M_alu_op1 = 8'h03 + entropy;
         M_alu_op2 = 8'h01;
-        text = 28'he7a367a;
+        text = 28'he7a3601;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h06) begin
           M_counter_d = 1'h0;
@@ -459,7 +459,7 @@ module testerFSM_2 (
       end
       SHL2_state: begin
         M_alu_alufn = 6'h20;
-        M_alu_op1 = 8'hff;
+        M_alu_op1 = 8'hff + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7a3602;
         M_counter_d = M_counter_q + 1'h1;
@@ -481,9 +481,9 @@ module testerFSM_2 (
       end
       SHR_state: begin
         M_alu_alufn = 6'h21;
-        M_alu_op1 = 8'h03;
+        M_alu_op1 = 8'h03 + entropy;
         M_alu_op2 = 8'h01;
-        text = 28'he7a397a;
+        text = 28'he7a3901;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
@@ -497,13 +497,13 @@ module testerFSM_2 (
       end
       SHR2_state: begin
         M_alu_alufn = 6'h23;
-        M_alu_op1 = 8'hc0;
+        M_alu_op1 = 8'hc0 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7a3902;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h60) begin
           M_counter_d = 1'h0;
-          M_state_d = SHR_state;
+          M_state_d = SRA_state;
         end else begin
           if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h60) begin
             M_counter_d = 1'h0;
@@ -519,7 +519,7 @@ module testerFSM_2 (
       end
       SRA_state: begin
         M_alu_alufn = 6'h23;
-        M_alu_op1 = 8'h05;
+        M_alu_op1 = 8'h05 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7cb0fa;
         M_counter_d = M_counter_q + 1'h1;
@@ -535,7 +535,7 @@ module testerFSM_2 (
       end
       SRA2_state: begin
         M_alu_alufn = 6'h23;
-        M_alu_op1 = 8'ha0;
+        M_alu_op1 = 8'ha0 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7cb082;
         M_counter_d = M_counter_q + 1'h1;
@@ -557,7 +557,7 @@ module testerFSM_2 (
       end
       CMPEQ_state: begin
         M_alu_alufn = 6'h33;
-        M_alu_z = 8'h00;
+        M_alu_z = 8'h00 + entropy;
         text = 28'hc7c32ef;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
@@ -577,7 +577,7 @@ module testerFSM_2 (
       end
       CMPLT_state: begin
         M_alu_alufn = 6'h35;
-        M_alu_n = 8'h00;
+        M_alu_n = 8'h00 + entropy;
         M_alu_v = 8'h01;
         text = 28'hc7c3674;
         M_counter_d = M_counter_q + 1'h1;
@@ -599,18 +599,18 @@ module testerFSM_2 (
       end
       CMPLE_state: begin
         M_alu_alufn = 6'h37;
-        M_alu_z = 8'h00;
+        M_alu_z = 8'h00 + entropy;
         M_alu_n = 8'h00;
         M_alu_v = 8'h01;
-        text = 28'hc7c3674;
+        text = 28'hc7c3665;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = MUL_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
-            M_state_d = LT_ERR_state;
+            M_state_d = LE_ERR_state;
           end
         end
       end
@@ -623,7 +623,7 @@ module testerFSM_2 (
       end
       MUL_state: begin
         M_alu_alufn = 6'h02;
-        M_alu_op1 = 8'h02;
+        M_alu_op1 = 8'h02 + entropy;
         M_alu_op2 = 8'h02;
         text = 28'hddd767a;
         M_counter_d = M_counter_q + 1'h1;
@@ -639,7 +639,7 @@ module testerFSM_2 (
       end
       MUL2_state: begin
         M_alu_alufn = 6'h02;
-        M_alu_op1 = 8'h00;
+        M_alu_op1 = 8'h00 + entropy;
         M_alu_op2 = 8'h02;
         text = 28'hddd7602;
         M_counter_d = M_counter_q + 1'h1;
@@ -655,7 +655,7 @@ module testerFSM_2 (
       end
       MUL3_state: begin
         M_alu_alufn = 6'h02;
-        M_alu_op1 = 8'hff;
+        M_alu_op1 = 8'hff + entropy;
         M_alu_op2 = 8'hff;
         text = 28'hddd7603;
         M_counter_d = M_counter_q + 1'h1;
@@ -677,7 +677,7 @@ module testerFSM_2 (
       end
       NEG_state: begin
         M_alu_alufn = 6'h04;
-        M_alu_op1 = 8'h01;
+        M_alu_op1 = 8'h01 + entropy;
         text = 28'hdd9437a;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
@@ -697,7 +697,7 @@ module testerFSM_2 (
       end
       ABS_state: begin
         M_alu_alufn = 6'h05;
-        M_alu_op1 = 8'hff;
+        M_alu_op1 = 8'hff + entropy;
         text = 28'hc38b9fa;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
@@ -712,7 +712,7 @@ module testerFSM_2 (
       end
       ABS2_state: begin
         M_alu_alufn = 6'h05;
-        M_alu_op1 = 8'h7f;
+        M_alu_op1 = 8'h7f + entropy;
         text = 28'hc38b982;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h81) begin

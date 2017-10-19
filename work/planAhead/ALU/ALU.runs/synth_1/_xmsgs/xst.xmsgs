@@ -5,18 +5,6 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/arroyo/mojo/alu/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/shifter_10.v" Line 17: Result of <arg fmt="%d" index="1">8</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">1</arg>-bit target.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/arroyo/mojo/alu/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/shifter_10.v" Line 21: Result of <arg fmt="%d" index="1">8</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">1</arg>-bit target.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/arroyo/mojo/alu/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/shifter_10.v" Line 24: Result of <arg fmt="%d" index="1">8</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">1</arg>-bit target.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/arroyo/mojo/alu/work/planAhead/ALU/ALU.srcs/sources_1/imports/verilog/shifter_10.v" Line 27: Result of <arg fmt="%d" index="1">8</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">1</arg>-bit target.
-</msg>
-
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">cclk</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
@@ -44,51 +32,6 @@
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">io_dip&lt;7:6&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">011010</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">011000</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">011011</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">011001</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101010</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">100111</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">100100</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">010111</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101101</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101011</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101100</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101110</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">101111</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">110000</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">110010</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
 <msg type="warning" file="Xst" num="737" delta="new" >Found <arg fmt="%d" index="1">1</arg>-bit latch for signal &lt;<arg fmt="%s" index="2">fmulres&lt;7&gt;</arg>&gt;. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 </msg>
 
@@ -113,6 +56,9 @@
 <msg type="warning" file="Xst" num="737" delta="new" >Found <arg fmt="%d" index="1">1</arg>-bit latch for signal &lt;<arg fmt="%s" index="2">fmulres&lt;0&gt;</arg>&gt;. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 </msg>
 
+<msg type="info" file="Xst" num="1767" delta="new" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+</msg>
+
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">M_counter_q_27</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">testerFSM_2</arg>&gt;.
 </msg>
 
@@ -120,6 +66,63 @@
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">M_counter_q_29</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">testerFSM_2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd1</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd4</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd5</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd6</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd7</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd9</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd8</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd12</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd19</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd21</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd23</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd20</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd22</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">test/M_state_q_FSM_FFd24</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="638" delta="new" >in unit <arg fmt="%s" index="1">mojo_top_0</arg> Conflict on KEEP property on signal <arg fmt="%s" index="2">test/M_state_q_FSM_FFd20</arg> and <arg fmt="%s" index="3">test/M_state_q_FSM_FFd22</arg> <arg fmt="%s" index="4">test/M_state_q_FSM_FFd22</arg> signal will be lost.
+</msg>
+
+<msg type="warning" file="Xst" num="638" delta="new" >in unit <arg fmt="%s" index="1">mojo_top_0</arg> Conflict on KEEP property on signal <arg fmt="%s" index="2">test/M_state_q_FSM_FFd20</arg> and <arg fmt="%s" index="3">test/M_state_q_FSM_FFd24</arg> <arg fmt="%s" index="4">test/M_state_q_FSM_FFd24</arg> signal will be lost.
 </msg>
 
 <msg type="info" file="Xst" num="741" delta="new" >HDL ADVISOR - A <arg fmt="%d" index="1">4</arg>-bit shift register was found for signal &lt;<arg fmt="%s" index="2">reset_cond/M_stage_q_3</arg>&gt; and currently occupies <arg fmt="%d" index="3">4</arg> logic cells (<arg fmt="%d" index="4">2</arg> slices). Removing the set/reset logic would take advantage of SRL<arg fmt="%d" index="5">32</arg> (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.

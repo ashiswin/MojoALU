@@ -328,9 +328,9 @@ module testerFSM (
         
         
       state.INV:
-        alu.alufn = Inst.INV;         
+        alu.alufn = Inst.INV;
         alu.op1 = 8b0 + entropy;
-        text = {7b1,"n","u","z"};
+        text = {7b1,"n","u","_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b11111111){
@@ -370,7 +370,9 @@ module testerFSM (
         alu.alufn = Inst.SHL;        
         alu.op1 = 8b11 + entropy;                                       // positve number
         alu.op2 = 8b1;
-        text = {"s","h","l","z"};
+        text = {"s","h","l",7b1};
+        
+        
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b110){
@@ -407,7 +409,7 @@ module testerFSM (
         alu.alufn = Inst.SHR;        
         alu.op1 = 8b11 + entropy;                                       // positve number
         alu.op2 = 8b1;
-        text = {"s","h","r","z"};
+        text = {"s","h","r",7b1};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b1){
@@ -427,7 +429,7 @@ module testerFSM (
         
         if (counter.q[DELAY]==1 && alu.out == 8b1100000){
           counter.d = 0;
-          state.d = state.SHR;
+          state.d = state.SRA;
         }else if (counter.q[DELAY] == 1 && alu.out != 8b1100000){
           counter.d = 0;
           state.d = state.SHR_ERR;
@@ -521,15 +523,15 @@ module testerFSM (
         alu.z= 8b0 + entropy;      
         alu.n = 8b0;
         alu.v = 8b1;
-        text = {"c","p","l","t"};
+        text = {"c","p","l","e"};
         counter.d = counter.q+1;
         
-        if (counter.q[DELAY]==1 && alu.out == 8b0){
+        if (counter.q[DELAY]==1 && alu.out == 8b1){
           counter.d = 0;
           state.d = state.MUL;
-        }else if (counter.q[DELAY] == 1 && alu.out != 8b0){
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b1){
           counter.d = 0;
-          state.d = state.LT_ERR;
+          state.d = state.LE_ERR;
         }
         
       state.LE_ERR:

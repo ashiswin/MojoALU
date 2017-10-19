@@ -40,7 +40,7 @@ module alu_4 (
     .out(M_boolean_out)
   );
   
-  wire [1-1:0] M_shifter_out;
+  wire [8-1:0] M_shifter_out;
   shifter_10 shifter (
     .alufn(alufn),
     .op1(op1),
