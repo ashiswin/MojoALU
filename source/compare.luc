@@ -7,7 +7,9 @@ module compare (
   ) {
 
   always {
-    out = 8h00;
+    out = 8h00; // Set default output to 0
+    
+    // Pretty straightforward selector :P
     case(alufn) {
       Inst.CMPEQ:
         out[0] = z;

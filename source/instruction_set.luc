@@ -1,32 +1,32 @@
 global Inst {
   // Adder instructions
-  const ADD   = 6b000000; // Works
-  const SUB   = 6b000001; // Works
-  const MUL   = 6b000010; // Works
-  const DIV   = 6b000011; // Undone
-  const NEG   = 6b000100; // Works
-  const ABS   = 6b000101; // Works
+  const ADD   = 6b000000; // Works Inputs: op1, op2, alufn; Outputs: sum
+  const SUB   = 6b000001; // Works Inputs: op1, op2, alufn; Outputs: difference
+  const MUL   = 6b000010; // Works Inputs: op1, op2, alufn; Outputs: product
+  const DIV   = 6b000011; // In case we figure out how to do it
+  const NEG   = 6b000100; // Works Inputs: op1, alufn; Outputs: -op1
+  const ABS   = 6b000101; // Works Inputs: op1, alufn; Outputs: |op1|
   
   // Boolean instructions
-  const AND   = 6b011000; // Works
-  const OR    = 6b011110; // Works
-  const XOR   = 6b010110; // Works
-  const LDR   = 6b011010; // Works
-  const INV   = 6b010001; // Works
+  const AND   = 6b011000; // Works Inputs: op1, op2, alufn; Outputs: op1 & op2
+  const OR    = 6b011110; // Works Inputs: op1, op2, alufn; Outputs: op1 | op2
+  const XOR   = 6b010110; // Works Inputs: op1, op2, alufn; Outputs: op1 ^ op2
+  const LDR   = 6b011010; // Works Inputs: op1, op2, alufn; Outputs: op1
+  const INV   = 6b010001; // Works Inputs: op1, alufn; Outputs: ~op1
   
   // Shifter instructions
-  const SHL   = 6b100000; // Works
-  const SHR   = 6b100001; // Works
-  const SRA   = 6b100011; // Works
+  const SHL   = 6b100000; // Works Inputs: op1, op2, alufn; Outputs: op1 >> op2
+  const SHR   = 6b100001; // Works Inputs: op1, op2, alufn; Outputs: op1 << op2
+  const SRA   = 6b100011; // Works Inputs: op1, op2, alufn; Outputs: op1 << op2 with sign extension
   
   // Comparator instructions
-  const CMPEQ = 6b110011; // Works
-  const CMPLT = 6b110101; // Works
-  const CMPLE = 6b110111; // Works
+  const CMPEQ = 6b110011; // Works Inputs: op1, op2, alufn; Outputs: op1 == op2
+  const CMPLT = 6b110101; // Works Inputs: op1, op2, alufn; Outputs: op1 < op2
+  const CMPLE = 6b110111; // Works Inputs: op1, op2, alufn; Outputs: op1 <= op2
   
   // FPU instructions
-  const FADD  = 6b001000; // Unsigned works
-  const FMUL  = 6b001010; // Works
-  const ITOF  = 6b001001; // Works
-  const FTOI  = 6b001011;
+  const FADD  = 6b001000; // Unsigned works  Inputs: op1, op2, alufn; Outputs: sum
+  const FMUL  = 6b001010; // Works Inputs: op1, op2, alufn; Outputs: product
+  const ITOF  = 6b001001; // Works Inputs: op1, alufn; Outputs: float(op1)
+  const FTOI  = 6b001011; // Works Inputs: op1, alufn; Outputs: int(op1)
 }

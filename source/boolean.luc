@@ -6,7 +6,9 @@ module boolean (
   ) {
 
   always {
-    out = 8hxx;
+    out = 8hxx; // Don't care what the default output is
+    
+    // Pretty straightforward selector lol
     case(alufn) {
       Inst.AND:
         out = op1 & op2;
