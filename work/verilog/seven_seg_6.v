@@ -72,7 +72,7 @@ module seven_seg_6 (
         segs = 8'hd4;
       end
       7'h6c: begin
-        segs = 8'h38;
+        segs = 8'hb8;
       end
       7'h6f: begin
         segs = 8'hbf;

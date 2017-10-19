@@ -343,7 +343,7 @@ module testerFSM (
       state.LDR:
         alu.alufn = Inst.LDR;         
         alu.op1 = 8b10;
-        text = {"l","d","r","z"};
+        text = {"l","d","r","_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b10){
@@ -364,7 +364,7 @@ module testerFSM (
         alu.alufn = Inst.SHL;        
         alu.op1 = 8b11;                                       // positve number
         alu.op2 = 8b1;
-        text = {"s","h","l","z"};
+        text = {"s","h","l","_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b110){

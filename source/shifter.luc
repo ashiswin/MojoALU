@@ -2,7 +2,7 @@ module shifter (
     input alufn[6],
     input op1[8],
     input op2[5],
-    output out
+    output out[8]
   ) {
 
   always {
