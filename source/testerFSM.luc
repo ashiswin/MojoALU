@@ -54,7 +54,7 @@ module testerFSM (
         }
   
       state.ADDER1:
-        alu.alufn = 6b0;              //selects addition operation of alu
+        alu.alufn = Inst.ADD;              //selects addition operation of alu
         alu.op1 = 8b1;                //input op1 = 1
         alu.op2 = 8b1;                //input a = 1
         text = {"a","d","d",7b1};     //displays "add" to show testing of ADDER
