@@ -1,8 +1,8 @@
 INTSTYLE=pa
-INFILE=/home/arroyo/mojo/alu/work/planAhead/ALU/ALU.runs/impl_1/mojo_top_0_routed.ncd
-OUTFILE=/home/arroyo/mojo/alu/work/planAhead/ALU/ALU.runs/impl_1/mojo_top_0.bit
+INFILE=C:\Users\ashis\Documents\mojo\ALU\work\planAhead\ALU\ALU.runs\impl_1\mojo_top_0_routed.ncd
+OUTFILE=C:\Users\ashis\Documents\mojo\ALU\work\planAhead\ALU\ALU.runs\impl_1\mojo_top_0.bit
 FAMILY=Spartan6
 PART=xc6slx9-2tqg144
-WORKINGDIR=/home/arroyo/mojo/alu/work/planAhead/ALU/ALU.runs/impl_1
+WORKINGDIR=C:\Users\ashis\Documents\mojo\ALU\work\planAhead\ALU\ALU.runs\impl_1
 LICENSE=WebPack
 USER_INFO=211400432_0_0_717

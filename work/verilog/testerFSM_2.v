@@ -69,6 +69,14 @@ module testerFSM_2 (
   localparam ABS_state = 6'd48;
   localparam ABS2_state = 6'd49;
   localparam ABS_ERR_state = 6'd50;
+  localparam FADD_state = 6'd51;
+  localparam FMUL_state = 6'd52;
+  localparam ITOF_state = 6'd53;
+  localparam FTOI_state = 6'd54;
+  localparam FADD_ERR_state = 6'd55;
+  localparam FMUL_ERR_state = 6'd56;
+  localparam ITOF_ERR_state = 6'd57;
+  localparam FTOI_ERR_state = 6'd58;
   
   reg [5:0] M_state_d, M_state_q = MANUAL_state;
   reg [29:0] M_counter_d, M_counter_q = 1'h0;
@@ -96,7 +104,7 @@ module testerFSM_2 (
     .nOut(M_alu_nOut)
   );
   
-  localparam DELAY = 5'h1a;
+  localparam DELAY = 5'h17;
   
   reg entropy;
   
@@ -137,11 +145,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'hc393201;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
           M_counter_d = 1'h0;
           M_state_d = ADDER2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h02) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h02) begin
             M_counter_d = 1'h0;
             M_state_d = ADDER_ERR_state;
           end
@@ -153,11 +161,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'hc393202;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h81 && M_alu_nOut == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h81 && M_alu_nOut == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = ADDER3_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && (M_alu_out != 8'h81 || M_alu_nOut != 8'h01)) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && (M_alu_out != 8'h81 || M_alu_nOut != 8'h01)) begin
             M_counter_d = 1'h0;
             M_state_d = ADDER_ERR_state;
           end
@@ -169,11 +177,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'hc393203;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00 && M_alu_zOut == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h00 && M_alu_zOut == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = ADDER4_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && (M_alu_out != 8'h00 || M_alu_zOut != 8'h01)) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && (M_alu_out != 8'h00 || M_alu_zOut != 8'h01)) begin
             M_counter_d = 1'h0;
             M_state_d = ADDER_ERR_state;
           end
@@ -185,11 +193,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'hc393204;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h80 && M_alu_vOut == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h80 && M_alu_vOut == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = SUB1_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1) begin
+          if (M_counter_q[23+0-:1] == 1'h1) begin
             M_counter_d = 1'h0;
             M_state_d = ADDER_ERR_state;
           end
@@ -207,11 +215,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7d7101;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = SUB2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = SUB_ERR_state;
           end
@@ -223,11 +231,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7d7102;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h80 && M_alu_nOut == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h80 && M_alu_nOut == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = SUB3_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && (M_alu_out != 8'h80 || M_alu_nOut != 8'h01)) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && (M_alu_out != 8'h80 || M_alu_nOut != 8'h01)) begin
             M_counter_d = 1'h0;
             M_state_d = SUB_ERR_state;
           end
@@ -239,11 +247,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7d7103;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00 && M_alu_zOut == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h00 && M_alu_zOut == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = SUB4_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && (M_alu_out != 8'h00 || M_alu_zOut != 8'h01)) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && (M_alu_out != 8'h00 || M_alu_zOut != 8'h01)) begin
             M_counter_d = 1'h0;
             M_state_d = ADDER_ERR_state;
           end
@@ -255,11 +263,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7d7104;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h7f && M_alu_vOut == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h7f && M_alu_vOut == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = AND1_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1) begin
+          if (M_counter_q[23+0-:1] == 1'h1) begin
             M_counter_d = 1'h0;
             M_state_d = SUB_ERR_state;
           end
@@ -277,11 +285,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'hc3bb201;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = AND2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = AND_ERR_state;
           end
@@ -293,11 +301,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h00;
         text = 28'hc3bb202;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
           M_counter_d = 1'h0;
           M_state_d = AND3_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
             M_counter_d = 1'h0;
             M_state_d = AND_ERR_state;
           end
@@ -309,11 +317,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h00;
         text = 28'hc3bb203;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
           M_counter_d = 1'h0;
           M_state_d = OR_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = AND_ERR_state;
           end
@@ -331,11 +339,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'hdfcaf81;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = OR2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = OR_ERR_state;
           end
@@ -347,11 +355,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h00;
         text = 28'hdfcaf82;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
           M_counter_d = 1'h0;
           M_state_d = XOR_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
             M_counter_d = 1'h0;
             M_state_d = OR_ERR_state;
           end
@@ -369,11 +377,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'hf1bf97a;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = XOR2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = XOR_ERR_state;
           end
@@ -385,11 +393,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'hf1bf902;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
           M_counter_d = 1'h0;
           M_state_d = INV_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
             M_counter_d = 1'h0;
             M_state_d = XOR_ERR_state;
           end
@@ -406,11 +414,11 @@ module testerFSM_2 (
         M_alu_op1 = 8'h00 + entropy;
         text = 28'h03bbadf;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
           M_counter_d = 1'h0;
           M_state_d = LDR_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1) begin
+          if (M_counter_q[23+0-:1] == 1'h1) begin
             M_counter_d = 1'h0;
             M_state_d = INV_ERR_state;
           end
@@ -426,11 +434,11 @@ module testerFSM_2 (
         M_alu_op1 = 8'h02 + entropy;
         text = 28'hd99397a;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
           M_counter_d = 1'h0;
           M_state_d = SHL_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h02) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h02) begin
             M_counter_d = 1'h0;
             M_state_d = LDR_ERR_state;
           end
@@ -447,11 +455,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7a3601;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h06) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h06) begin
           M_counter_d = 1'h0;
           M_state_d = SHL2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h06) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h06) begin
             M_counter_d = 1'h0;
             M_state_d = SHL_ERR_state;
           end
@@ -463,11 +471,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7a3602;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hfe) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'hfe) begin
           M_counter_d = 1'h0;
           M_state_d = SHR_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'hfe) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'hfe) begin
             M_counter_d = 1'h0;
             M_state_d = SHL_ERR_state;
           end
@@ -485,27 +493,27 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7a3901;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = SHR2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = SHR_ERR_state;
           end
         end
       end
       SHR2_state: begin
-        M_alu_alufn = 6'h23;
+        M_alu_alufn = 6'h21;
         M_alu_op1 = 8'hc0 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'he7a3902;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h60) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h60) begin
           M_counter_d = 1'h0;
           M_state_d = SRA_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h60) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h60) begin
             M_counter_d = 1'h0;
             M_state_d = SHR_ERR_state;
           end
@@ -523,11 +531,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7cb0fa;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
           M_counter_d = 1'h0;
           M_state_d = SRA2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h02) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h02) begin
             M_counter_d = 1'h0;
             M_state_d = SRA_ERR_state;
           end
@@ -539,11 +547,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h01;
         text = 28'he7cb082;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hd0) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'hd0) begin
           M_counter_d = 1'h0;
           M_state_d = CMPEQ_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'hd0) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'hd0) begin
             M_counter_d = 1'h0;
             M_state_d = SRA_ERR_state;
           end
@@ -560,11 +568,11 @@ module testerFSM_2 (
         M_alu_z = 8'h00 + entropy;
         text = 28'hc7c32ef;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
           M_counter_d = 1'h0;
           M_state_d = CMPLT_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
             M_counter_d = 1'h0;
             M_state_d = EQ_ERR_state;
           end
@@ -581,11 +589,11 @@ module testerFSM_2 (
         M_alu_v = 8'h01;
         text = 28'hc7c3674;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = CMPLE_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = LT_ERR_state;
           end
@@ -604,11 +612,11 @@ module testerFSM_2 (
         M_alu_v = 8'h01;
         text = 28'hc7c3665;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = MUL_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = LE_ERR_state;
           end
@@ -627,11 +635,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h02;
         text = 28'hddd767a;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h04) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h04) begin
           M_counter_d = 1'h0;
           M_state_d = MUL2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h04) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h04) begin
             M_counter_d = 1'h0;
             M_state_d = MUL_ERR_state;
           end
@@ -643,11 +651,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'h02;
         text = 28'hddd7602;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
           M_counter_d = 1'h0;
           M_state_d = MUL3_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
             M_counter_d = 1'h0;
             M_state_d = MUL_ERR_state;
           end
@@ -659,11 +667,11 @@ module testerFSM_2 (
         M_alu_op2 = 8'hff;
         text = 28'hddd7603;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = NEG_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = MUL_ERR_state;
           end
@@ -680,11 +688,11 @@ module testerFSM_2 (
         M_alu_op1 = 8'h01 + entropy;
         text = 28'hdd9437a;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
           M_counter_d = 1'h0;
           M_state_d = ABS_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
             M_counter_d = 1'h0;
             M_state_d = NEG_ERR_state;
           end
@@ -698,13 +706,13 @@ module testerFSM_2 (
       ABS_state: begin
         M_alu_alufn = 6'h05;
         M_alu_op1 = 8'hff + entropy;
-        text = 28'hc38b9fa;
+        text = 28'hc38b9df;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
-          M_state_d = MANUAL_state;
+          M_state_d = ABS2_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
             M_state_d = ABS_ERR_state;
           end
@@ -715,11 +723,11 @@ module testerFSM_2 (
         M_alu_op1 = 8'h7f + entropy;
         text = 28'hc38b982;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h81) begin
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h7f) begin
           M_counter_d = 1'h0;
-          M_state_d = MANUAL_state;
+          M_state_d = FADD_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h81) begin
+          if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out != 8'h81) begin
             M_counter_d = 1'h0;
             M_state_d = ABS_ERR_state;
           end
@@ -729,6 +737,90 @@ module testerFSM_2 (
         M_alu_alufn = 6'h05;
         M_alu_op1 = 8'hff;
         text = 28'hcb87173;
+      end
+      FADD_state: begin
+        M_alu_alufn = 6'h08;
+        M_alu_op1 = 8'h4b + entropy;
+        M_alu_op2 = 8'h30;
+        text = 28'hcd87264;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h4c) begin
+          M_counter_d = 1'h0;
+          M_state_d = ITOF_state;
+        end else begin
+          if (M_counter_q[23+0-:1] == 1'h1) begin
+            M_counter_d = 1'h0;
+            M_state_d = FADD_ERR_state;
+          end
+        end
+      end
+      FADD_ERR_state: begin
+        M_alu_alufn = 6'h08;
+        M_alu_op1 = 8'h4b;
+        M_alu_op2 = 8'h30;
+        text = 28'hcb9b0e4;
+      end
+      FTOI_state: begin
+        M_alu_alufn = 6'h0b;
+        M_alu_op1 = 8'h38 + entropy;
+        text = 28'hcdd37ec;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
+          M_counter_d = 1'h0;
+          M_state_d = ITOF_state;
+        end else begin
+          if (M_counter_q[23+0-:1] == 1'h1) begin
+            M_counter_d = 1'h0;
+            M_state_d = FTOI_ERR_state;
+          end
+        end
+      end
+      FTOI_ERR_state: begin
+        M_alu_alufn = 6'h0b;
+        M_alu_op1 = 8'h38;
+        text = 28'hcb9ba6f;
+      end
+      ITOF_state: begin
+        M_alu_alufn = 6'h09;
+        M_alu_op1 = 8'h01 + entropy;
+        text = 28'hd9d37e6;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h38) begin
+          M_counter_d = 1'h0;
+          M_state_d = MANUAL_state;
+        end else begin
+          if (M_counter_q[23+0-:1] == 1'h1) begin
+            M_counter_d = 1'h0;
+            M_state_d = ITOF_ERR_state;
+          end
+        end
+      end
+      ITOF_ERR_state: begin
+        M_alu_alufn = 6'h09;
+        M_alu_op1 = 8'h01;
+        text = 28'hcbb3a6f;
+      end
+      FMUL_state: begin
+        M_alu_alufn = 6'h0a;
+        M_alu_op1 = 8'h4b + entropy;
+        M_alu_op2 = 8'h38;
+        text = 28'hcdbbaec;
+        M_counter_d = M_counter_q + 1'h1;
+        if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h4b) begin
+          M_counter_d = 1'h0;
+          M_state_d = MANUAL_state;
+        end else begin
+          if (M_counter_q[23+0-:1] == 1'h1) begin
+            M_counter_d = 1'h0;
+            M_state_d = FMUL_ERR_state;
+          end
+        end
+      end
+      FMUL_ERR_state: begin
+        M_alu_alufn = 6'h0a;
+        M_alu_op1 = 8'h4b;
+        M_alu_op2 = 8'h38;
+        text = 28'hcb9b6ec;
       end
     endcase
   end

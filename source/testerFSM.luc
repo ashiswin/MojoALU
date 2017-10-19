@@ -19,13 +19,15 @@ module testerFSM (
                                         CMPEQ, CMPLT, CMPLE, EQ_ERR, LT_ERR, LE_ERR,
                                         LDR,LDR_ERR,
                                         SHL, SHR, SRA, SHL2, SHR2, SRA2, SHL_ERR,SHR_ERR, SRA_ERR,
-                                        DIV,DIV_ERR,MUL,MUL2,MUL3,MUL_ERR,NEG,NEG_ERR,ABS,ABS2,ABS_ERR
+                                        DIV,DIV_ERR,MUL,MUL2,MUL3,MUL_ERR,NEG,NEG_ERR,ABS,ABS2,ABS_ERR,
+                                        FADD, FMUL, ITOF, FTOI,
+                                        FADD_ERR, FMUL_ERR, ITOF_ERR, FTOI_ERR
                                         };  
     dff counter[30];    // counter for FSM steps
   }
   alu alu;
   
-  const DELAY = 26;// sets a delay to give time for calculations to complete. Lower number = less delay
+  const DELAY = 23;// sets a delay to give time for calculations to complete. Lower number = less delay
   sig entropy;
   
   always {
@@ -421,7 +423,7 @@ module testerFSM (
         }
         
       state.SHR2:
-        alu.alufn = Inst.SRA;        
+        alu.alufn = Inst.SHR;        
         alu.op1 = 8b11000000 + entropy;                                 // negative number
         alu.op2 = 8b1;
         text = {"s","h","r",7b10};
@@ -617,12 +619,12 @@ module testerFSM (
       state.ABS:
         alu.alufn = Inst.ABS;  
         alu.op1 = 8b11111111 + entropy;      
-        text = {"a","b","s","z"};
+        text = {"a","b","s","_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b1){
           counter.d = 0;
-          state.d = state.MANUAL;
+          state.d = state.ABS2;
         }else if (counter.q[DELAY] == 1 && alu.out != 8b1){
           counter.d = 0;
           state.d = state.ABS_ERR;
@@ -633,9 +635,9 @@ module testerFSM (
         text = {"a","b","s",7b10};
         counter.d = counter.q+1;
         
-        if (counter.q[DELAY]==1 && alu.out == 8b10000001){
+        if (counter.q[DELAY]==1 && alu.out == 8b1111111){
           counter.d = 0;
-          state.d = state.MANUAL;
+          state.d = state.FADD;
         }else if (counter.q[DELAY] == 1 && alu.out != 8b10000001){
           counter.d = 0;
           state.d = state.ABS_ERR;
@@ -643,8 +645,88 @@ module testerFSM (
       state.ABS_ERR:
         alu.alufn = Inst.ABS;
         alu.op1 = 8b11111111;
-        text = {"e","a","b","s"};   
+        text = {"e","a","b","s"};
         
+      state.FADD:
+        alu.alufn = Inst.FADD;  
+        alu.op1 = 8b01001011 + entropy;  
+        alu.op2 = 8b00110000;
+        
+        text = {"f","a","d","d"};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b01001100){
+          counter.d = 0;
+          state.d = state.ITOF;
+        }else if (counter.q[DELAY] == 1){
+          counter.d = 0;
+          state.d = state.FADD_ERR;
+        }
+      state.FADD_ERR:
+        alu.alufn = Inst.FADD;
+        alu.op1 = 8b01001011;
+        alu.op2 = 8b00110000;
+        text = {"e","f","a","d"};
+        
+      state.FTOI:
+        alu.alufn = Inst.FTOI;  
+        alu.op1 = 8b00111000 + entropy;
+        
+        
+        text = {"f","t","o","l"};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b1){
+          counter.d = 0;
+          state.d = state.ITOF;
+        }else if (counter.q[DELAY] == 1){
+          counter.d = 0;
+          state.d = state.FTOI_ERR;
+        }
+      state.FTOI_ERR:
+        alu.alufn = Inst.FTOI;
+        alu.op1 = 8b00111000;
+        text = {"e","f","t","o"};
+      
+      state.ITOF:
+        alu.alufn = Inst.ITOF;  
+        alu.op1 = 8b1 + entropy;
+        
+        text = {"l","t","o","f"};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b00111000){
+          counter.d = 0;
+          state.d = state.MANUAL;
+        }else if (counter.q[DELAY] == 1){
+          counter.d = 0;
+          state.d = state.ITOF_ERR;
+        }
+      state.ITOF_ERR:
+        alu.alufn = Inst.ITOF;
+        alu.op1 = 8b1;
+        text = {"e","l","t","o"};
+        
+      state.FMUL:
+        alu.alufn = Inst.FMUL;  
+        alu.op1 = 8b01001011 + entropy;  
+        alu.op2 = 8b00111000;
+        
+        text = {"f","n","u","l"};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b01001011){
+          counter.d = 0;
+          state.d = state.MANUAL;
+        }else if (counter.q[DELAY] == 1){
+          counter.d = 0;
+          state.d = state.FMUL_ERR;
+        }
+      state.FMUL_ERR:
+        alu.alufn = Inst.FMUL;
+        alu.op1 = 8b01001011;  
+        alu.op2 = 8b00111000;
+        text = {"e","f","m","l"};
     }
   }
 }

@@ -1,4 +1,4 @@
-Release 14.7 Map P.20131013 (lin64)
+Release 14.7 Map P.20131013 (nt)
 Xilinx Mapping Report File for Design 'mojo_top_0'
 
 Design Information
@@ -8,23 +8,23 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Thu Oct 19 23:13:50 2017
+Mapped Date    : Fri Oct 20 00:07:24 2017
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    7
 Slice Logic Utilization:
-  Number of Slice Registers:                   107 out of  11,440    1%
-    Number used as Flip Flops:                  99
+  Number of Slice Registers:                   127 out of  11,440    1%
+    Number used as Flip Flops:                 119
     Number used as Latches:                      8
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        841 out of   5,720   14%
-    Number used as logic:                      839 out of   5,720   14%
-      Number using O6 output only:             762
-      Number using O5 output only:              42
-      Number using O5 and O6:                   35
+  Number of Slice LUTs:                        981 out of   5,720   17%
+    Number used as logic:                      979 out of   5,720   17%
+      Number using O6 output only:             902
+      Number using O5 output only:              39
+      Number using O5 and O6:                   38
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
     Number used exclusively as route-thrus:      2
@@ -33,15 +33,15 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   285 out of   1,430   19%
-  Number of MUXCYs used:                        76 out of   2,860    2%
-  Number of LUT Flip Flop pairs used:          845
-    Number with an unused Flip Flop:           740 out of     845   87%
-    Number with an unused LUT:                   4 out of     845    1%
-    Number of fully used LUT-FF pairs:         101 out of     845   11%
+  Number of occupied Slices:                   361 out of   1,430   25%
+  Number of MUXCYs used:                        72 out of   2,860    2%
+  Number of LUT Flip Flop pairs used:          990
+    Number with an unused Flip Flop:           864 out of     990   87%
+    Number with an unused LUT:                   9 out of     990    1%
+    Number of fully used LUT-FF pairs:         117 out of     990   11%
     Number of unique control sets:               5
     Number of slice register sites lost
-      to control set restrictions:              21 out of  11,440    1%
+      to control set restrictions:              17 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -78,11 +78,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                4.79
+Average Fanout of Non-Clock Nets:                4.95
 
-Peak Memory Usage:  823 MB
-Total REAL time to MAP completion:  10 secs 
-Total CPU time to MAP completion (all processors):   10 secs 
+Peak Memory Usage:  307 MB
+Total REAL time to MAP completion:  17 secs 
+Total CPU time to MAP completion (all processors):   20 secs 
 
 Table of Contents
 -----------------
@@ -151,7 +151,7 @@ INFO:Pack:1650 - Map created a placed design.
 Section 4 - Removed Logic Summary
 ---------------------------------
   13 block(s) removed
-  11 block(s) optimized away
+  10 block(s) optimized away
    7 signal(s) removed
 
 Section 5 - Removed Logic
@@ -193,7 +193,6 @@ VCC 		seg/ctr/XST_VCC
 VCC 		test/CC
 GND 		test/ND
 GND 		test/alu/XST_GND
-VCC 		test/alu/XST_VCC
 GND 		test/alu/adder/XST_GND
 VCC 		test/alu/adder/XST_VCC
 
