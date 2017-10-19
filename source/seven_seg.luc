@@ -25,7 +25,7 @@ module seven_seg (
       "f": segs = 8b11110001;
       "h": segs = 8b11110100;
       "n": segs = 8b11010100;
-      "l": segs = 8b00111000;
+      "l": segs = 8b10111000;
       "o": segs = 8b10111111;
       "p": segs = 8b11110011;
       "r": segs = 8b11010000;
