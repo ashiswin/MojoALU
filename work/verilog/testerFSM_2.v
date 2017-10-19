@@ -398,7 +398,7 @@ module testerFSM_2 (
       INV_state: begin
         M_alu_alufn = 6'h11;
         M_alu_op1 = 8'h00;
-        text = 28'h03bbafa;
+        text = 28'h03bbadf;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'hff) begin
           M_counter_d = 1'h0;
@@ -418,7 +418,7 @@ module testerFSM_2 (
       LDR_state: begin
         M_alu_alufn = 6'h1a;
         M_alu_op1 = 8'h02;
-        text = 28'hd99397a;
+        text = 28'hd99395f;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h02) begin
           M_counter_d = 1'h0;
@@ -439,7 +439,7 @@ module testerFSM_2 (
         M_alu_alufn = 6'h20;
         M_alu_op1 = 8'h03;
         M_alu_op2 = 8'h01;
-        text = 28'he7a367a;
+        text = 28'he7a3601;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h06) begin
           M_counter_d = 1'h0;
@@ -477,7 +477,7 @@ module testerFSM_2 (
         M_alu_alufn = 6'h21;
         M_alu_op1 = 8'h03;
         M_alu_op2 = 8'h01;
-        text = 28'he7a397a;
+        text = 28'he7a3901;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
@@ -490,14 +490,14 @@ module testerFSM_2 (
         end
       end
       SHR2_state: begin
-        M_alu_alufn = 6'h23;
+        M_alu_alufn = 6'h21;
         M_alu_op1 = 8'hc0;
         M_alu_op2 = 8'h01;
         text = 28'he7a3902;
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h60) begin
           M_counter_d = 1'h0;
-          M_state_d = SHR_state;
+          M_state_d = SRA_state;
         end else begin
           if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h60) begin
             M_counter_d = 1'h0;
@@ -596,15 +596,15 @@ module testerFSM_2 (
         M_alu_z = 8'h00;
         M_alu_n = 8'h00;
         M_alu_v = 8'h01;
-        text = 28'hc7c3674;
+        text = 28'hc7c3665;
         M_counter_d = M_counter_q + 1'h1;
-        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h00) begin
+        if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out == 8'h01) begin
           M_counter_d = 1'h0;
           M_state_d = MUL_state;
         end else begin
-          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h00) begin
+          if (M_counter_q[26+0-:1] == 1'h1 && M_alu_out != 8'h01) begin
             M_counter_d = 1'h0;
-            M_state_d = LT_ERR_state;
+            M_state_d = LE_ERR_state;
           end
         end
       end
