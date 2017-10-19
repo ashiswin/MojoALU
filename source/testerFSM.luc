@@ -26,6 +26,7 @@ module testerFSM (
   alu alu;
   
   const DELAY = 26;// sets a delay to give time for calculations to complete. Lower number = less delay
+  sig entropy;
   
   always {
      
@@ -41,6 +42,11 @@ module testerFSM (
     alu.op2 = 8b0;
     
     text = {"r","a","u","r"};
+    entropy = 0;
+    
+    if (io_button[2] == 1) {
+      entropy = 8b1;
+    }
    
     case(state.q) {
       
@@ -58,7 +64,7 @@ module testerFSM (
   
       state.ADDER1:
         alu.alufn = Inst.ADD;              //selects addition operation of alu
-        alu.op1 = 8b1;                //input op1 = 1
+        alu.op1 = 8b1 + entropy;                //input op1 = 1
         alu.op2 = 8b1;                //input a = 1
         text = {"a","d","d",7b1};     //displays "add" to show testing of ADDER
         counter.d = counter.q+1;      //continually increases clock counter until delay time is over
@@ -74,7 +80,7 @@ module testerFSM (
            
       state.ADDER2:
         alu.alufn = Inst.ADD;          
-        alu.op1 = 8b10000000;
+        alu.op1 = 8b10000000 + entropy;
         alu.op2 = 8b1;
         text = {"a","d","d",7b10};
         counter.d = counter.q+1;
@@ -89,7 +95,7 @@ module testerFSM (
         
        state.ADDER3:
         alu.alufn = Inst.ADD;          
-        alu.op1 = 8b11111111;
+        alu.op1 = 8b11111111 + entropy;
         alu.op2 = 8b1;
         text = {"a","d","d",7b11};
         counter.d = counter.q+1;
@@ -105,7 +111,7 @@ module testerFSM (
         
        state.ADDER4:
         alu.alufn = Inst.ADD;          
-        alu.op1 = 8b1111111;
+        alu.op1 = 8b1111111 + entropy;
         alu.op2 = 8b1;
         text = {"a","d","d",7b100};
         counter.d = counter.q+1;
@@ -128,7 +134,7 @@ module testerFSM (
         
       state.SUB1:
         alu.alufn = Inst.SUB;              //selects subtraction operation of alu
-        alu.op1 = 8b10;                //input op1 = 2
+        alu.op1 = 8b10 + entropy;                //input op1 = 2
         alu.op2 = 8b1;                //input op2 = 1
         text = {"s","u","b",7b1};     //displays "sub" to show testing of SUB
         counter.d = counter.q+1;      //continually increases clock counter until delay time is over
@@ -144,7 +150,7 @@ module testerFSM (
            
       state.SUB2:
         alu.alufn = Inst.SUB;          
-        alu.op1 = 8b10000001;
+        alu.op1 = 8b10000001 + entropy;
         alu.op2 = 8b1;
         text = {"s","u","b",7b10};
         counter.d = counter.q+1;
@@ -159,7 +165,7 @@ module testerFSM (
         
        state.SUB3:
         alu.alufn = Inst.SUB;          
-        alu.op1 = 8b1;
+        alu.op1 = 8b1 + entropy;
         alu.op2 = 8b1;
         text = {"s","u","b",7b11};
         counter.d = counter.q+1;
@@ -175,7 +181,7 @@ module testerFSM (
         
        state.SUB4:
         alu.alufn = Inst.SUB;          
-        alu.op1 = 8b10000000;
+        alu.op1 = 8b10000000 + entropy;
         alu.op2 = 8b1;
         text = {"s","u","b",7b100};
         counter.d = counter.q+1;
@@ -198,7 +204,7 @@ module testerFSM (
         
       state.AND1:
         alu.alufn = Inst.AND;        
-        alu.op1 = 8b1;                         
+        alu.op1 = 8b1 + entropy;                         
         alu.op2 = 8b1;
         text = {"a","n","d",7b1};
         counter.d = counter.q+1;
@@ -212,7 +218,7 @@ module testerFSM (
         }
       state.AND2:
         alu.alufn = Inst.AND;        
-        alu.op1 = 8b0;
+        alu.op1 = 8b0 + entropy;
         alu.op2 = 8b0;
         text = {"a","n","d",7b10};
         counter.d = counter.q+1;
@@ -227,7 +233,7 @@ module testerFSM (
         
       state.AND3:
         alu.alufn = Inst.AND;        
-        alu.op1 = 8b1;
+        alu.op1 = 8b1 + entropy;
         alu.op2 = 8b0;
         text = {"a","n","d",7b11};
         counter.d = counter.q+1;
@@ -249,7 +255,7 @@ module testerFSM (
         
        state.OR:
         alu.alufn = Inst.OR;         
-        alu.op1 = 8b0;
+        alu.op1 = 8b0 + entropy;
         alu.op2 = 8b1;
         text = {"o","r","_",7b1};
         counter.d = counter.q+1;
@@ -264,7 +270,7 @@ module testerFSM (
         
        state.OR2:
         alu.alufn = Inst.OR;         
-        alu.op1 = 8b0;
+        alu.op1 = 8b0 + entropy;
         alu.op2 = 8b0;
         text = {"o","r","_",7b10};
         counter.d = counter.q+1;
@@ -286,7 +292,7 @@ module testerFSM (
         
       state.XOR:
         alu.alufn = Inst.XOR;         
-        alu.op1 = 8b0;
+        alu.op1 = 8b0 + entropy;
         alu.op2 = 8b1;
         text = {"x","o","r","z"};
         counter.d = counter.q+1;
@@ -301,7 +307,7 @@ module testerFSM (
         
       state.XOR2:
         alu.alufn = Inst.XOR;         
-        alu.op1 = 8b1;
+        alu.op1 = 8b1 + entropy;
         alu.op2 = 8b1;
         text = {"x","o","r",7b10};
         counter.d = counter.q+1;
@@ -323,7 +329,7 @@ module testerFSM (
         
       state.INV:
         alu.alufn = Inst.INV;         
-        alu.op1 = 8b0;
+        alu.op1 = 8b0 + entropy;
         text = {7b1,"n","u","z"};
         counter.d = counter.q+1;
         
@@ -342,8 +348,8 @@ module testerFSM (
         
       state.LDR:
         alu.alufn = Inst.LDR;         
-        alu.op1 = 8b10;
-        text = {"l","d","r","_"};
+        alu.op1 = 8b10 + entropy;
+        text = {"l","d","r","z"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b10){
@@ -362,9 +368,9 @@ module testerFSM (
         
       state.SHL:
         alu.alufn = Inst.SHL;        
-        alu.op1 = 8b11;                                       // positve number
+        alu.op1 = 8b11 + entropy;                                       // positve number
         alu.op2 = 8b1;
-        text = {"s","h","l","_"};
+        text = {"s","h","l","z"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b110){
@@ -377,7 +383,7 @@ module testerFSM (
         
       state.SHL2:                               
         alu.alufn = Inst.SHL;        
-        alu.op1 = 8b11111111;                                 // negative number
+        alu.op1 = 8b11111111 + entropy;                                 // negative number
         alu.op2 = 8b1;
         text = {"s","h","l",7b10};
         counter.d = counter.q+1;
@@ -399,7 +405,7 @@ module testerFSM (
         
       state.SHR:
         alu.alufn = Inst.SHR;        
-        alu.op1 = 8b11;                                       // positve number
+        alu.op1 = 8b11 + entropy;                                       // positve number
         alu.op2 = 8b1;
         text = {"s","h","r","z"};
         counter.d = counter.q+1;
@@ -414,7 +420,7 @@ module testerFSM (
         
       state.SHR2:
         alu.alufn = Inst.SRA;        
-        alu.op1 = 8b11000000;                                 // negative number
+        alu.op1 = 8b11000000 + entropy;                                 // negative number
         alu.op2 = 8b1;
         text = {"s","h","r",7b10};
         counter.d = counter.q+1;
@@ -436,7 +442,7 @@ module testerFSM (
         
       state.SRA:
         alu.alufn = Inst.SRA;        
-        alu.op1 = 8b101;                                       // positve number
+        alu.op1 = 8b101 + entropy;                                       // positve number
         alu.op2 = 8b1;
         text = {"s","r","a","z"};
         counter.d = counter.q+1;
@@ -451,7 +457,7 @@ module testerFSM (
         
       state.SRA2:
         alu.alufn = Inst.SRA;        
-        alu.op1 = 8b10100000;                                 // negative number
+        alu.op1 = 8b10100000 + entropy;                                 // negative number
         alu.op2 = 8b1;
         text = {"s","r","a",7b10};
         counter.d = counter.q+1;
@@ -472,7 +478,7 @@ module testerFSM (
         
       state.CMPEQ:
         alu.alufn = Inst.CMPEQ;        
-        alu.z = 8b0;
+        alu.z = 8b0 + entropy;
         text = {"c","p","e","o"};
         counter.d = counter.q+1;
         
@@ -491,7 +497,7 @@ module testerFSM (
         
       state.CMPLT:
         alu.alufn = Inst.CMPLT;        
-        alu.n = 8b0;
+        alu.n = 8b0 + entropy;
         alu.v = 8b1;
         text = {"c","p","l","t"};
         counter.d = counter.q+1;
@@ -512,7 +518,7 @@ module testerFSM (
         
       state.CMPLE:
         alu.alufn = Inst.CMPLE;  
-        alu.z= 8b0;      
+        alu.z= 8b0 + entropy;      
         alu.n = 8b0;
         alu.v = 8b1;
         text = {"c","p","l","t"};
@@ -536,7 +542,7 @@ module testerFSM (
         
       state.MUL:
         alu.alufn = Inst.MUL;  
-        alu.op1= 8b10;      
+        alu.op1= 8b10 + entropy;      
         alu.op2 = 8b10;
         text = {"n","u","l","z"};
         counter.d = counter.q+1;
@@ -550,7 +556,7 @@ module testerFSM (
         }
       state.MUL2:
         alu.alufn = Inst.MUL;  
-        alu.op1= 8b0;      
+        alu.op1= 8b0 + entropy;      
         alu.op2 = 8b10;
         text = {"n","u","l",7b10};
         counter.d = counter.q+1;
@@ -564,8 +570,8 @@ module testerFSM (
         }
       state.MUL3:
         alu.alufn = Inst.MUL;  
-        alu.op1= 8b11111111;      
-        alu.op2 = 8b11111111;
+        alu.op1= 8b11111111 + entropy;      
+        alu.op2= 8b11111111;
         text = {"n","u","l",7b11};
         counter.d = counter.q+1;
         
@@ -587,7 +593,7 @@ module testerFSM (
         
      state.NEG:
         alu.alufn = Inst.NEG;  
-        alu.op1 = 8b1;      
+        alu.op1 = 8b1 + entropy;      
         text = {"n","e",7b110,"z"};
         counter.d = counter.q+1;
         
@@ -608,7 +614,7 @@ module testerFSM (
         
       state.ABS:
         alu.alufn = Inst.ABS;  
-        alu.op1 = 8b11111111;      
+        alu.op1 = 8b11111111 + entropy;      
         text = {"a","b","s","z"};
         counter.d = counter.q+1;
         
@@ -621,7 +627,7 @@ module testerFSM (
         }
        state.ABS2:
         alu.alufn = Inst.ABS;  
-        alu.op1 = 8b1111111;      
+        alu.op1 = 8b1111111 + entropy;      
         text = {"a","b","s",7b10};
         counter.d = counter.q+1;
         

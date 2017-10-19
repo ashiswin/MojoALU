@@ -98,6 +98,8 @@ module testerFSM_2 (
   
   localparam DELAY = 5'h1a;
   
+  reg entropy;
+  
   always @* begin
     M_state_d = M_state_q;
     M_counter_d = M_counter_q;
@@ -113,6 +115,10 @@ module testerFSM_2 (
     M_alu_op1 = 8'h00;
     M_alu_op2 = 8'h00;
     text = 28'he587af2;
+    entropy = 1'h0;
+    if (io_button[2+0-:1] == 1'h1) begin
+      entropy = 8'h01;
+    end
     
     case (M_state_q)
       MANUAL_state: begin
@@ -127,7 +133,7 @@ module testerFSM_2 (
       end
       ADDER1_state: begin
         M_alu_alufn = 6'h00;
-        M_alu_op1 = 8'h01;
+        M_alu_op1 = 8'h01 + entropy;
         M_alu_op2 = 8'h01;
         text = 28'hc393201;
         M_counter_d = M_counter_q + 1'h1;
