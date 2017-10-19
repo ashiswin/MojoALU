@@ -429,36 +429,67 @@ module testerFSM (
         alu.v = 8b1;
         text = {"e","c","p","e"};
         
-      
+      state.MUL:
+        alu.alufn = Inst.MUL;  
+        alu.op1= 8b10;      
+        alu.op2 = 8b10;
+        text = {"n","u","l","z"};
+        counter.d = counter.q+1;
+        
+        if (counter.q[DELAY]==1 && alu.out == 8b100){
+          counter.d = 0;
+          state.d = state.NEG;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b100){
+          counter.d = 0;
+          state.d = state.MUL_ERR;
+        }
+        
+      state.MUL_ERR:
+        alu.alufn = Inst.MUL;
+        alu.op1 = 8b10;
+        alu.op2 = 8b10;
+        text = {"e","n","u","l"};
         
         
-      
+     state.NEG:
+        alu.alufn = Inst.NEG;  
+        alu.op1 = 8b1;      
+        text = {"n","e",7b110,"z"};
+        counter.d = counter.q+1;
         
-      
+        if (counter.q[DELAY]==1 && alu.out == 8b11111111){
+          counter.d = 0;
+          state.d = state.ABS;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b0){
+          counter.d = 0;
+          state.d = state.NEG_ERR;
+        }
         
-        
-      
-        
-        
-       
-        
-
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-      
+      state.NEG_ERR:
+        alu.alufn = Inst.NEG;
+        alu.op1 = 8b1;
+        text = {"e","n","e",7b110};
         
         
         
+      state.ABS:
+        alu.alufn = Inst.ABS;  
+        alu.op1 = 8b11111111;      
+        text = {"a","b","s","z"};
+        counter.d = counter.q+1;
         
+        if (counter.q[DELAY]==1 && alu.out == 8b1){
+          counter.d = 0;
+          state.d = state.MANUAL;
+        }else if (counter.q[DELAY] == 1 && alu.out != 8b1){
+          counter.d = 0;
+          state.d = state.ABS_ERR;
+        }
         
+      state.NEG_ERR:
+        alu.alufn = Inst.NEG;
+        alu.op1 = 8b11111111;
+        text = {"e","a","b","s"};   
         
         
         
