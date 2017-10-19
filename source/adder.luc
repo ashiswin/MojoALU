@@ -8,10 +8,12 @@ module adder (
     output nOut
   ) {
   
+  // Temporary signals for integer adder
   sig zComp;
   sig result[8];
   var i;
   
+  // Temporary signals for FPU
   sig shift[4];
   sig amant[4];
   sig bmant[4];
@@ -25,41 +27,49 @@ module adder (
   sig fmulshift[4];
   
   always {
+    // Set default output values
     zOut = 0;
     vOut = 0;
     nOut = 0;
     out = 8h00;
     
+    // Selector for adder functions
     case(alufn) {
+      // Integer operations
       Inst.ADD:
-        result = op1 + op2;
+        result = op1 + op2; // Store result temporarily for extra operations
         out = result;
+        
+        // Calculate individual bit outputs
         nOut = result[7];
         vOut = (op1[7] & op2[7] & ~result[7]) | (~op1[7] & ~op2[7] & result[7]);
         zComp = result[0];
-        for(i = 1; i < 8; i++) {
+        for(i = 1; i < 8; i++) { // Use a for loop cos i'm lazy
           zComp = (zComp | result[i]);
         }
         zOut = ~zComp;
       Inst.SUB:
-        result = op1 - op2;
+        result = op1 - op2; // Store result temporarily for extra opreations
         out = result;
+        
+        // Calculate individual bit outputs
         nOut = result[7];
         vOut = (op1[7] & op2[7] & ~result[7]) | (~op1[7] & ~op2[7] & result[7]);
         zComp = result[0];
-        for(i = 1; i < 8; i++) {
+        for(i = 1; i < 8; i++) { // Use a for loop cos i'm lazy
           zComp = (zComp | result[i]);
         }
         zOut = ~zComp;
       Inst.MUL:
-        out = op1 * op2;
-      //Inst.DIV:
-        //TODO
+        out = op1 * op2; // Ez pz
       Inst.NEG:
-        out = -op1;
+        out = -op1; // Simple 2's complement negation
       Inst.ABS:
-        out = (-op1 & 8x{op1[7]}) | (op1 & 8x{~op1[7]});
+        out = (-op1 & 8x{op1[7]}) | (op1 & 8x{~op1[7]}); // Return the absolute value based on the negative bit
+        
+      // FPU Operations
       Inst.FADD:
+        // Make op1 the number with the higher exponent
         if(op1[6:3] > op2[6:3]) {
           o1 = op1;
           o2 = op2;
@@ -68,7 +78,11 @@ module adder (
           o1 = op2;
           o2 = op1;
         }
+        
+        // Calculate how much to shift op2's mantissa by
         shift = o1[6:3] - o2[6:3];
+        
+        // Assign and shift mantissa's, adding implicit 1
         amant[3] = 1;
         amant[2:0] = o1[2:0];
         
@@ -77,49 +91,69 @@ module adder (
         
         bmant = bmant >> shift;
         
+        // Add the mantissas together
         fresult = amant + bmant;
+        
+        // Check for a mantissa overflow
         if(fresult[4] == 1) {
+          // Add to the exponent and shift mantissa down
           out[6:3] = o1[6:3] + 1;
           fresult = fresult >> 1;
         }
         else {
+          // Set exponent to the higher exponent
           out[6:3] = o1[6:3];
         }
         
+        // Set mantissa
         out[2:0] = fresult[2:0];
       Inst.FMUL:
+        // Extract mantissas with implicit 1
         amant[3] = 1;
         bmant[3] = 1;
         
         amant[2:0] = op1[2:0];
         bmant[2:0] = op2[2:0];
         
+        // Extract exponents and remove 7 + 3 (3 to shift decimal point)
         aexp = op1[6:3] - 10;
         bexp = op2[6:3] - 10;
         
+        // Calculate product of the mantissas
         fmulres = amant * bmant;
         
+        // Add exponents together
         fmulexp = aexp + bexp;
         
+        // Find position of highest set bits
         fmulshift[0] = (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[5] & fmulres[4]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & fmulres[2]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & ~fmulres[1] & fmulres[0]);
         fmulshift[1] = (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[1]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[2]);
         fmulshift[2] = (~fmulres[7] & fmulres[3]) | (~fmulres[7] & fmulres[4]) | (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]);
         fmulshift[3] = fmulres[7];
         
+        // Shift the new exponent based on how much needs to be shifted for 3 dp
         fmulexp = fmulexp + fmulshift - 1;
         
+        // Set the negative bit based on the negative bits of the input
         out[7] = op1[7] ^ op2[7];
+        
+        // Set the exponent
         out[6:3] = fmulexp + 7;
+        
+        // Shift the result appropriately
         if(fmulshift > 4) {
           fmulres = fmulres >> (fmulshift - 4);
         }
         else {
           fmulres = fmulres << (4 - fmulshift);
         }
-        out[2:0] = fmulres[2:0];
-      Inst.ITOF:
-        out[7] = op1[7];
         
+        // Set the mantissa
+        out[2:0] = fmulres[2:0];
+      Inst.ITOF: // Convert integer to float
+        out[7] = op1[7]; // Set the negative bit
+        
+        // Check if integer is negative and absolute accordingly
         if(op1[7] == 1) {
           fmulres = -op1;
         }
@@ -127,11 +161,13 @@ module adder (
           fmulres = op1;
         }
         
+        // Find the highest set bit
         fmulshift[0] = (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[5] & fmulres[4]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & fmulres[2]) | (~fmulres[7] & ~fmulres[5] & ~fmulres[3] & ~fmulres[1] & fmulres[0]);
         fmulshift[1] = (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[1]) | (~fmulres[7] & ~fmulres[4] & ~fmulres[3] & fmulres[2]);
         fmulshift[2] = (~fmulres[7] & fmulres[3]) | (~fmulres[7] & fmulres[4]) | (~fmulres[7] & fmulres[5]) | (~fmulres[7] & fmulres[6]);
         fmulshift[3] = fmulres[7];
         
+        // Shift the result accordingly
         if(fmulshift > 4) {
           fmulres = fmulres >> (fmulshift - 4);
         }
@@ -139,15 +175,21 @@ module adder (
           fmulres = fmulres << (4 - fmulshift);
         }
         
+        // Calculate the new exponent
         fmulexp = fmulshift - 1;
+        
+        // Set the output exponent and mantissa
         out[6:3] = fmulexp + 7;
         out[2:0] = fmulres[2:0];
-      Inst.FTOI:
+      Inst.FTOI: // Convert float to integer (rounded)
+        // Extract the exponent and mantissa
         fmulexp = op1[6:3] - 7;
         amant[3] = 1;
         amant[2:0] = op1[2:0];
         
+        // Check if positive exponent (negative exponent gets rounded to 0)
         if(fmulexp > 0) {
+          // Shift accordingly
           if(fmulexp > 3) {
             fmulres = amant << fmulexp - 3;
           }
@@ -155,10 +197,12 @@ module adder (
             fmulres = amant >> 3 - fmulexp;
           }
         }
+        // Get 2's complement negative number if the number should be negative
         if(op1[7] == 1) {
           fmulres = -fmulres;
         }
         
+        // Output the rounded integer
         out = fmulres;
     }
   }
