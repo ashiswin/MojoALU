@@ -77,6 +77,9 @@ module adder_8 (
       6'h02: begin
         out = op1 * op2;
       end
+      6'h03: begin
+        out = $signed(op1) / $signed(op2);
+      end
       6'h04: begin
         out = -op1;
       end

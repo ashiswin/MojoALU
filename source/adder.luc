@@ -63,6 +63,8 @@ module adder (
         zOut = ~zComp;
       Inst.MUL:
         out = op1 * op2; // Ez pz
+      Inst.DIV:
+        out = $signed(op1) / $signed(op2);
       Inst.NEG:
         out = -op1; // Simple 2's complement negation
       Inst.ABS:
