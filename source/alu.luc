@@ -5,6 +5,8 @@ module alu (
     input z,
     input v,
     input n,
+    output r_op1[8],
+    output r_op2[8],
     output out[8],
     output zOut,
     output vOut,
@@ -25,6 +27,8 @@ module alu (
     vOut = 0;
     nOut = 0;
     out = 8hxx;
+    r_op1 = op1; // allows us to read op1
+    r_op2 = op2; // allows us to read op2
     
     // Select appropriate submodule based on first 2 bits in alufn
     case(alufn[5:4]) {

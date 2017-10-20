@@ -4,6 +4,8 @@ module testerFSM (
     input io_button [5],    // 5 buttons on IO Shield
     input io_dip [3][8],     // DIP switches on IO Shield
     
+    output r_op1[8],
+    output r_op2[8],
     output out[8], //output
     output zOut,
     output vOut,
@@ -21,7 +23,8 @@ module testerFSM (
                                         SHL, SHR, SRA, SHL2, SHR2, SRA2, SHL_ERR,SHR_ERR, SRA_ERR,
                                         DIV,DIV_ERR,MUL,MUL2,MUL3,MUL_ERR,NEG,NEG_ERR,ABS,ABS2,ABS_ERR,
                                         FADD, FMUL, ITOF, FTOI,
-                                        FADD_ERR, FMUL_ERR, ITOF_ERR, FTOI_ERR
+                                        FADD_ERR, FMUL_ERR, ITOF_ERR, FTOI_ERR,
+                                        PASS
                                         };  
     dff counter[30];    // counter for FSM steps
   }
@@ -36,12 +39,14 @@ module testerFSM (
     zOut = alu.zOut;
     vOut = alu.vOut;
     nOut = alu.nOut;
+    r_op1 = alu.r_op1;
+    r_op2 = alu.r_op2;
     alu.z = 0;
     alu.n = 0;
     alu.v = 0;
     alu.alufn = 6b0;
-    alu.op1 = 8b0;
-    alu.op2 = 8b0;
+    alu.op1 = 8hxx;
+    alu.op2 = 8hxx;
     
     text = {"r","a","u","r"};
     entropy = 0;
@@ -129,8 +134,8 @@ module testerFSM (
                 
        state.ADDER_ERR:
         alu.alufn = Inst.ADD;
-        alu.op1 = 8b0;
-        alu.op2 = 8b0;
+        r_op1 = alu.r_op1;
+        r_op2 = alu.r_op2;
         text = {"e","a","d","d"};
         
         
@@ -199,8 +204,6 @@ module testerFSM (
                 
        state.SUB_ERR:
         alu.alufn = Inst.SUB;
-        alu.op1 = 8b0;
-        alu.op2 = 8b0;
         text = {"e","s","u","b"};
         
         
@@ -250,8 +253,6 @@ module testerFSM (
         
       state.AND_ERR:
         alu.alufn = Inst.AND;
-        alu.op1 = 8b1;
-        alu.op2 = 8b1;
         text = {"e","a","n","d"};
         
         
@@ -287,8 +288,6 @@ module testerFSM (
         
       state.OR_ERR:
         alu.alufn = Inst.OR;
-        alu.op1 = 8b1;
-        alu.op2 = 8b1;
         text = {"e","o","r","_"};
         
         
@@ -296,7 +295,7 @@ module testerFSM (
         alu.alufn = Inst.XOR;         
         alu.op1 = 8b0 + entropy;
         alu.op2 = 8b1;
-        text = {"x","o","r","z"};
+        text = {"x","o","r","_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b1){
@@ -324,14 +323,13 @@ module testerFSM (
         
       state.XOR_ERR:
         alu.alufn = Inst.XOR;
-        alu.op1 = 8b1;
-        alu.op2 = 8b1;
         text = {"e","x","o","r"};
         
         
       state.INV:
         alu.alufn = Inst.INV;
         alu.op1 = 8b0 + entropy;
+        alu.op2 = 8b0;
         text = {7b1,"n","u","_"};
         counter.d = counter.q+1;
         
@@ -345,13 +343,12 @@ module testerFSM (
         
       state.INV_ERR:
         alu.alufn = Inst.INV;
-        alu.op1 = 8b1;
         text = {"e",7b1,"n","u"};
         
       state.LDR:
         alu.alufn = Inst.LDR;         
         alu.op1 = 8b10 + entropy;
-        text = {"l","d","r","z"};
+        text = {"l","d","r","_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b10){
@@ -364,7 +361,6 @@ module testerFSM (
         
       state.LDR_ERR:
         alu.alufn = Inst.INV;
-        alu.op1 = 8b10;
         text = {"e","l","d","r"};
         
         
@@ -402,8 +398,6 @@ module testerFSM (
         
       state.SHL_ERR:
         alu.alufn = Inst.SHL;
-        alu.op1 = 8b11;                                       
-        alu.op2 = 8b1;
         text = {"e","s","h","l"};
         
         
@@ -439,8 +433,6 @@ module testerFSM (
         
       state.SHR_ERR:
         alu.alufn = Inst.SHR;
-        alu.op1 = 8b11;
-        alu.op2 = 8b1;
         text = {"e","s","h","r"};
         
         
@@ -448,7 +440,7 @@ module testerFSM (
         alu.alufn = Inst.SRA;        
         alu.op1 = 8b101 + entropy;                                       // positve number
         alu.op2 = 8b1;
-        text = {"s","r","a","z"};
+        text = {"s","r","a","_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b10){
@@ -476,13 +468,13 @@ module testerFSM (
         
       state.SRA_ERR:
         alu.alufn = Inst.SRA;
-        alu.op1 = 8b101;
-        alu.op2 = 8b1;
         text = {"e","s","r","a"};
         
       state.CMPEQ:
         alu.alufn = Inst.CMPEQ;        
         alu.z = 8b0 + entropy;
+        alu.v = 8b0;
+        alu.n = 8b0;
         text = {"c","p","e","o"};
         counter.d = counter.q+1;
         
@@ -496,7 +488,6 @@ module testerFSM (
         
       state.EQ_ERR:
         alu.alufn = Inst.CMPEQ;
-        alu.z= 8b0;
         text = {"e","c","p","o"};
         
       state.CMPLT:
@@ -516,8 +507,6 @@ module testerFSM (
         
       state.LT_ERR:
         alu.alufn = Inst.CMPLT;
-        alu.n= 8b0;
-        alu.v = 8b1;
         text = {"e","c","p","t"};
         
       state.CMPLE:
@@ -538,9 +527,6 @@ module testerFSM (
         
       state.LE_ERR:
         alu.alufn = Inst.CMPLE;
-        alu.z = 8b0;
-        alu.n= 8b0;
-        alu.v = 8b1;
         text = {"e","c","p","e"};
         
         
@@ -548,7 +534,7 @@ module testerFSM (
         alu.alufn = Inst.MUL;  
         alu.op1= 8b10 + entropy;      
         alu.op2 = 8b10;
-        text = {"n","u","l","z"};
+        text = {"n","u","l","_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b100){
@@ -590,15 +576,13 @@ module testerFSM (
         
       state.MUL_ERR:
         alu.alufn = Inst.MUL;
-        alu.op1 = 8b10;
-        alu.op2 = 8b10;
         text = {"e","n","u","l"};
         
         
      state.NEG:
         alu.alufn = Inst.NEG;  
         alu.op1 = 8b1 + entropy;      
-        text = {"n","e",7b110,"z"};
+        text = {"n","e",7b110,"_"};
         counter.d = counter.q+1;
         
         if (counter.q[DELAY]==1 && alu.out == 8b11111111){
@@ -611,7 +595,6 @@ module testerFSM (
         
       state.NEG_ERR:
         alu.alufn = Inst.NEG;
-        alu.op1 = 8b1;
         text = {"e","n","e",7b110};
         
         
@@ -644,7 +627,6 @@ module testerFSM (
         }
       state.ABS_ERR:
         alu.alufn = Inst.ABS;
-        alu.op1 = 8b11111111;
         text = {"e","a","b","s"};
         
       state.FADD:
@@ -664,8 +646,6 @@ module testerFSM (
         }
       state.FADD_ERR:
         alu.alufn = Inst.FADD;
-        alu.op1 = 8b01001011;
-        alu.op2 = 8b00110000;
         text = {"e","f","a","d"};
         
       state.FTOI:
@@ -685,7 +665,6 @@ module testerFSM (
         }
       state.FTOI_ERR:
         alu.alufn = Inst.FTOI;
-        alu.op1 = 8b00111000;
         text = {"e","f","t","o"};
       
       state.ITOF:
@@ -697,14 +676,13 @@ module testerFSM (
         
         if (counter.q[DELAY]==1 && alu.out == 8b00111000){
           counter.d = 0;
-          state.d = state.MANUAL;
+          state.d = state.PASS;
         }else if (counter.q[DELAY] == 1){
           counter.d = 0;
           state.d = state.ITOF_ERR;
         }
       state.ITOF_ERR:
         alu.alufn = Inst.ITOF;
-        alu.op1 = 8b1;
         text = {"e","l","t","o"};
         
       state.FMUL:
@@ -722,11 +700,18 @@ module testerFSM (
           counter.d = 0;
           state.d = state.FMUL_ERR;
         }
+        
       state.FMUL_ERR:
         alu.alufn = Inst.FMUL;
-        alu.op1 = 8b01001011;  
-        alu.op2 = 8b00111000;
         text = {"e","f","m","l"};
+        
+      state.PASS:
+        text = {"o","k","a","_"};
+        counter.d = counter.q + 1;
+        if (counter.q[DELAY+3] == 1){
+          counter.d = 0;
+          state.d = state.MANUAL;
+        }
     }
   }
 }

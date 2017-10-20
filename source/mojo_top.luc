@@ -49,9 +49,11 @@ module mojo_top (
     test.io_button = io_button;
     
     io_led[0] = test.out;
-    io_led[1][0] = test.zOut;
-    io_led[1][1] = test.vOut;
-    io_led[1][2] = test.nOut;        
+    io_led[1] = test.r_op1;
+    io_led[2] = test.r_op2;
+    led[0] = test.zOut;
+    led[1] = test.vOut;
+    led[2] = test.nOut;        
     
     seg.values = test.text;
     io_seg = ~seg.seg;

@@ -35,6 +35,8 @@ module mojo_top_0 (
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
+  wire [8-1:0] M_test_r_op1;
+  wire [8-1:0] M_test_r_op2;
   wire [8-1:0] M_test_out;
   wire [1-1:0] M_test_zOut;
   wire [1-1:0] M_test_vOut;
@@ -47,6 +49,8 @@ module mojo_top_0 (
     .rst(rst),
     .io_button(M_test_io_button),
     .io_dip(M_test_io_dip),
+    .r_op1(M_test_r_op1),
+    .r_op2(M_test_r_op2),
     .out(M_test_out),
     .zOut(M_test_zOut),
     .vOut(M_test_vOut),
@@ -77,9 +81,11 @@ module mojo_top_0 (
     M_test_io_dip = io_dip;
     M_test_io_button = io_button;
     io_led[0+7-:8] = M_test_out;
-    io_led[8+0+0-:1] = M_test_zOut;
-    io_led[8+1+0-:1] = M_test_vOut;
-    io_led[8+2+0-:1] = M_test_nOut;
+    io_led[8+7-:8] = M_test_r_op1;
+    io_led[16+7-:8] = M_test_r_op2;
+    led[0+0-:1] = M_test_zOut;
+    led[1+0-:1] = M_test_vOut;
+    led[2+0-:1] = M_test_nOut;
     M_seg_values = M_test_text;
     io_seg = ~M_seg_seg;
     io_sel = ~M_seg_sel;

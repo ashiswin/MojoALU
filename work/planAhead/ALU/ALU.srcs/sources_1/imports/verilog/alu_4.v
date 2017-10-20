@@ -11,6 +11,8 @@ module alu_4 (
     input z,
     input v,
     input n,
+    output reg [7:0] r_op1,
+    output reg [7:0] r_op2,
     output reg [7:0] out,
     output reg zOut,
     output reg vOut,
@@ -62,6 +64,8 @@ module alu_4 (
     vOut = 1'h0;
     nOut = 1'h0;
     out = 8'bxxxxxxxx;
+    r_op1 = op1;
+    r_op2 = op2;
     
     case (alufn[4+1-:2])
       2'h0: begin

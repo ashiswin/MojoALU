@@ -65,15 +65,6 @@
 <msg type="info" file="Xst" num="1767" delta="new" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">M_counter_q_24</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">testerFSM_2</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">M_counter_q_25</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">testerFSM_2</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">M_counter_q_26</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">testerFSM_2</arg>&gt;.
-</msg>
-
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">M_counter_q_27</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">testerFSM_2</arg>&gt;.
 </msg>
 
@@ -90,3 +81,4 @@
 </msg>
 
 </messages>
+
