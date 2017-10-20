@@ -32,9 +32,6 @@
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">io_dip&lt;7:6&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">111000</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
-</msg>
-
 <msg type="info" file="Xst" num="1799" delta="new" >State <arg fmt="%s" index="1">111010</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">M_state_q</arg>&gt;.
 </msg>
 

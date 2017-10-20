@@ -45,17 +45,17 @@ module mojo_top (
     io_seg = 8hff;          // turn segments off
     io_sel = 4hf;           // select no digits
     
-    test.io_dip = io_dip;
-    test.io_button = io_button;
+    test.io_dip = io_dip;          // giving testFSM access to io_dips
+    test.io_button = io_button;    // giving testFSM access to io_buttons
     
-    io_led[0] = test.out;
-    io_led[1] = test.r_op1;
-    io_led[2] = test.r_op2;
-    led[0] = test.zOut;
+    io_led[0] = test.out;          // test.out is output from alu
+    io_led[1] = test.r_op1;        // test.r_op1 is input 1
+    io_led[2] = test.r_op2;        // test.r_op2 is input 2
+    led[0] = test.zOut;            // The leds on the actual MOJO board shows ZVN
     led[1] = test.vOut;
     led[2] = test.nOut;        
     
-    seg.values = test.text;
+    seg.values = test.text;        // Showing the text from testerFSM on display
     io_seg = ~seg.seg;
     io_sel = ~seg.sel;    
   }

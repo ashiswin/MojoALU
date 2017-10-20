@@ -1,10 +1,10 @@
 module testerFSM (
     input clk,  // clock
     input rst,  // reset
-    input io_button [5],    // 5 buttons on IO Shield
+    input io_button [5],     // 5 buttons on IO Shield
     input io_dip [3][8],     // DIP switches on IO Shield
     
-    output r_op1[8],
+    output r_op1[8], // Allows us to read op1 and op2 late
     output r_op2[8],
     output out[8], //output
     output zOut,
@@ -16,6 +16,7 @@ module testerFSM (
   
   .clk(clk), .rst(rst) {
       
+    // Holy mother of cow them states
     fsm state(#INIT(MANUAL)) = {MANUAL, ADDER1, ADDER2, ADDER3,ADDER4, SUB1, SUB2, SUB3,SUB4, ADDER_ERR, SUB_ERR,
                                         AND1,AND2,AND3,AND_ERR,OR,OR2,OR_ERR,XOR,XOR2,XOR_ERR,INV,INV_ERR,
                                         CMPEQ, CMPLT, CMPLE, EQ_ERR, LT_ERR, LE_ERR,
@@ -31,10 +32,11 @@ module testerFSM (
   alu alu;
   
   const DELAY = 23;// sets a delay to give time for calculations to complete. Lower number = less delay
-  sig entropy;
+  sig entropy; // Allows us to screw with input 1 during auto testing
   
   always {
      
+    // just default values so that mojo doesn't give me red lines
     out = alu.out;
     zOut = alu.zOut;
     vOut = alu.vOut;
@@ -45,45 +47,45 @@ module testerFSM (
     alu.n = 0;
     alu.v = 0;
     alu.alufn = 6b0;
-    alu.op1 = 8hxx;
+    alu.op1 = 8hxx;    // impt, allows alu.op to keep previous inputs
     alu.op2 = 8hxx;
     
     text = {"r","a","u","r"};
-    entropy = 0;
+    entropy = 0; // at this point, we haven't screwed with anything
     
-    if (io_button[2] == 1) {
-      entropy = 8b1;
+    if (io_button[2] == 1) { // magic button
+      entropy = 8b1;  // shit, everything breaks
     }
    
     case(state.q) {
       
-      state.MANUAL:
+      state.MANUAL:          // Manual cars > auto cars
         alu.alufn = io_dip[0][5:0];
         alu.op1 = io_dip[1];
         alu.op2 = io_dip[2];
         
         text = {7h0, 7h0, 7h0, 7h0};
         
-        counter.d = 0;    //clock counter is reset to 0 in manual mode
+        counter.d = 0;              //clock counter is reset to 0 in manual mode
         if (io_button[1] == 1){     //pressing "CENTER" button starts auto testing
           state.d = state.ADDER1; 
         }
   
       state.ADDER1:
-        alu.alufn = Inst.ADD;              //selects addition operation of alu
-        alu.op1 = 8b1 + entropy;                //input op1 = 1
+        alu.alufn = Inst.ADD;         //selects addition operation of alu
+        alu.op1 = 8b1 + entropy;      //input op1 = 1
         alu.op2 = 8b1;                //input a = 1
         text = {"a","d","d",7b1};     //displays "add" to show testing of ADDER
         counter.d = counter.q+1;      //continually increases clock counter until delay time is over
         
         if (counter.q[DELAY]==1&&alu.out==8b10){ //wait for counter to hit specified value, then check if output is correct
           counter.d = 0;                         //reset counter value to 0
-          state.d = state.ADDER2;            //welp! Next test
+          state.d = state.ADDER2;                //welp! Next test
      
         }else if (counter.q[DELAY] == 1 && alu.out!= 8b10){ // Oh man, results are wrong!
-          counter.d=0;                                //reset counter value to 0
-          state.d=state.ADDER_ERR;
-        }                   //move to adder error state
+          counter.d=0;                                      // Reset counter value to 0
+          state.d=state.ADDER_ERR;                          // Move to adder error state
+        }                                                   
            
       state.ADDER2:
         alu.alufn = Inst.ADD;          
@@ -132,11 +134,9 @@ module testerFSM (
           state.d = state.ADDER_ERR;
         } 
                 
-       state.ADDER_ERR:
-        alu.alufn = Inst.ADD;
-        r_op1 = alu.r_op1;
-        r_op2 = alu.r_op2;
-        text = {"e","a","d","d"};
+       state.ADDER_ERR:                  // Error case!
+        alu.alufn = Inst.ADD;            
+        text = {"e","a","d","d"};        // Error text
         
         
       state.SUB1:
@@ -648,6 +648,8 @@ module testerFSM (
         alu.alufn = Inst.FADD;
         text = {"e","f","a","d"};
         
+      // FTOL case is never reached
+      // FTOL tester doesn't seem to work, Isaac doesn't know why
       state.FTOI:
         alu.alufn = Inst.FTOI;  
         alu.op1 = 8b00111000 + entropy;
@@ -676,7 +678,7 @@ module testerFSM (
         
         if (counter.q[DELAY]==1 && alu.out == 8b00111000){
           counter.d = 0;
-          state.d = state.PASS;
+          state.d = state.FMUL;
         }else if (counter.q[DELAY] == 1){
           counter.d = 0;
           state.d = state.ITOF_ERR;
@@ -695,7 +697,7 @@ module testerFSM (
         
         if (counter.q[DELAY]==1 && alu.out == 8b01001011){
           counter.d = 0;
-          state.d = state.MANUAL;
+          state.d = state.PASS;
         }else if (counter.q[DELAY] == 1){
           counter.d = 0;
           state.d = state.FMUL_ERR;
@@ -705,7 +707,9 @@ module testerFSM (
         alu.alufn = Inst.FMUL;
         text = {"e","f","m","l"};
         
-      state.PASS:
+      // state OKA KURNIAWAN 
+      // 10/10 BEST STATE
+      state.PASS:         
         text = {"o","k","a","_"};
         counter.d = counter.q + 1;
         if (counter.q[DELAY+3] == 1){

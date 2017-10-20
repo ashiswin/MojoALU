@@ -214,8 +214,6 @@ module testerFSM_2 (
       end
       ADDER_ERR_state: begin
         M_alu_alufn = 6'h00;
-        r_op1 = M_alu_r_op1;
-        r_op2 = M_alu_r_op2;
         text = 28'hcb87264;
       end
       SUB1_state: begin
@@ -770,7 +768,7 @@ module testerFSM_2 (
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h38) begin
           M_counter_d = 1'h0;
-          M_state_d = PASS_state;
+          M_state_d = FMUL_state;
         end else begin
           if (M_counter_q[23+0-:1] == 1'h1) begin
             M_counter_d = 1'h0;
@@ -790,7 +788,7 @@ module testerFSM_2 (
         M_counter_d = M_counter_q + 1'h1;
         if (M_counter_q[23+0-:1] == 1'h1 && M_alu_out == 8'h4b) begin
           M_counter_d = 1'h0;
-          M_state_d = MANUAL_state;
+          M_state_d = PASS_state;
         end else begin
           if (M_counter_q[23+0-:1] == 1'h1) begin
             M_counter_d = 1'h0;

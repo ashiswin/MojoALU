@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Oct 20 10:51:43 2017
+// Written by: Map P.20131013 on Fri Oct 20 11:11:55 2017
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -85,10 +85,11 @@ COMP "io_led[17]" LOCATE = SITE "P16" LEVEL 1;
 COMP "io_led[18]" LOCATE = SITE "P17" LEVEL 1;
 COMP "io_led[19]" LOCATE = SITE "P21" LEVEL 1;
 COMP "spi_mosi" LOCATE = SITE "P44" LEVEL 1;
-TIMEGRP clk = BEL "test/M_state_q_FSM_FFd54_1" BEL
-        "test/M_state_q_FSM_FFd49_1" BEL "test/M_state_q_FSM_FFd54_2" BEL
-        "test/M_state_q_FSM_FFd49_2" BEL "test/M_state_q_FSM_FFd10_1" BEL
-        "test/M_state_q_FSM_FFd10_2" BEL "test/M_state_q_FSM_FFd10" BEL
+TIMEGRP clk = BEL "test/M_state_q_FSM_FFd51_1" BEL
+        "test/M_state_q_FSM_FFd56_1" BEL "test/M_state_q_FSM_FFd56_2" BEL
+        "test/M_state_q_FSM_FFd1_1" BEL "test/M_state_q_FSM_FFd2_1" BEL
+        "test/M_state_q_FSM_FFd2_2" BEL "test/M_state_q_FSM_FFd3_1" BEL
+        "test/M_state_q_FSM_FFd3_2" BEL "test/M_state_q_FSM_FFd10" BEL
         "test/M_counter_q_0" BEL "test/M_state_q_FSM_FFd11" BEL
         "test/M_counter_q_1" BEL "test/M_state_q_FSM_FFd12" BEL
         "test/M_counter_q_2" BEL "test/M_state_q_FSM_FFd13" BEL
@@ -103,25 +104,31 @@ TIMEGRP clk = BEL "test/M_state_q_FSM_FFd54_1" BEL
         "test/M_state_q_FSM_FFd19" BEL "test/M_counter_q_9" BEL
         "test/M_state_q_FSM_FFd30" BEL "test/M_state_q_FSM_FFd25" BEL
         "test/M_state_q_FSM_FFd26" BEL "test/M_state_q_FSM_FFd31" BEL
-        "test/M_state_q_FSM_FFd32" BEL "test/M_state_q_FSM_FFd11_1" BEL
-        "test/M_state_q_FSM_FFd27" BEL "test/M_state_q_FSM_FFd33" BEL
-        "test/M_state_q_FSM_FFd28" BEL "test/M_state_q_FSM_FFd34" BEL
-        "test/M_state_q_FSM_FFd29" BEL "test/M_state_q_FSM_FFd40" BEL
-        "test/M_state_q_FSM_FFd35" BEL "test/M_state_q_FSM_FFd41" BEL
-        "test/M_state_q_FSM_FFd36" BEL "test/M_state_q_FSM_FFd42" BEL
-        "test/M_state_q_FSM_FFd37" BEL "test/M_state_q_FSM_FFd43" BEL
-        "test/M_state_q_FSM_FFd38" BEL "test/M_state_q_FSM_FFd44" BEL
-        "test/M_state_q_FSM_FFd39" BEL "test/M_state_q_FSM_FFd50" BEL
-        "test/M_state_q_FSM_FFd45" BEL "test/M_state_q_FSM_FFd51" BEL
-        "test/M_state_q_FSM_FFd46" BEL "test/M_state_q_FSM_FFd52" BEL
-        "test/M_state_q_FSM_FFd47" BEL "test/M_state_q_FSM_FFd53" BEL
-        "test/M_state_q_FSM_FFd48" BEL "test/M_state_q_FSM_FFd54" BEL
-        "test/M_state_q_FSM_FFd49" BEL "test/M_state_q_FSM_FFd13_1" BEL
-        "test/M_state_q_FSM_FFd1" BEL "test/M_state_q_FSM_FFd2" BEL
-        "test/M_state_q_FSM_FFd3" BEL "test/M_state_q_FSM_FFd4" BEL
-        "test/M_state_q_FSM_FFd5" BEL "test/M_state_q_FSM_FFd6" BEL
-        "test/M_state_q_FSM_FFd7" BEL "test/M_state_q_FSM_FFd8" BEL
-        "test/M_state_q_FSM_FFd9" BEL "test/M_counter_q_10" BEL
+        "test/M_state_q_FSM_FFd32" BEL "test/M_state_q_FSM_FFd27" BEL
+        "test/M_state_q_FSM_FFd33" BEL "test/M_state_q_FSM_FFd28" BEL
+        "test/M_state_q_FSM_FFd34" BEL "test/M_state_q_FSM_FFd29" BEL
+        "test/M_state_q_FSM_FFd40" BEL "test/M_state_q_FSM_FFd35" BEL
+        "test/M_state_q_FSM_FFd41" BEL "test/M_state_q_FSM_FFd36" BEL
+        "test/M_state_q_FSM_FFd42" BEL "test/M_state_q_FSM_FFd37" BEL
+        "test/M_state_q_FSM_FFd43" BEL "test/M_state_q_FSM_FFd38" BEL
+        "test/M_state_q_FSM_FFd44" BEL "test/M_state_q_FSM_FFd39" BEL
+        "test/M_state_q_FSM_FFd50" BEL "test/M_state_q_FSM_FFd45" BEL
+        "test/M_state_q_FSM_FFd51" BEL "test/M_state_q_FSM_FFd46" BEL
+        "test/M_state_q_FSM_FFd52" BEL "test/M_state_q_FSM_FFd47" BEL
+        "test/M_state_q_FSM_FFd53" BEL "test/M_state_q_FSM_FFd48" BEL
+        "test/M_state_q_FSM_FFd54" BEL "test/M_state_q_FSM_FFd49" BEL
+        "test/M_state_q_FSM_FFd55" BEL "test/M_state_q_FSM_FFd56" BEL
+        "test/M_state_q_FSM_FFd5_1" BEL "test/M_state_q_FSM_FFd12_1" BEL
+        "test/M_state_q_FSM_FFd12_2" BEL "test/M_state_q_FSM_FFd12_3" BEL
+        "test/M_state_q_FSM_FFd13_1" BEL "test/M_state_q_FSM_FFd13_2" BEL
+        "test/M_state_q_FSM_FFd1" BEL "test/M_state_q_FSM_FFd13_3" BEL
+        "test/M_state_q_FSM_FFd2" BEL "test/M_state_q_FSM_FFd3" BEL
+        "test/M_state_q_FSM_FFd4" BEL "test/M_state_q_FSM_FFd5" BEL
+        "test/M_state_q_FSM_FFd6" BEL "test/M_state_q_FSM_FFd7" BEL
+        "test/M_state_q_FSM_FFd8" BEL "test/M_state_q_FSM_FFd9" BEL
+        "test/M_state_q_FSM_FFd8_1" BEL "test/M_state_q_FSM_FFd8_2" BEL
+        "test/M_state_q_FSM_FFd15_1" BEL "test/M_state_q_FSM_FFd15_2" BEL
+        "test/M_state_q_FSM_FFd27_1" BEL "test/M_counter_q_10" BEL
         "test/M_counter_q_11" BEL "test/M_counter_q_12" BEL
         "test/M_counter_q_13" BEL "test/M_counter_q_14" BEL
         "test/M_counter_q_15" BEL "test/M_counter_q_20" BEL
